@@ -1,11 +1,17 @@
 import React from 'react'
 import './App.css'
+import Home from './Home/Home'
+import { BrowserRouter, Routes, Route } from 'react-router'
 
 function App() {
 
   return (
     <>
-      <h1>FIT DISH</h1>
+    <BrowserRouter>
+        <Routes>
+          <Route element={<Home/>} path='/' end />
+        </Routes>
+    </BrowserRouter>
     </>
   )
 }

@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Madimi+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --red: #cc2405;
+  --orange: #dc914a;
+  --gray: #a69a82;
+}
+
+body {
+  background-color: #fef1e1;
+}
+
+.main-page {
+  width: 80vw;
+  margin: 0 auto;
+  background: #ffe0e0;
+}
+
+.t-1 {
+  font-family: "Madimi One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.t-2 {
+  font-family: "Amiri Quran", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.t-red{
+  color: var(--red);
+}
+
+.t-orange{
+  color: var(--orange);
+}
+
+.t-gray{
+  color: var(--gray);
+}
