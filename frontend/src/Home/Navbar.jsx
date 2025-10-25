@@ -24,7 +24,7 @@ function Navbar() {
   ]
 
   return (
-    <div className='flex flex-row justify-around items-center'>
+    <div className='flex flex-row justify-between items-center'>
       <div className="logo flex flex-row items-center gap-2">
         <img src={logo} className='w-[50px] aspect-square' alt="" />
         <div className='t-1 t-red text-2xl'>Fit Dish</div>
