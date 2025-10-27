@@ -1,15 +1,15 @@
 import React from 'react'
 
 import HomeHeader from './HomeHeader'
-import Categories from './Categories'
-import Navbar from '../components/Navbar'
+import Navbar from "../../components/Navbar";
+import HomeCategories from './HomeCategories'
 
 function Home() {
     return (
         <div className='main-page'>
             <Navbar/>
             <HomeHeader />
-            <Categories />
+            <HomeCategories/>
         </div>
     )
 }

@@ -40,7 +40,7 @@ const svgStyle = {
 };
 
 // --- The Component ---
-export const Categories = () => {
+export const HomeCategories = () => {
   const [isTargetCurved, setIsTargetCurved] = useState(false);
 
   return (
@@ -68,4 +68,4 @@ export const Categories = () => {
   );
 };
 
-export default Categories;
+export default HomeCategories;

@@ -1,5 +1,5 @@
 import React from 'react'
-import dishImg from "../../src/images/dish1.png"
+import dishImg from "../../images/dish1.png"
 
 function HomeHeader() {
   return (
