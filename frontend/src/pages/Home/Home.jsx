@@ -7,7 +7,7 @@ import HomeCategories from './HomeCategories'
 function Home() {
     return (
         <div className='main-page'>
-            <Navbar/>
+            {/* <Navbar/> */}
             <HomeHeader />
             <HomeCategories/>
         </div>
