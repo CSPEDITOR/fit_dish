@@ -1,69 +1,83 @@
 // Categories.jsx
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import cat from "../../images/cat.png"
+import { Link } from "react-router";
+import img1 from "../../images/1.png"
+import img2 from "../../images/2.png"
+import img3 from "../../images/3.png"
+import img4 from "../../images/4.png"
+import veg from "../../images/veg.png"
+import nveg from "../../images/nveg.png"
+import "./homeCategories.css"
+import { FaArrowRight } from "react-icons/fa";
 
-// --- SVG Path Definitions for two different curved shapes ---
-// These paths now both represent curved shapes.
-// The key is that they have the same number and type of commands for smooth morphing.
-
-// Initial curved shape (closer to the input image, but perhaps a bit more defined)
-const pathCurvedInitial =
-  "M 10 0 L 290 0 C 295 0, 300 5, 300 10 C 275 30, 275 70, 300 90 C 300 95, 295 100, 290 100 L 10 100 C 5 100, 0 95, 0 90 C 25 70, 25 30, 0 10 C 0 5, 5 0, 10 0 Z";
-
-// A slightly different, perhaps more exaggerated, curved shape for the animation target
-// The side control points are moved further inward to create a deeper curve.
-const pathCurvedTarget =
-  "M 10 0 L 290 0 C 295 0, 300 5, 300 10 C 250 30, 250 70, 300 90 C 300 95, 295 100, 290 100 L 10 100 C 5 100, 0 95, 0 90 C 50 70, 50 30, 0 10 C 0 5, 5 0, 10 0 Z";
-
-
-// --- Animation Variants ---
-const pathVariants = {
-  initialCurve: {
-    d: pathCurvedInitial,
-  },
-  targetCurve: {
-    d: pathCurvedTarget,
-  },
-};
-
-// --- Styles ---
-const containerStyle = {
-  display: "grid",
-  placeItems: "center",
-  height: "100vh",
-  background: "#f0f0f0",
-};
-
-const svgStyle = {
-  width: "300px",
-  cursor: "pointer",
-};
-
-// --- The Component ---
 export const HomeCategories = () => {
-  const [isTargetCurved, setIsTargetCurved] = useState(false);
+
+  let categories = [
+    {
+      title: "Healthy Salad",
+      time: "Breakfast",
+      img_link: img1,
+      veg: true,
+      color: "#ED7B7E",
+      link: ""
+    },
+    {
+      title: "Oatsmeal",
+      time: "Lunch",
+      img_link: img2,
+      veg: true,
+      color: "#F98B3D",
+      link: ""
+    },
+    {
+      title: "Sprout Salad",
+      time: "Breakfast",
+      img_link: img3,
+      veg: true,
+      color: "#6EDA49",
+      link: ""
+    },
+    {
+      title: "Grilled Chicken",
+      time: "Lunch",
+      img_link: img4,
+      veg: false,
+      color: "#7B79F5",
+      link: ""
+    },
+  ]
+
+  let categoriesCards = categories.map(
+    (item, index) => {
+      return (
+        <Link to={item.link} key={index + "kcfbwe"} className="relative rounded-2xl aspect-28/32 w-[25%]" style={{ backgroundColor: item.color }}>
+          <img src={item.img_link} className="absolute category-card-img" alt="" />
+          <div className="desc absolute bottom-0 h-[60%] bg-amgber-500 w-full">
+            <h1 className="text-white text-center text-2xl">{item.title}</h1>
+            <h2 className="text-white text-center ">{item.time}</h2>
+
+            <div className="mt-4 w-[60%] mx-auto flex items-center justify-center flex-row gap-[15%]">
+              <div className="view-category px-8 py-2 w-[70%] rounded-full bg-white flex items-center justify-center gap-[1vmin]">
+                <p>View</p>
+                <div className="aspect-square rounded-full p-[20%]" style={{backgroundColor:item.color}}><FaArrowRight color="white" /></div>
+              </div>
+              <img src={item.veg ? veg : nveg} className="w-[25%] aspect-square object-cover" alt="" />
+            </div>
+          </div>
+        </Link>
+      )
+    }
+  )
 
   return (
-    <div style={containerStyle}>
-      <motion.svg
-        viewBox="0 0 300 100"
-        style={svgStyle}
-        onClick={() => setIsTargetCurved(!isTargetCurved)} // Toggle state on click
-      >
-        <motion.path
-          fill="white"
-          stroke="#333"
-          strokeWidth="2"
-          variants={pathVariants}
-          // Set initial to 'initialCurve' and animate to 'targetCurve'
-          initial="initialCurve"
-          animate={isTargetCurved ? "targetCurve" : "initialCurve"}
-          transition={{
-            duration: 0.7,
-            ease: "easeInOut",
-          }}
-        />
-      </motion.svg>
+    <div className='main-page'>
+      <div className="container-categories w-full h-[60vh] bg-cover mb-8 flex items-center justify-center" style={{ backgroundImage: `url("${cat}")` }}>
+        <div className="categories w-[70%] flex items-center justify-center gap-[5vmin]">
+          {categoriesCards}
+        </div>
+      </div>
     </div>
   );
 };
