@@ -10,7 +10,7 @@ function HomeHeader() {
           <h1 className='text-7xl text-nowrap t-2 w-fit'><span className='t-red'>an</span> <span className='t-orange'>Important </span>Part</h1>
           <h1 className='text-7xl text-nowrap t-2 w-fit'>of Lifestyle </h1>
         </div>
-        <div className='w-[80%] h-fit'>
+        <div className='w-[40%] h-fit scale-150'>
           <img src={dishImg} alt="" className='w-full aspect-square' />
         </div>
       </div>
