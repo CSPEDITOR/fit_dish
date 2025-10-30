@@ -35,6 +35,18 @@ body {
   font-style: normal;
 }
 
+.bg-red{
+  background-color: var(--red);
+}
+
+.bg-orange{
+  background-color: var(--orange);
+}
+
+.bg-gray{
+  background-color: var(--gray);
+}
+
 .t-red{
   color: var(--red);
 }
