@@ -3,6 +3,7 @@ import React from 'react'
 import HomeHeader from './HomeHeader'
 import Navbar from "../../components/Navbar";
 import HomeCategories from './HomeCategories'
+import ChoseDiet from './ChoseDiet';
 
 function Home() {
     return (
@@ -10,6 +11,7 @@ function Home() {
             {/* <Navbar/> */}
             <HomeHeader />
             <HomeCategories/>
+            <ChoseDiet/>
         </div>
     )
 }

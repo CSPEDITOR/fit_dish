@@ -52,11 +52,11 @@ export const HomeCategories = () => {
   let categoriesCards = categories.map(
     (item, index) => {
       return (
-        <Link to={item.link} key={index + "kcfbwe"} className="relative rounded-2xl aspect-28/32 w-[20%]" style={{ backgroundColor: item.color }}>
+        <Link to={item.link} key={index + "kcfbwe"} className="relative rounded-2xl aspect-28/32 w-[20%] shadow-xl" style={{ backgroundColor: item.color }}>
           <img src={item.img_link} className="absolute category-card-img" alt="" />
           <div className="desc absolute bottom-0 h-[60%] bg-amgber-500 w-full">
             <h1 className="t-3 text-white text-center text-2xl">{item.title}</h1>
-            <h2 className="t-3 text-white text-center ">{item.time}</h2>
+            <h2 className="t-3 text-white text-center">{item.time}</h2>
 
             <div className="mt-4 w-[60%] mx-auto flex items-center justify-center flex-row gap-[15%]">
               <div className="view-category px-8 py-2 w-[70%] rounded-full bg-white flex items-center justify-center gap-[1vmin]">

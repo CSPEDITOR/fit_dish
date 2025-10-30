@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Madimi+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Madimi+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Itim&display=swap');
 :root {
   --red: #cc2405;
   --orange: #dc914a;
@@ -32,6 +33,12 @@ body {
 .t-3{
   font-family: "Itim", cursive;
   font-weight: 400;
+  font-style: normal;
+}
+
+.t-4{
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
   font-style: normal;
 }
 
