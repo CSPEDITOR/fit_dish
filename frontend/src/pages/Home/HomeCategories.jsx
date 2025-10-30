@@ -73,8 +73,8 @@ export const HomeCategories = () => {
 
   return (
     <div className='main-page'>
-      <div className="container-categories w-full h-[60vh] bg-cover mb-8 flex items-center justify-center" style={{ backgroundImage: `url("${cat}")` }}>
-        <div className="categories w-[70%] flex items-center justify-center gap-[5vmin]">
+      <div className="container-categories w-full aspect-[26/9] bg-contain bg-no-repeat mb-8 flex items-center justify-center" style={{ backgroundImage: `url("${cat}")` }}>
+        <div className="categories w-[70%] mt-10 flex items-center justify-center gap-[5vmin]">
           {categoriesCards}
         </div>
       </div>
