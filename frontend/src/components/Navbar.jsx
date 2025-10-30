@@ -7,7 +7,7 @@ function Navbar() {
   let links = [
     {
       name: "Home",
-      path: "/home"
+      path: "/"
     },
     {
       name: "Categories",
