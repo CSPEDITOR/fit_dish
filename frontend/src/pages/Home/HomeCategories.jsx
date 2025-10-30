@@ -52,15 +52,15 @@ export const HomeCategories = () => {
   let categoriesCards = categories.map(
     (item, index) => {
       return (
-        <Link to={item.link} key={index + "kcfbwe"} className="relative rounded-2xl aspect-28/32 w-[25%]" style={{ backgroundColor: item.color }}>
+        <Link to={item.link} key={index + "kcfbwe"} className="relative rounded-2xl aspect-28/32 w-[20%]" style={{ backgroundColor: item.color }}>
           <img src={item.img_link} className="absolute category-card-img" alt="" />
           <div className="desc absolute bottom-0 h-[60%] bg-amgber-500 w-full">
-            <h1 className="text-white text-center text-2xl">{item.title}</h1>
-            <h2 className="text-white text-center ">{item.time}</h2>
+            <h1 className="t-3 text-white text-center text-2xl">{item.title}</h1>
+            <h2 className="t-3 text-white text-center ">{item.time}</h2>
 
             <div className="mt-4 w-[60%] mx-auto flex items-center justify-center flex-row gap-[15%]">
               <div className="view-category px-8 py-2 w-[70%] rounded-full bg-white flex items-center justify-center gap-[1vmin]">
-                <p>View</p>
+                <p className="t-3 text-sm">View</p>
                 <div className="aspect-square rounded-full p-[20%]" style={{backgroundColor:item.color}}><FaArrowRight color="white" /></div>
               </div>
               <img src={item.veg ? veg : nveg} className="w-[25%] aspect-square object-cover" alt="" />
@@ -73,8 +73,8 @@ export const HomeCategories = () => {
 
   return (
     <div className='main-page'>
-      <div className="container-categories w-full aspect-[26/9] bg-contain bg-no-repeat mb-8 flex items-center justify-center" style={{ backgroundImage: `url("${cat}")` }}>
-        <div className="categories w-[70%] mt-10 flex items-center justify-center gap-[5vmin]">
+      <div className="container-categories w-full bg-amvvber-400 bg-center aspect-[26/9] bg-contain bg-no-repeat mb-8 flex items-center justify-center" style={{ backgroundImage: `url("${cat}")` }}>
+        <div className="categories w-[70%] mt-10 flex items-center justify-around">
           {categoriesCards}
         </div>
       </div>

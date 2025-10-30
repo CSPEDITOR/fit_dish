@@ -24,12 +24,12 @@ function Navbar() {
   ]
 
   return (
-    <div className='flex flex-row justify-between items-center main-page' >
+    <div className='navbar flex flex-row justify-between items-center mx-auto main-page' >
       <div className="logo flex flex-row items-center gap-2">
         <img src={logo} className='w-[50px] aspect-square' alt="" />
         <div className='t-1 t-red text-2xl'>Fit Dish</div>
       </div>
-      <div className='links flex gap-2'>
+      <div className='links flex gap-5'>
         {
           links.map(
             (item, index) => {

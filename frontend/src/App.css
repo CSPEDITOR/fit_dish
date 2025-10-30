@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Madimi+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Madimi+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 :root {
   --red: #cc2405;
   --orange: #dc914a;
@@ -13,7 +13,7 @@ body {
 
 .main-page {
   width: 80vw;
-  margin: 0 auto;
+  margin: 30px auto 0 auto;
   /* background: #ffe0e0; */
 }
 
@@ -25,6 +25,12 @@ body {
 
 .t-2 {
   font-family: "Amiri Quran", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.t-3{
+  font-family: "Itim", cursive;
   font-weight: 400;
   font-style: normal;
 }
