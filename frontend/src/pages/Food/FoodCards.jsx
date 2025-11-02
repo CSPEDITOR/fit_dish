@@ -12,7 +12,7 @@ const FoodCards = ({ image, imgename, describe, type }) => {
       whileHover={{ scale: 1.03 }}
     >
       <div style={{backgroundColor:'#FBEBEB'}} >
-        <img src={image} alt={imgename} className="w-full h-50 " />
+        <img src={image} alt={imgename} className="w-auto h-40  mx-auto object-cover" />
 
         <div className="p-5 pb-14">
           <h2 className="text-1xl font-bold text-gray-800 mb-1">{imgename}</h2>

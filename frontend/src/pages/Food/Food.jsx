@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import FoodCards from "../Food/FoodCards";
 import veganfood from "../../images/veganfood.jpg";
+import Apple from "../../images/Apple.png";
 
 const foodItems = [
   {
@@ -10,8 +11,8 @@ const foodItems = [
     type: "veg",
   },
   {
-    imgename: "Item Name",
-    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836",
+    imgename: "Apple",
+    image: Apple,
     describe: "High fiber, immune boost",
     type: "veg",
   },
