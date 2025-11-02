@@ -1,14 +1,4 @@
-// import React from 'react';
 
-// const FoodCards = () => {
-//   return (
-//     <div>FoodCards</div>
-//   )
-// }
-
-// export default FoodCards;
-
-// src/components/FoodCards.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import vegIcon from "../../images/veg.png";
@@ -29,7 +19,6 @@ const FoodCards = ({ image, imgename, describe, type }) => {
           <p className="text-gray-600 mb-3">{describe}</p>
         </div>
 
-        {/* Bottom elements */}
         <div className="absolute bottom-3 left-4 ">
           <button className="px-3 py-1 bg-white text-black rounded-full hover:bg-green-600 transition flex items-center space-x-3">
             <span>View</span>
