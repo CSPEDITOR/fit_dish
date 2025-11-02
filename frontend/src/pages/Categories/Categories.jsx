@@ -33,6 +33,8 @@ const categories = [
     image: "https://images.unsplash.com/photo-1572441710534-68029b6d08e1",
     desc: "Natural detox drinks & plans",
   },
+
+  
 ];
 
 const Categories = () => {

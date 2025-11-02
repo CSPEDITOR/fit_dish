@@ -71,6 +71,7 @@ export const HomeCategories = () => {
     }
   )
 
+  
   return (
     <div className='main-page'>
       <div className="container-categories w-full bg-amvvber-400 bg-center aspect-[26/9] bg-contain bg-no-repeat mb-8 flex items-center justify-center" style={{ backgroundImage: `url("${cat}")` }}>
