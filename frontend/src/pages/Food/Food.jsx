@@ -8,7 +8,7 @@ const foodItems = [
     imgename: "Grilled Chicken Salad",
 
     describe: "High protein, low carb, fiber rich",
-    type: "veg",
+    type: "nonveg",
   },
   {
     imgename: "Apple",
