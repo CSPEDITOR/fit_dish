@@ -5,18 +5,18 @@ import vegIcon from "../../images/veg.png";
 import nonVegIcon from "../../images/nveg.png";
 import { FaArrowRight } from "react-icons/fa";
 
-const FoodCards = ({ image, imgename, describe, type }) => {
+const FoodCards = ({ image, name, description, type }) => {
   return (
     <motion.div
       className="bg-white  rounded-2xl overflow-hidden shadow-lg hover:shadow-1xl transition duration-300 relative"
       whileHover={{ scale: 1.03 }}
     >
       <div style={{backgroundColor:'#FBEBEB'}} >
-        <img src={image} alt={imgename} className="w-auto h-40  mx-auto object-cover" />
+        <img src={image} alt={image} className="w-auto h-40  mx-auto object-cover" />
 
         <div className="p-5 pb-14">
-          <h2 className="text-1xl font-bold text-gray-800 mb-1">{imgename}</h2>
-          <p className="text-gray-600 mb-3">{describe}</p>
+          <h2 className="text-1xl font-bold text-gray-800 mb-1">{name}</h2>
+          <p className="text-gray-600 mb-3">{description}</p>
         </div>
 
         <div className="absolute bottom-3 left-4 ">
