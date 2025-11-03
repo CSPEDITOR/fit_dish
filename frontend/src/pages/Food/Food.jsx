@@ -78,6 +78,8 @@ const foodItems = [
   },
 ];
 
+
+
 const Food = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-2 px-16">

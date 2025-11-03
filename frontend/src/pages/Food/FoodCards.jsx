@@ -11,7 +11,7 @@ const FoodCards = ({ image, imgename, describe, type }) => {
       className="bg-white  rounded-2xl overflow-hidden shadow-lg hover:shadow-1xl transition duration-300 relative"
       whileHover={{ scale: 1.03 }}
     >
-      <div style={{backgroundColor:'#FBEBEB'}} >
+      <div  className="relative transition duration-300 bg-[#FBEBEB] hover:bg-red-500" >
         <img src={image} alt={imgename} className="w-auto h-40  mx-auto object-cover" />
 
         <div className="p-5 pb-14">
