@@ -15,8 +15,8 @@ const FoodCards = ({ image, imgename, describe, type }) => {
         <img src={image} alt={imgename} className="w-auto h-40  mx-auto object-cover" />
 
         <div className="p-5 pb-14">
-          <h2 className="text-1xl font-bold text-gray-800 mb-1">{imgename}</h2>
-          <p className="text-gray-600 mb-3">{describe}</p>
+          <h2 className="text-1xl font-bold text-gray-800  mb-1 transition ">{imgename}</h2>
+          <p className="text-gray-600  mb-3 transition ">{describe}</p>
         </div>
 
         <div className="absolute bottom-3 left-4 ">
