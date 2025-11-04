@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import vegIcon from "../../images/veg.png";
@@ -11,12 +10,20 @@ const FoodCards = ({ image, name, description, type }) => {
       className="bg-white  rounded-2xl overflow-hidden shadow-lg hover:shadow-1xl transition duration-300 relative"
       whileHover={{ scale: 1.03 }}
     >
-      <div  className="relative transition duration-300 bg-[#FBEBEB] group hover:bg-[#CB3432]" >
-        <img src={image} alt={name} className="w-auto h-40  mx-auto object-cover" />
+      <div className="relative transition  duration-300 bg-[#FBEBEB] group hover:bg-[#CB3432]">
+        <img
+          src={image}
+          alt={name}
+          className="w-auto h-40  mx-auto object-cover"
+        />
 
         <div className="p-5 pb-14">
-          <h2 className="text-1xl font-bold text-gray-800 mb-1  group-hover:text-white">{name}</h2>
-          <p className="text-gray-600 mb-3 group-hover:text-white">{description}</p>
+          <h2 className="text-1xl font-bold text-gray-800 mb-1  group-hover:text-white">
+            {name}
+          </h2>
+          <p className="text-gray-600 mb-3 group-hover:text-white">
+            {description}
+          </p>
         </div>
 
         <div className="absolute bottom-3 left-4 ">
