@@ -84,8 +84,8 @@ import foodItems from "../../assets/Assests"
 const Food = () => {
   return (
     <div className="min-h-screen py-2 px-16">
-      <div class="flex flex-col md:flex-row items-center justify-between w-full px-6 md:px-12 lg:px-16 py-6 md:py-8 space-y-4 md:space-y-0">
-        <div class="text-xl t-1  md:text-5xl font-bold text-red-600 text-center md:text-left">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full px-6 md:px-12 lg:px-16 py-6 md:py-8 space-y-4 md:space-y-0">
+        <div className="text-xl t-1  md:text-5xl font-bold text-red-600 text-center md:text-left">
           Healthy Food
         </div>
 

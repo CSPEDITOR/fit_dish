@@ -15,8 +15,8 @@ const FoodCards = ({ image, name, description, type }) => {
         <img src={image} alt={name} className="w-auto h-40  mx-auto object-cover" />
 
         <div className="p-5 pb-14">
-          <h2 className="text-1xl font-bold text-gray-800 mb-1">{imgename}</h2>
-          <p className="text-gray-600 mb-3">{describe}</p>
+          <h2 className="text-1xl font-bold text-gray-800 mb-1  group-hover:text-white">{name}</h2>
+          <p className="text-gray-600 mb-3 group-hover:text-white">{description}</p>
         </div>
 
         <div className="absolute bottom-3 left-4 ">
