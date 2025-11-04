@@ -2,89 +2,90 @@ import React, { useState } from "react";
 import FoodCards from "../Food/FoodCards";
 import veganfood from "../../images/veganfood.jpg";
 import Apple from "../../images/Apple.png";
+import foodItems from "../../assets/Assests"
 
-const foodItems = [
-  {
-    imgename: "Grilled Chicken Salad",
+// const foodItems = [
+//   {
+//     imgename: "Grilled Chicken Salad",
 
-    describe: "High protein, low carb, fiber rich",
-    type: "nonveg",
-  },
-  {
-    imgename: "Apple",
-    image: Apple,
-    describe: "High fiber, immune boost",
-    type: "veg",
-  },
-  {
-    imgename: "Boiled Egg",
-    image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c",
-    describe: "Everyday healthy routines",
-    type: "nonveg",
-  },
-  {
-    imgename: "Item Name",
-    image: "https://images.unsplash.com/photo-1604908176917-35c9fdfb08b8",
-    describe: "Description",
-    type: "veg",
-  },
-  {
-    imgename: "Item Name",
-    image: "https://images.unsplash.com/photo-1562967916-eb82221dfb36",
-    describe: "Description",
-    type: "nonveg",
-  },
-  {
-    imgename: "Item Name",
-    image: "https://images.unsplash.com/photo-1572441710534-68029b6d08e1",
-    describe: "Description",
-    type: "veg",
-  },
-  {
-    imgename: "Item Name",
-    image: "https://images.unsplash.com/photo-1572441710534-68029b6d08e1",
-    describe: "Description",
-    type: "veg",
-  },
-  {
-    imgename: "Item Name",
-    image: "https://images.unsplash.com/photo-1572441710534-68029b6d08e1",
-    describe: "Description",
-    type: "veg",
-  },
-  {
-    imgename: "Item Name",
-    image: "https://images.unsplash.com/photo-1572441710534-68029b6d08e1",
-    describe: "Description",
-    type: "veg",
-  },
-  {
-    imgename: "Item Name",
-    image: "https://images.unsplash.com/photo-1572441710534-68029b6d08e1",
-    describe: "Description",
-    type: "veg",
-  },
-  {
-    imgename: "Item Name",
-    image: "https://images.unsplash.com/photo-1572441710534-68029b6d08e1",
-    describe: "Description",
-    type: "veg",
-  },
-  {
-    imgename: "Item Name",
-    image: "https://images.unsplash.com/photo-1572441710534-68029b6d08e1",
-    describe: "Description",
-    type: "veg",
-  },
-];
+//     describe: "High protein, low carb, fiber rich",
+//     type: "nonveg",
+//   },
+//   {
+//     imgename: "Apple",
+//     image: Apple,
+//     describe: "High fiber, immune boost",
+//     type: "veg",
+//   },
+//   {
+//     imgename: "Boiled Egg",
+//     image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c",
+//     describe: "Everyday healthy routines",
+//     type: "nonveg",
+//   },
+//   {
+//     imgename: "Item Name",
+//     image: "https://images.unsplash.com/photo-1604908176917-35c9fdfb08b8",
+//     describe: "Description",
+//     type: "veg",
+//   },
+//   {
+//     imgename: "Item Name",
+//     image: "https://images.unsplash.com/photo-1562967916-eb82221dfb36",
+//     describe: "Description",
+//     type: "nonveg",
+//   },
+//   {
+//     imgename: "Item Name",
+//     image: "https://images.unsplash.com/photo-1572441710534-68029b6d08e1",
+//     describe: "Description",
+//     type: "veg",
+//   },
+//   {
+//     imgename: "Item Name",
+//     image: "https://images.unsplash.com/photo-1572441710534-68029b6d08e1",
+//     describe: "Description",
+//     type: "veg",
+//   },
+//   {
+//     imgename: "Item Name",
+//     image: "https://images.unsplash.com/photo-1572441710534-68029b6d08e1",
+//     describe: "Description",
+//     type: "veg",
+//   },
+//   {
+//     imgename: "Item Name",
+//     image: "https://images.unsplash.com/photo-1572441710534-68029b6d08e1",
+//     describe: "Description",
+//     type: "veg",
+//   },
+//   {
+//     imgename: "Item Name",
+//     image: "https://images.unsplash.com/photo-1572441710534-68029b6d08e1",
+//     describe: "Description",
+//     type: "veg",
+//   },
+//   {
+//     imgename: "Item Name",
+//     image: "https://images.unsplash.com/photo-1572441710534-68029b6d08e1",
+//     describe: "Description",
+//     type: "veg",
+//   },
+//   {
+//     imgename: "Item Name",
+//     image: "https://images.unsplash.com/photo-1572441710534-68029b6d08e1",
+//     describe: "Description",
+//     type: "veg",
+//   },
+// ];
 
 
 
 const Food = () => {
   return (
-    <div className="min-h-screen bg-gray-50 py-2 px-16">
+    <div className="min-h-screen py-2 px-16">
       <div class="flex flex-col md:flex-row items-center justify-between w-full px-6 md:px-12 lg:px-16 py-6 md:py-8 space-y-4 md:space-y-0">
-        <div class="text-xl md:text-lg font-bold text-red-600 text-center md:text-left">
+        <div class="text-xl t-1  md:text-5xl font-bold text-red-600 text-center md:text-left">
           Healthy Food
         </div>
 
@@ -111,8 +112,8 @@ const Food = () => {
           <FoodCards
             key={index}
             image={item.image}
-            imgename={item.imgename}
-            describe={item.describe}
+            name={item.name}
+            description={item.description}
             type={item.type}
           />
         ))}

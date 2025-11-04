@@ -5,22 +5,22 @@ import vegIcon from "../../images/veg.png";
 import nonVegIcon from "../../images/nveg.png";
 import { FaArrowRight } from "react-icons/fa";
 
-const FoodCards = ({ image, imgename, describe, type }) => {
+const FoodCards = ({ image, name, description, type }) => {
   return (
     <motion.div
       className="bg-white  rounded-2xl overflow-hidden shadow-lg hover:shadow-1xl transition duration-300 relative"
       whileHover={{ scale: 1.03 }}
     >
-      <div  className="relative transition duration-300 bg-[#FBEBEB] hover:bg-red-500" >
-        <img src={image} alt={imgename} className="w-auto h-40  mx-auto object-cover" />
+      <div  className="relative transition duration-300 bg-[#FBEBEB] group hover:bg-[#CB3432]" >
+        <img src={image} alt={name} className="w-auto h-40  mx-auto object-cover" />
 
         <div className="p-5 pb-14">
-          <h2 className="text-1xl font-bold text-gray-800  mb-1 transition ">{imgename}</h2>
-          <p className="text-gray-600  mb-3 transition ">{describe}</p>
+          <h2 className="text-1xl font-bold text-gray-800 mb-1">{imgename}</h2>
+          <p className="text-gray-600 mb-3">{describe}</p>
         </div>
 
         <div className="absolute bottom-3 left-4 ">
-          <button className="px-3 py-1 bg-white text-black rounded-full hover:bg-green-600 transition flex items-center space-x-3">
+          <button className="px-3 py-1 bg-white text-black rounded-full transition flex items-center space-x-3">
             <span>View</span>
             <div className="rounded-full h-8 w-8 ps-2 pt-2 pb-1 bg-red-600">
               <FaArrowRight color="white" />
