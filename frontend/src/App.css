@@ -7,6 +7,9 @@
   --orange: #dc914a;
   --gray: #a69a82;
 }
+*{
+  /* border: 1px solid black; */
+}
 
 body {
   background-color: #fef1e1;
@@ -14,7 +17,7 @@ body {
 
 .main-page {
   width: 80vw;
-  margin: 30px auto 0 auto;
+  /* margin: 30px auto 0 auto; */
   /* background: #ffe0e0; */
 }
 
