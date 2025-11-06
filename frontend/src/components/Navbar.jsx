@@ -373,7 +373,7 @@ function Navbar() {
     localStorage.removeItem("userInfo");
     setUserInfo(null);
     setDropdownOpen(false);
-    setTimeout(() => navigate("/signup", { replace: true }), 100);
+    setTimeout(() => navigate("/login", { replace: true }), 100);
   };
 
   const links = [
@@ -390,7 +390,7 @@ function Navbar() {
         <Link to={"/"}>
           <div className="flex items-center gap-2">
             <img src={logo} className="w-[45px] aspect-square" alt="logo" />
-            <div className="text-[#cc2405] text-2xl font-semibold">Fit Dish</div>
+            <div className="text-[#cc2405] text-2xl font-semibold t-1">Fit Dish</div>
           </div>
         </Link>
 
@@ -411,10 +411,10 @@ function Navbar() {
         <div className="hidden md:block relative">
           {!userInfo ? (
             <Link
-              to="/signup"
+              to="/login"
               className="text-gray-700 font-medium px-4 py-2 rounded-full text-lg bg-white border border-[#cc2405] hover:bg-[#cc2405] hover:text-white transition-all duration-300"
             >
-              Sign Up
+              Log In
             </Link>
           ) : (
             <div className="relative">
@@ -429,14 +429,14 @@ function Navbar() {
                 <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg w-40 flex flex-col z-50 transition-all duration-300">
                   <Link
                     to="/profile"
-                    className="px-4 py-2 text-gray-700 hover:bg-gray-100 transition-all duration-200"
+                    className="px-4 py-2 text-gray-700 hover:bg-[#cc2405] hover:text-white transition-all duration-200"
                     onClick={() => setDropdownOpen(false)}
                   >
                     Profile
                   </Link>
                   <button
                     onClick={handleLogout}
-                    className="px-4 py-2 text-gray-700 hover:bg-gray-100 text-left transition-all duration-200"
+                    className="px-4 py-2 text-gray-700 hover:bg-[#cc2405] hover:text-white text-left transition-all duration-200"
                   >
                     Logout
                   </button>

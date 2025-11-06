@@ -15,7 +15,7 @@ const MainLayout = () => {
   }, []);
   return (
     <>
-      <div className="flex flex-col items-center justify-center w-screen">
+      <div className="flex flex-col items-center justify-center">
         {/* <Navbar /> */}
         <div
           className={`sticky top-0 bg-[#fef1e1] w-screen z-50 transition-shadow duration-300 ${

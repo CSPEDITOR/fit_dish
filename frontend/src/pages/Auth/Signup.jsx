@@ -103,7 +103,7 @@ const Signup = () => {
               onChange={handleChange}
               type="text"
               placeholder="Enter your name"
-              className="w-full px-3 py-2 rounded-md bg-white/80 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 rounded-md bg-white/80 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#cc2405]"
               required
             />
           </div>
@@ -116,7 +116,7 @@ const Signup = () => {
               onChange={handleChange}
               type="email"
               placeholder="example@gmail.com"
-              className="w-full px-3 py-2 rounded-md bg-white/80 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 rounded-md bg-white/80 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#cc2405]"
               required
             />
           </div>
@@ -129,7 +129,7 @@ const Signup = () => {
               onChange={handleChange}
               type="password"
               placeholder="••••••••"
-              className="w-full px-3 py-2 rounded-md bg-white/80 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 rounded-md bg-white/80 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#cc2405]"
               required
               minLength={6}
             />
@@ -138,7 +138,7 @@ const Signup = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2 mt-2 bg-indigo-600 hover:bg-indigo-700 rounded-lg font-semibold text-white transition-all"
+            className="w-full py-2 mt-2 bg-[#cc2405] hover:bg-[#cf5944] rounded-lg font-semibold text-white transition-all"
           >
             {loading ? "Signing up..." : "Sign Up"}
           </button>

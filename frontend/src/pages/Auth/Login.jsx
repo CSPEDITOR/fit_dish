@@ -95,7 +95,7 @@ const Login = () => {
               onChange={handleChange}
               type="email"
               placeholder="example@gmail.com"
-              className="w-full px-3 py-2 rounded-md bg-white/80 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 rounded-md bg-white/80 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#cc2405]"
               required
             />
           </div>
@@ -108,7 +108,7 @@ const Login = () => {
               onChange={handleChange}
               type="password"
               placeholder="••••••••"
-              className="w-full px-3 py-2 rounded-md bg-white/80 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 rounded-md bg-white/80 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#cc2405]"
               required
             />
           </div>
@@ -122,8 +122,8 @@ const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2 mt-2 rounded-lg font-semibold text-white transition-all"
-            style={{ backgroundColor: "var(--red)" }}
+            className="w-full py-2 mt-2 rounded-lg font-semibold text-white transition-all bg-[#cc2405] hover:bg-[#cf5944] "
+            
           >
             {loading ? "Logging in..." : "Log In"}
           </button>
