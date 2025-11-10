@@ -8,7 +8,8 @@ import MainLayout from "./Layout/MainLayout";
 import Categories from "./pages/Categories/Categories";
 import Food from "./pages/Food/Food";
 import AboutUs from "./pages/Aboutus/AboutUs";
-// 👈 new layout
+import UserProfile from "./pages/UserProfile";
+
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/userprofile" element={<UserProfile />} />
+
       </Routes>
     </BrowserRouter>
   );

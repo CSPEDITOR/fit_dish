@@ -1,0 +1,58 @@
+import React from 'react'
+
+import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
+import profileImg from "../images/default_profile_image.png";
+
+const UserProfile = () => {
+  
+
+    const user = {
+    name: "Hemant Sarangi",
+    email: "hemant.sarangi@example.com",
+    phone: "+91 98765 43210",
+    location: "Bhubaneswar, India",
+    bio: "Frontend React Developer | Passionate about building user-friendly web apps.",
+    avatar: "",
+  };
+
+  
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen  p-6">
+      <div className="bg-white shadow-lg rounded-2xl w-full max-w-md p-6">
+        <div className="flex flex-col items-center">
+          <img
+            src={profileImg}
+            alt="User Avatar"
+            className="w-28 h-28 rounded-full border-4 border-blue-500 shadow-md"
+          />
+          <h2 className="text-2xl font-semibold mt-4">{user.name}</h2>
+          <p className="text-gray-500 text-sm">{user.bio}</p>
+        </div>
+
+        <div className="mt-6 space-y-3 text-gray-700">
+          <div className="flex items-center gap-3">
+            <FaEnvelope className="text-blue-500" />
+            <span>{user.email}</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <FaPhone className="text-green-500" />
+            <span>{user.phone}</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <FaMapMarkerAlt className="text-red-500" />
+            <span>{user.location}</span>
+          </div>
+        </div>
+
+        <div className="mt-6 flex justify-center">
+          <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-full transition">
+            Edit Profile
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
+export default UserProfile;

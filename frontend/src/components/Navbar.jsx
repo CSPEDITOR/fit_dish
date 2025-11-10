@@ -428,7 +428,7 @@ function Navbar() {
               {dropdownOpen && (
                 <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg w-40 flex flex-col z-50 transition-all duration-300">
                   <Link
-                    to="/profile"
+                    to="/userprofile"
                     className="px-4 py-2 text-gray-700 hover:bg-[#cc2405] hover:text-white transition-all duration-200"
                     onClick={() => setDropdownOpen(false)}
                   >
