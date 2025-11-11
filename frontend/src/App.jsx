@@ -10,6 +10,8 @@ import Food from "./pages/Food/Food";
 import AboutUs from "./pages/Aboutus/AboutUs";
 import UserProfile from "./pages/UserProfile";
 
+import ForgotPassword from "./pages/Auth/ForgotPassword";
+// 👈 new layout
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/userprofile" element={<UserProfile />} />
 
+        <Route path="/forgot-password" element={<ForgotPassword />} />
       </Routes>
     </BrowserRouter>
   );

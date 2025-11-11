@@ -2,7 +2,7 @@
 // import loginbgimg from '../../images/loginbg.jpg'
 // const Login = () => {
 //   return (
-//     <div className="relative min-h-screen flex items-center justify-center bg-cover bg-center" 
+//     <div className="relative min-h-screen flex items-center justify-center bg-cover bg-center"
 //          style={{ backgroundImage: `url(${loginbgimg})`}}>
 //       <div className="absolute inset-0 bg-black/25 backdrop-blur-sm"></div>
 //       <div className="relative z-10 bg-white/10 backdrop-blur-md text-white rounded-2xl shadow-2xl p-10 w-[90%] max-w-md">
@@ -10,8 +10,8 @@
 //         <form className="space-y-6">
 //           <div>
 //             <label className="block text-sm font-semibold mb-2">Email</label>
-//             <input 
-//               type="email" 
+//             <input
+//               type="email"
 //               placeholder="example@gmail.com"
 //               className="w-full px-4 py-2 rounded-md bg-white/80 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
 //               required
@@ -19,8 +19,8 @@
 //           </div>
 //           <div>
 //             <label className="block text-sm font-semibold mb-2">Password</label>
-//             <input 
-//               type="password" 
+//             <input
+//               type="password"
 //               placeholder="••••••••"
 //               className="w-full px-4 py-2 rounded-md bg-white/80 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
 //               required
@@ -48,8 +48,8 @@
 
 // export default Login;
 
-
 // src/pages/Login.jsx
+
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/userSlice";
@@ -84,7 +84,9 @@ const Login = () => {
     >
       <div className="absolute inset-0 bg-black/25 backdrop-blur-sm"></div>
       <div className="relative z-10 bg-white/10 backdrop-blur-md text-white rounded-2xl shadow-2xl p-6 sm:p-10 w-[92%] max-w-md">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-6">Log In</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-6">
+          Log In
+        </h2>
 
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
@@ -114,16 +116,21 @@ const Login = () => {
           </div>
 
           <div className="flex justify-end text-sm">
-            <a href="#" className="hover:underline text-indigo-200">
+            {/* <a href="#" className="hover:underline text-indigo-200">
               Forgot password
-            </a>
+            </a> */}
+            <Link
+              to="/forgot-password"
+              className="hover:underline text-indigo-200"
+            >
+              Forgot password?
+            </Link>
           </div>
 
           <button
             type="submit"
             disabled={loading}
             className="w-full py-2 mt-2 rounded-lg font-semibold text-white transition-all bg-[#cc2405] hover:bg-[#cf5944] "
-            
           >
             {loading ? "Logging in..." : "Log In"}
           </button>

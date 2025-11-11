@@ -355,9 +355,11 @@ import logo from "../../src/images/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import profileImg from "../images/default_profile_image.png";
 import { Menu, X } from "lucide-react"; // 🧭 for icons (built into shadcn/lucide)
-
+import { logout } from "../redux/userSlice"; 
+import { useDispatch } from "react-redux";
 function Navbar() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [userInfo, setUserInfo] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false); // 🍔 mobile menu state
@@ -369,12 +371,19 @@ function Navbar() {
     }
   }, []);
 
+  // const handleLogout = () => {
+  //   localStorage.removeItem("userInfo");
+  //   setUserInfo(null);
+  //   setDropdownOpen(false);
+  //   setTimeout(() => navigate("/login", { replace: true }), 100);
+  // };
   const handleLogout = () => {
-    localStorage.removeItem("userInfo");
-    setUserInfo(null);
-    setDropdownOpen(false);
-    setTimeout(() => navigate("/login", { replace: true }), 100);
-  };
+  dispatch(logout());
+   // ✅ clears Redux + localStorage both
+  setUserInfo(null);
+  setDropdownOpen(false);
+  setTimeout(() => navigate("/", { replace: true }), 100);
+};
 
   const links = [
     { name: "Home", path: "/" },
