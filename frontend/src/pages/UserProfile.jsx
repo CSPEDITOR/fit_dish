@@ -3,12 +3,18 @@ import React from "react";
 import { useSelector } from "react-redux"; 
 import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 import profileImg from "../images/default_profile_image.png";
+import Sidebar from "../components/Sidebar";
 
 const UserProfile = () => {
   const { userInfo } = useSelector((state) => state.user);
 
   return (
+    <>
+    <Sidebar/>
     <div className="flex flex-col items-center justify-center min-h-screen p-6 ">
+       
+       
+       
       <div className="bg-white shadow-lg rounded-2xl w-full max-w-md p-6">
         <div className="flex flex-col items-center">
           <img
@@ -40,13 +46,18 @@ const UserProfile = () => {
 
         </div>
 
-        <div className="mt-6 flex justify-center">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-full transition">
+        <div className="mt-6 flex justify-center gap-4 ">
+          <button className="bg-[#cc2405] hover:bg-[#fef1e1] hover:text-[#cc2405] text-[#fef1e1] font-medium py-2 px-4 rounded-full transition">
             Edit Profile
+          </button>
+
+           <button className="bg-[#cc2405] hover:bg-[#fef1e1] hover:text-[#cc2405] text-[#fef1e1] font-medium py-2 px-4 rounded-full transition">
+            Profile Setup
           </button>
         </div>
       </div>
     </div>
+    </>
   );
 };
 
