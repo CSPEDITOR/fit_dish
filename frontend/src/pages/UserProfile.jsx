@@ -1,23 +1,14 @@
-import React from 'react'
 
-import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
+import React from "react";
+import { useSelector } from "react-redux"; 
+import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 import profileImg from "../images/default_profile_image.png";
 
 const UserProfile = () => {
-  
+  const { userInfo } = useSelector((state) => state.user);
 
-    const user = {
-    name: "Hemant Sarangi",
-    email: "hemant.sarangi@example.com",
-    phone: "+91 98765 43210",
-    location: "Bhubaneswar, India",
-    bio: "Frontend React Developer | Passionate about building user-friendly web apps.",
-    avatar: "",
-  };
-
-  
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen  p-6">
+    <div className="flex flex-col items-center justify-center min-h-screen p-6 ">
       <div className="bg-white shadow-lg rounded-2xl w-full max-w-md p-6">
         <div className="flex flex-col items-center">
           <img
@@ -25,23 +16,28 @@ const UserProfile = () => {
             alt="User Avatar"
             className="w-28 h-28 rounded-full border-4 border-blue-500 shadow-md"
           />
-          <h2 className="text-2xl font-semibold mt-4">{user.name}</h2>
-          <p className="text-gray-500 text-sm">{user.bio}</p>
+          <h2 className="text-2xl font-semibold mt-4">
+            {userInfo?.name || "Guest User"}
+          </h2>
+          <p className="text-gray-500 text-sm">Frontend React Developer</p>
         </div>
 
         <div className="mt-6 space-y-3 text-gray-700">
           <div className="flex items-center gap-3">
             <FaEnvelope className="text-blue-500" />
-            <span>{user.email}</span>
+            <span>{userInfo?.email || "No email available"}</span>
           </div>
-          <div className="flex items-center gap-3">
+
+          {/* <div className="flex items-center gap-3">
             <FaPhone className="text-green-500" />
-            <span>{user.phone}</span>
-          </div>
-          <div className="flex items-center gap-3">
+            <span>+91 12345 67890</span>
+          </div> */}
+
+          {/* <div className="flex items-center gap-3">
             <FaMapMarkerAlt className="text-red-500" />
-            <span>{user.location}</span>
-          </div>
+            <span>Bhubaneswar, India</span>
+          </div> */}
+
         </div>
 
         <div className="mt-6 flex justify-center">
@@ -53,6 +49,5 @@ const UserProfile = () => {
     </div>
   );
 };
-
 
 export default UserProfile;
