@@ -13,14 +13,12 @@ const UserProfile = () => {
     <Sidebar/>
     <div className="flex flex-col items-center justify-center min-h-screen p-6 ">
        
-       
-       
       <div className="bg-white shadow-lg rounded-2xl w-full max-w-md p-6">
         <div className="flex flex-col items-center">
           <img
             src={profileImg}
             alt="User Avatar"
-            className="w-28 h-28 rounded-full border-4 border-blue-500 shadow-md"
+            className="w-28 h-28 rounded-full border-4 border-blue-500 hover:border-[#cc2405] shadow-md"
           />
           <h2 className="text-2xl font-semibold mt-4">
             {userInfo?.name || "Guest User"}

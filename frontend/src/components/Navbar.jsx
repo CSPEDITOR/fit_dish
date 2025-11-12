@@ -430,7 +430,7 @@ function Navbar() {
               <img
                 src={userInfo.image || profileImg}
                 alt="profile"
-                className="w-[45px] h-[45px] rounded-full cursor-pointer border-2 border-gray-300 hover:border-[#cc2405] transition-all duration-300"
+                className="w-[45px] h-[45px] rounded-full cursor-pointer border-2 border-blue-500 hover:border-[#cc2405] transition-all duration-300"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               />
 

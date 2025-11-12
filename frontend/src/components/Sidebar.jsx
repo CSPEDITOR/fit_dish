@@ -45,7 +45,6 @@ const Sidebar = () => {
         </nav>
       </div>
 
-      {/* --- Footer (Logout Button) --- */}
 
       <div className="p-6 border-t border-[#cc2405]/30">
         <hr className="border-t border-[#fef1e1]/80 " />
