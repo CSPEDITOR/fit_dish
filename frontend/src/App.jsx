@@ -11,6 +11,7 @@ import AboutUs from "./pages/Aboutus/AboutUs";
 import UserProfile from "./pages/UserProfile";
 
 import ForgotPassword from "./pages/Auth/ForgotPassword";
+import ResetPassword from "./pages/Auth/ResetPassword";
 // 👈 new layout
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/userprofile" element={<UserProfile />} />
 
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   );
