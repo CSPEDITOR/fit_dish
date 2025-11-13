@@ -98,6 +98,14 @@
 
 // export default UserProfile;
 
+
+
+
+
+
+
+
+
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Modal from "react-modal";
@@ -105,8 +113,6 @@ import Sidebar from "../components/Sidebar";
 import profileImg from "../images/default_profile_image.png";
 import { X } from "lucide-react";
 
-// Accessibility requirement for React Modal
-Modal.setAppElement("#root");
 
 const UserProfile = () => {
   const { userInfo } = useSelector((state) => state.user);
@@ -275,10 +281,12 @@ const UserProfile = () => {
           setShowEditModal(false);
           setShowSetupModal(false);
         }}
+        appElement={document.getElementById("root")}
+
         overlayClassName="fixed inset-0 bg-black/50 flex items-center justify-center z-50 transition-opacity duration-300"
         className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl p-8 relative max-h-[90vh] overflow-y-auto scrollbar-hide focus:outline-none"
       >
-        <div className="flex items-center justify-between mb-6 border-b pb-3">
+        <div className="flex items-center justify-between mb-6 border-b border-gray-300 pb-3">
           <h2 className="text-2xl font-semibold text-gray-800">
             {showSetupModal ? "Create Profile" : "Edit Profile"}
           </h2>
@@ -472,7 +480,7 @@ const UserProfile = () => {
             </p>
           </div>
 
-          <div className="col-span-2 flex justify-end gap-3 pt-4 mt-2 border-t border-gray-200">
+          <div className="col-span-2 flex justify-end gap-3 pt-4 mt-2 border-t border-gray-300">
             <button
               type="button"
               onClick={() => {
