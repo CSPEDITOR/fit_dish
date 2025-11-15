@@ -98,21 +98,12 @@
 
 // export default UserProfile;
 
-
-
-
-
-
-
-
-
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Modal from "react-modal";
 import Sidebar from "../components/Sidebar";
 import profileImg from "../images/default_profile_image.png";
 import { X } from "lucide-react";
-
 
 const UserProfile = () => {
   const { userInfo } = useSelector((state) => state.user);
@@ -148,8 +139,24 @@ const UserProfile = () => {
     });
   };
 
+  const isProfileFilled = () => {
+    return (
+      userInfo.phone ||
+      userInfo.gender ||
+      userInfo.age ||
+      userInfo.weight ||
+      userInfo.height ||
+      userInfo.food ||
+      userInfo.avoidFood ||
+      (userInfo.disease && userInfo.disease.length > 0)
+    );
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (name === "phone") {
+      if (!/^\d*$/.test(value)) return;
+    }
     setFormData({ ...formData, [name]: value });
   };
 
@@ -170,7 +177,7 @@ const UserProfile = () => {
   return (
     <>
       <Sidebar />
-      <div className="flex flex-col items-center justify-center min-h-screen p-6">
+      <div className="flex flex-col items-center justify-center min-h-screen p-6 ms-60">
         <div className="flex flex-col bg-white shadow-lg rounded-2xl w-full max-w-3xl p-6">
           {/* Main profile layout */}
           <div className="flex flex-col md:flex-row justify-between gap-8 relative">
@@ -185,47 +192,63 @@ const UserProfile = () => {
                 <span>{userInfo.email || "No email available"}</span>
               </div>
 
-              <div className="flex items-center gap-3">
-                <span className="font-bold">Phone:</span>
-                <span>{userInfo.phone || "No phone available"}</span>
-              </div>
+              {userInfo.phone && (
+                <div className="flex items-center gap-3">
+                  <span className="font-bold">Phone:</span>
+                  <span>{userInfo.phone || "No phone available"}</span>
+                </div>
+              )}
 
-              <div className="flex items-center gap-3">
-                <span className="font-bold">Gender:</span>
-                <span>{userInfo.gender || "Not specified"}</span>
-              </div>
+              {userInfo.gender && (
+                <div className="flex items-center gap-3">
+                  <span className="font-bold">Gender:</span>
+                  <span>{userInfo.gender || "Not specified"}</span>
+                </div>
+              )}
 
-              <div className="flex items-center gap-3">
-                <span className="font-bold">Age:</span>
-                <span>
-                  {userInfo.age ? `${userInfo.age} years` : "Not available"}
-                </span>
-              </div>
+              {userInfo.age && (
+                <div className="flex items-center gap-3">
+                  <span className="font-bold">Age:</span>
+                  <span>
+                    {userInfo.age ? `${userInfo.age} years` : "Not available"}
+                  </span>
+                </div>
+              )}
 
-              <div className="flex items-center gap-3">
-                <span className="font-bold">Weight:</span>
-                <span>{userInfo.weight || "Not available"}</span>
-              </div>
+              {userInfo.weight && (
+                <div className="flex items-center gap-3">
+                  <span className="font-bold">Weight:</span>
+                  <span>{userInfo.weight || "Not available"}</span>
+                </div>
+              )}
 
-              <div className="flex items-center gap-3">
-                <span className="font-bold">Height:</span>
-                <span>{userInfo.height || "Not available"}</span>
-              </div>
+              {userInfo.height && (
+                <div className="flex items-center gap-3">
+                  <span className="font-bold">Height:</span>
+                  <span>{userInfo.height || "Not available"}</span>
+                </div>
+              )}
 
-              <div className="flex items-center gap-3">
-                <span className="font-bold">Food Preference:</span>
-                <span>{userInfo.food || "Not available"}</span>
-              </div>
+              {userInfo.food && (
+                <div className="flex items-center gap-3">
+                  <span className="font-bold">Food Preference:</span>
+                  <span>{userInfo.food || "Not available"}</span>
+                </div>
+              )}
 
-              <div className="flex items-center gap-3">
-                <span className="font-bold">Avoid Food:</span>
-                <span>{userInfo.avoidFood || "Not specified"}</span>
-              </div>
+              {userInfo.avoidFood && (
+                <div className="flex items-center gap-3">
+                  <span className="font-bold">Avoid Food:</span>
+                  <span>{userInfo.avoidFood || "Not specified"}</span>
+                </div>
+              )}
 
-              <div className="flex items-center gap-3">
-                <span className="font-bold">Disease:</span>
-                <span>{userInfo.disease || "None"}</span>
-              </div>
+              {userInfo.disease && (
+                <div className="flex items-center gap-3">
+                  <span className="font-bold">Disease:</span>
+                  <span>{userInfo.disease || "None"}</span>
+                </div>
+              )}
             </div>
 
             {/* Right side - profile image */}
@@ -256,7 +279,14 @@ const UserProfile = () => {
                 });
                 setShowEditModal(true);
               }}
-              className="bg-[#cc2405] hover:bg-[#fef1e1] hover:text-[#cc2405] text-[#fef1e1] font-medium py-2 px-4 rounded-full transition"
+              disabled={!isProfileFilled()}
+              // className="bg-[#cc2405] hover:bg-[#fef1e1] hover:text-[#cc2405] text-[#fef1e1] font-medium py-2 px-4 rounded-full transition"
+
+              className={`${
+                isProfileFilled()
+                  ? "bg-[#cc2405] hover:bg-[#fef1e1] hover:text-[#cc2405]"
+                  : "bg-gray-400 cursor-not-allowed"
+              } text-[#fef1e1] font-medium py-2 px-4 rounded-full transition`}
             >
               Edit Profile
             </button>
@@ -282,7 +312,6 @@ const UserProfile = () => {
           setShowSetupModal(false);
         }}
         appElement={document.getElementById("root")}
-
         overlayClassName="fixed inset-0 bg-black/50 flex items-center justify-center z-50 transition-opacity duration-300"
         className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl p-8 relative max-h-[90vh] overflow-y-auto scrollbar-hide focus:outline-none"
       >
@@ -307,7 +336,6 @@ const UserProfile = () => {
           onSubmit={showSetupModal ? handleSetupSubmit : handleEditSubmit}
           className="grid grid-cols-1 sm:grid-cols-2 gap-5"
         >
-          
           <div className="flex flex-col">
             <label className="font-semibold text-gray-700 mb-1">Name:</label>
             <input
@@ -320,7 +348,6 @@ const UserProfile = () => {
             />
           </div>
 
-         
           <div className="flex flex-col">
             <label className="font-semibold text-gray-700 mb-1">Email:</label>
             <input
@@ -333,19 +360,18 @@ const UserProfile = () => {
             />
           </div>
 
-          
           <div className="flex flex-col">
             <label className="font-semibold text-gray-700 mb-1">Phone:</label>
             <input
               type="text"
               name="phone"
               value={formData.phone}
+              maxLength={10}
               onChange={handleChange}
               className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#cc2405]/30"
             />
           </div>
 
-          
           <div className="flex flex-col">
             <label className="font-semibold text-gray-700 mb-1">Gender:</label>
             <select
@@ -361,7 +387,6 @@ const UserProfile = () => {
             </select>
           </div>
 
-         
           <div className="flex flex-col">
             <label className="font-semibold text-gray-700 mb-1">Age:</label>
             <input
@@ -373,7 +398,6 @@ const UserProfile = () => {
             />
           </div>
 
-          
           <div className="flex flex-col">
             <label className="font-semibold text-gray-700 mb-1">
               Weight (kg):
@@ -387,7 +411,6 @@ const UserProfile = () => {
             />
           </div>
 
-         
           <div className="flex flex-col">
             <label className="font-semibold text-gray-700 mb-1">
               Height (cm):
@@ -401,7 +424,6 @@ const UserProfile = () => {
             />
           </div>
 
-          
           <div className="flex flex-col">
             <label className="font-semibold text-gray-700 mb-1">
               Food Preference:
@@ -415,7 +437,6 @@ const UserProfile = () => {
             />
           </div>
 
-          
           <div className="flex flex-col">
             <label className="font-semibold text-gray-700 mb-1">
               Avoid Food:
@@ -429,7 +450,6 @@ const UserProfile = () => {
             />
           </div>
 
-         
           <div className="flex flex-col sm:col-span-2">
             <label className="font-semibold text-gray-700 mb-2">
               Disease (if any):

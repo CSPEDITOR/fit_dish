@@ -13,7 +13,7 @@ const foodItems = [
   {
     _id: "fruit001",
     name: "Mango",
-    type: "Veg",
+    type: "veg",
     category: "Energy Boost",
     description:
       "Sweet and juicy tropical fruit rich in vitamins A and C.",
@@ -46,7 +46,7 @@ const foodItems = [
   {
     _id: "fruit002",
     name: "Banana",
-    type: "Veg",
+    type: "veg",
     category: "Weight Gain",
     description:
       "Soft, sweet fruit rich in potassium and energy — ideal for workouts.",
@@ -78,7 +78,7 @@ const foodItems = [
   {
     _id: "fruit003",
     name: "Guava",
-    type: "Veg",
+    type: "veg",
     category: "Immunity Booster",
     description: "Crisp fruit packed with Vitamin C and fiber.",
     price: 60,
@@ -109,7 +109,7 @@ const foodItems = [
   {
     _id: "fruit004",
     name: "Papaya",
-    type: "Veg",
+    type: "veg",
     category: "Digestion Support",
     description:
       "Rich in enzymes that support digestion and skin health.",
@@ -141,7 +141,7 @@ const foodItems = [
   {
     _id: "fruit005",
     name: "Watermelon",
-    type: "Veg",
+    type: "veg",
     category: "Hydration",
     description:
       "Refreshing fruit rich in water and Vitamin A, perfect for summer.",
@@ -173,7 +173,7 @@ const foodItems = [
   {
     _id: "fruit006",
     name: "Apple",
-    type: "Veg",
+    type: "veg",
     category: "Immunity",
     description: "A crisp fruit that keeps you healthy and strong.",
     price: 120,
@@ -198,7 +198,7 @@ const foodItems = [
   {
     _id: "fruit007",
     name: "Pineapple",
-    type: "Veg",
+    type: "veg",
     category: "Digestion",
     description: "Tropical fruit rich in bromelain and Vitamin C.",
     price: 70,
@@ -223,7 +223,7 @@ const foodItems = [
   {
     _id: "fruit008",
     name: "Jackfruit",
-    type: "Veg",
+    type: "veg",
     category: "Weight Gain",
     description:
       "Large tropical fruit rich in carbohydrates and antioxidants.",
@@ -249,7 +249,7 @@ const foodItems = [
   {
     _id: "fruit009",
     name: "Litchi",
-    type: "Veg",
+    type: "veg",
     category: "Cooling Fruit",
     description:
       "Sweet juicy fruit popular during summer, high in Vitamin C.",
@@ -275,7 +275,7 @@ const foodItems = [
   {
     _id: "fruit010",
     name: "Coconut",
-    type: "Veg",
+    type: "veg",
     category: "Hydration",
     description:
       "Rich in electrolytes and good fats; perfect for hydration.",
