@@ -101,8 +101,8 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Modal from "react-modal";
-import Sidebar from "../components/Sidebar";
-import profileImg from "../images/default_profile_image.png";
+import Sidebar from "../../components/Sidebar";
+import profileImg from "../../images/default_profile_image.png";
 import { X } from "lucide-react";
 
 const UserProfile = () => {

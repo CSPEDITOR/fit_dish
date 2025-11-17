@@ -32,6 +32,8 @@ const ResetPassword = () => {
         onSubmit={handleSubmit}
         className="bg-white p-6 rounded-xl shadow-md w-full max-w-sm"
       >
+        {/* <h2>chandra</h2> */}
+        
         <h2 className="text-2xl font-bold mb-4 text-center">Reset Password</h2>
         <input
           type="password"

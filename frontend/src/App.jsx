@@ -8,7 +8,8 @@ import MainLayout from "./Layout/MainLayout";
 import Categories from "./pages/Categories/Categories";
 import Food from "./pages/Food/Food";
 import AboutUs from "./pages/Aboutus/AboutUs";
-import UserProfile from "./pages/UserProfile";
+import UserProfile from "./pages/UserDashbord/UserProfile";
+
 
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import ResetPassword from "./pages/Auth/ResetPassword";
@@ -26,7 +27,7 @@ function App() {
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/userprofile" element={<UserProfile />} />
+        <Route path="/userprofile" element={<UserProfile/>} />
 
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
