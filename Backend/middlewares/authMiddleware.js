@@ -24,7 +24,7 @@ export const protect = async (req, res, next) => {
 
       next();
     } catch (err) {
-      console.error(err);
+      console.error(err.message);
       return res.status(401).json({ message: "Token failed or expired" });
     }
   } else {

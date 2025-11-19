@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import veganfood from "../../images/veganfood.jpg"
+import { useEffect } from "react";
+
 
 const categories = [
   {
@@ -38,6 +40,11 @@ const categories = [
 ];
 
 const Categories = () => {
+  
+  useEffect(() => {
+    document.title = "fit-dish | categories";
+  }, []);
+  
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-12">
       {/* Header */}
