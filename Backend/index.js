@@ -49,9 +49,10 @@ const app = express();
 
 // CORS should be first
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: ["http://localhost:5173", "http://localhost:5174"],
   credentials: true,
 }));
+
 
 // These middleware parse regular JSON/urlencoded data
 // Multer will handle multipart/form-data on specific routes

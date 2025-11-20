@@ -1,15 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from "react-router-dom";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
+import AddFood from "./pages/AddFood";
+import ProtectedRoute from "./component/ProtectedRoute";
 
-function App() {
-
+export default function App() {
   return (
-    <>
-    <h2>Admin</h2>
-    </>
-  )
-}
+    <Routes>
+      <Route path="/" element={<AdminLogin />} />
 
-export default App
+      {/* Protected routes */}
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <AdminDashboard />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/add-food"
+        element={
+          <ProtectedRoute>
+            <AddFood/>
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
+  );
+}
