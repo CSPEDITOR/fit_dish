@@ -3,6 +3,7 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import AddFood from "./pages/AddFood";
 import ProtectedRoute from "./component/ProtectedRoute";
+import AddDisease from "./pages/AddDisease";
 
 export default function App() {
   return (
@@ -27,6 +28,15 @@ export default function App() {
           </ProtectedRoute>
         }
       />
+      <Route
+        path="/add-disease"
+        element={
+          <ProtectedRoute>
+            <AddDisease />
+          </ProtectedRoute>
+        }
+      />
+
     </Routes>
   );
 }

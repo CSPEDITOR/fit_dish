@@ -27,6 +27,15 @@ export default function AdminDashboard() {
           Add Food
         </button>
       </div>
+      <div className="mt-10">
+
+      <button
+          onClick={() => navigate("/add-disease")}
+          className="bg-blue-600 text-white px-4 py-2 rounded"
+          >
+          Add Disease
+        </button>
+          </div>
     </div>
   );
 }
