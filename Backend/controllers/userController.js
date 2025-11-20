@@ -4,11 +4,20 @@ import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import mongoose from "mongoose";
 import nodemailer from "nodemailer";
+import generateToken from "../utils/generateToken.js";
 
 // Generate Token
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
-};
+// const generateToken = (id) => {
+//   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
+// };
+// const generateToken = (user) => {
+//   return jwt.sign(
+//     { id: user._id, role: user.role },  // ✅ Add role here
+//     process.env.JWT_SECRET,
+//     { expiresIn: "30d" }
+//   );
+// };
+
 
 // Signup
 export const registerUser = async (req, res) => {
@@ -30,7 +39,8 @@ export const registerUser = async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
-      token: generateToken(user._id),
+      role: user.role, 
+      token: generateToken(user),
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -52,7 +62,8 @@ export const loginUser = async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
-      token: generateToken(user._id),
+        role: user.role, 
+      token: generateToken(user),
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

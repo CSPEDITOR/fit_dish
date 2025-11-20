@@ -14,16 +14,17 @@ const userSchema = new mongoose.Schema(
     height: { type: Number },
     foodType: { type: String, enum: ["veg", "non-veg", "eggetarian"] },
 
-    avoidFood: [
-      { type: mongoose.Schema.Types.ObjectId, ref: "AvoidFood" }
-    ],
+    avoidFood: [{ type: mongoose.Schema.Types.ObjectId, ref: "AvoidFood" }],
 
-    disease: [
-      { type: mongoose.Schema.Types.ObjectId, ref: "Disease" }
-    ],
+    disease: [{ type: mongoose.Schema.Types.ObjectId, ref: "Disease" }],
 
     resetToken: { type: String },
     resetTokenExpire: { type: Date },
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
+    },
   },
   { timestamps: true }
 );

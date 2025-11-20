@@ -38,7 +38,7 @@ const foodItems = [
       { name: "Magnesium", value: 10, unit: "mg" },
     ],
     best_time: ["Breakfast", "Lunch"],
-    avoid_for: ["Diabetes (in excess)"],
+    avoid_for: ["Diabetes"],
     image:
       mango,
     location: "Bhubaneswar, Odisha, India",
