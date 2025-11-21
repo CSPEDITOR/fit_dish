@@ -9,11 +9,13 @@ import Categories from "./pages/Categories/Categories";
 import Food from "./pages/Food/Food";
 import AboutUs from "./pages/Aboutus/AboutUs";
 import UserProfile from "./pages/UserDashbord/UserProfile";
+import FoodDetail from "./pages/Food/FoodDetail";
+
 
 
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import ResetPassword from "./pages/Auth/ResetPassword";
-// 👈 new layout
+
 
 function App() {
   return (
@@ -23,8 +25,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/food" element={<Food />} />
+          <Route path="/food/:id" element={<FoodDetail />} />
           <Route path="/about" element={<AboutUs />} />
         </Route>
+
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/userprofile" element={<UserProfile/>} />

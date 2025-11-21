@@ -3,6 +3,9 @@ import userReducer from "./userSlice";
 import userProfileReducer from "./userProfileSlice";
 import avoidFoodReducer from "./avoidFoodSlice";
 import diseaseReducer from "./diseaseSlice";
+ import foodDetailReducer from "./foodDetailSlice";
+import food from "./foodSlice";
+
 
 
 
@@ -12,6 +15,10 @@ export const store = configureStore({
      profile: userProfileReducer,
      avoidFood: avoidFoodReducer,
     disease: diseaseReducer, 
+    foods: food,
+ foodDetail: foodDetailReducer,
+
+    
 
   },
 });

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "react-modal";
@@ -93,8 +92,8 @@ const UserProfile = () => {
         weight: userInfo?.weight || "",
         height: userInfo?.height || "",
         foodType: userInfo?.foodType || "",
-        avoidFood: userInfo?.avoidFood || [],
-        disease: userInfo?.disease || [],
+        avoidFood: userInfo?.avoidFood?.map((f) => f._id) || [],
+        disease: userInfo?.disease?.map((d) => d._id) || [],
         profileImage: "",
       });
 
@@ -262,28 +261,25 @@ const UserProfile = () => {
               {userInfo?.avoidFood?.length > 0 && (
                 <div className="flex items-center gap-3">
                   <span className="font-bold">Avoid Food:</span>
-                  <span>{userInfo.avoidFood.join(", ")}</span>
+                  <span>
+                    {userInfo.avoidFood.map((item) => item.name).join(", ")}
+                  </span>
                 </div>
               )}
 
               {userInfo?.disease?.length > 0 && (
                 <div className="flex items-center gap-3">
                   <span className="font-bold">Disease:</span>
-                  <span>{userInfo.disease.join(", ")}</span>
+                  <span>
+                    {userInfo.disease.map((item) => item.name).join(", ")}
+                  </span>
                 </div>
               )}
             </div>
 
-            {/* IMAGE DISPLAY — unchanged */}
             <div className="flex justify-center md:justify-end items-center md:self-center w-full md:w-auto">
               <img
-                src={
-                  userInfo?.profileImage
-                    ? `${import.meta.env.VITE_BASE_URL}/${
-                        userInfo.profileImage
-                      }`
-                    : profileImg
-                }
+                src={userInfo?.profileImage || profileImg}
                 alt="User Avatar"
                 className="w-40 h-40 rounded-full border-4 border-blue-500 hover:border-[#cc2405] shadow-md object-cover"
               />
@@ -350,8 +346,6 @@ const UserProfile = () => {
           onSubmit={showSetupModal ? handleSetupSubmit : handleEditSubmit}
           className="grid grid-cols-1 sm:grid-cols-2 gap-5"
         >
-          {/* Everything below is EXACTLY same UI as you had */}
-
           <div className="flex flex-col">
             <label className="font-semibold text-gray-700 mb-1">Name:</label>
             <input
@@ -422,7 +416,7 @@ const UserProfile = () => {
             />
           </div>
 
-          <div className="flex flex-col">
+          {/* <div className="flex flex-col">
             <label className="font-semibold text-gray-700 mb-1">
               Food Type:
             </label>
@@ -433,9 +427,38 @@ const UserProfile = () => {
               onChange={handleChange}
               className="w-full border border-gray-300 rounded-lg px-3 py-2"
             />
+          </div> */}
+
+          <div className="flex flex-col">
+            <label className="font-semibold text-gray-700 mb-1">
+              Food Type:
+            </label>
+
+            <div className="flex items-center gap-6">
+              <label className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="foodType"
+                  value="veg"
+                  checked={formData.foodType === "veg"}
+                  onChange={handleChange}
+                />
+                <span>Veg</span>
+              </label>
+
+              <label className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="foodType"
+                  value="non-veg"
+                  checked={formData.foodType === "non-veg"}
+                  onChange={handleChange}
+                />
+                <span>Non-Veg</span>
+              </label>
+            </div>
           </div>
 
-          {/* Avoid Food */}
           <div className="flex flex-col">
             <label className="font-semibold text-gray-700 mb-1">
               Avoid Food:
@@ -450,25 +473,31 @@ const UserProfile = () => {
             />
 
             <div className="flex flex-wrap gap-2 mt-2">
-              {formData.avoidFood.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center bg-[#cc2405] text-white px-3 py-1 rounded-full"
-                >
-                  {item}
-                  <button
-                    onClick={() =>
-                      setFormData((p) => ({
-                        ...p,
-                        avoidFood: p.avoidFood.filter((f) => f !== item),
-                      }))
-                    }
-                    className="ml-2"
+              {formData.avoidFood.map((id) => {
+                const item = avoidFoodList.find((f) => f._id === id);
+                const displayName = item?.name || "Unknown";
+
+                return (
+                  <div
+                    key={id}
+                    className="flex items-center bg-[#cc2405] text-white px-3 py-1 rounded-full"
                   >
-                    ✕
-                  </button>
-                </div>
-              ))}
+                    {displayName}
+
+                    <button
+                      onClick={() =>
+                        setFormData((p) => ({
+                          ...p,
+                          avoidFood: p.avoidFood.filter((f) => f !== id),
+                        }))
+                      }
+                      className="ml-2"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                );
+              })}
             </div>
 
             {filteredFoods.length > 0 && (
@@ -480,7 +509,7 @@ const UserProfile = () => {
                       if (!formData.avoidFood.includes(f.name)) {
                         setFormData((p) => ({
                           ...p,
-                          avoidFood: [...p.avoidFood, f.name],
+                          avoidFood: [...p.avoidFood, f._id],
                         }));
                       }
                       setFoodSearch("");
@@ -495,7 +524,6 @@ const UserProfile = () => {
             )}
           </div>
 
-          {/* Disease */}
           <div className="flex flex-col sm:col-span-2">
             <label className="font-semibold text-gray-700 mb-2">
               Disease (if any):
@@ -510,25 +538,31 @@ const UserProfile = () => {
             />
 
             <div className="flex flex-wrap gap-2 mt-2">
-              {formData.disease.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center bg-[#cc2405] text-white px-3 py-1 rounded-full"
-                >
-                  {item}
-                  <button
-                    onClick={() =>
-                      setFormData((p) => ({
-                        ...p,
-                        disease: p.disease.filter((d) => d !== item),
-                      }))
-                    }
-                    className="ml-2"
+              {formData.disease.map((id) => {
+                const item = diseaseList.find((d) => d._id === id);
+                const displayName = item?.name || "Unknown";
+
+                return (
+                  <div
+                    key={id}
+                    className="flex items-center bg-[#cc2405] text-white px-3 py-1 rounded-full"
                   >
-                    ✕
-                  </button>
-                </div>
-              ))}
+                    {displayName}
+
+                    <button
+                      onClick={() =>
+                        setFormData((p) => ({
+                          ...p,
+                          disease: p.disease.filter((d) => d !== id),
+                        }))
+                      }
+                      className="ml-2"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                );
+              })}
             </div>
 
             {filteredDiseases.length > 0 && (
@@ -540,7 +574,7 @@ const UserProfile = () => {
                       if (!formData.disease.includes(d.name)) {
                         setFormData((p) => ({
                           ...p,
-                          disease: [...p.disease, d.name],
+                          disease: [...p.disease, d._id],
                         }));
                       }
                       setDiseaseSearch("");
@@ -555,7 +589,6 @@ const UserProfile = () => {
             )}
           </div>
 
-          {/* ⭐ NEW IMAGE UPLOAD SECTION — at bottom, UI unchanged */}
           <div className="flex flex-col sm:col-span-2 mt-3">
             <label className="font-semibold text-gray-700 mb-1">
               Profile Image:
@@ -577,7 +610,6 @@ const UserProfile = () => {
             )}
           </div>
 
-          {/* Submit buttons */}
           <div className="col-span-2 flex justify-end gap-3 pt-4 border-t border-gray-300">
             <button
               type="button"
