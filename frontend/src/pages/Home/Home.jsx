@@ -4,6 +4,8 @@ import HomeHeader from './HomeHeader'
 import Navbar from "../../components/Navbar";
 import HomeCategories from './HomeCategories'
 import ChoseDiet from './ChoseDiet';
+import CarouselSize from './CarouselSize';
+// import { CarouselSize } from './CarouselSize';
 
 function Home() {
     return (
@@ -12,6 +14,7 @@ function Home() {
             <HomeHeader />
             <HomeCategories/>
             <ChoseDiet/>
+            <CarouselSize/>
         </div>
     )
 }
