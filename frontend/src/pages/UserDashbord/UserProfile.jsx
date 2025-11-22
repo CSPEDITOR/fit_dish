@@ -196,9 +196,9 @@ const UserProfile = () => {
 
   return (
     <>
-      <Sidebar />
+      
 
-      <div className="flex flex-col items-center justify-center min-h-screen p-6 ms-60">
+      <div className="flex flex-col items-center justify-center min-h-screen p-6 ">
         {loading && (
           <div className="fixed top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded">
             Loading...

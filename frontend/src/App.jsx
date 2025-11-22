@@ -10,11 +10,13 @@ import Food from "./pages/Food/Food";
 import AboutUs from "./pages/Aboutus/AboutUs";
 import UserProfile from "./pages/UserDashbord/UserProfile";
 import FoodDetail from "./pages/Food/FoodDetail";
-
+import Plans from "./pages/UserDashbord/Plans";
+import BMI from "./pages/UserDashbord/BMI";
 
 
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import ResetPassword from "./pages/Auth/ResetPassword";
+import UserDashbordLayout from "./Layout/UserDashbordLayout";
 
 
 function App() {
@@ -31,7 +33,18 @@ function App() {
 
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        {/* user dash bord */}
+
+        <Route element={<UserDashbordLayout/>}>
+        {/* <Route path = */}
         <Route path="/userprofile" element={<UserProfile/>} />
+        <Route path="/plans" element={<Plans/>} />
+        <Route path="/bmi" element={<BMI/>} />
+        </Route>
+
+
+
+
 
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
