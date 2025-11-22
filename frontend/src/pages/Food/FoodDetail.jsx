@@ -34,7 +34,7 @@ const FoodDetail = () => {
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={() => navigate(-1)}
-            className="px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200"
+            className="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-200"
           >
             ← Back
           </button>
@@ -95,12 +95,12 @@ const FoodDetail = () => {
               {food.nutrients && (
                 <div className="mb-4">
                   <h3 className="font-semibold mb-2">Nutrients</h3>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 ">
                     {typeof food.nutrients === "object" &&
                       Object.entries(food.nutrients).map(([k, v]) => (
                         <div
                           key={k}
-                          className="p-3 bg-gray-50 rounded-lg border border-gray-100"
+                          className="p-3 bg-gray-200 hover:bg-gray-100 rounded-lg border border-gray-100"
                         >
                           <div className="text-sm text-gray-500 capitalize">
                             {k.replace(/_/g, " ")}
@@ -145,7 +145,7 @@ const FoodDetail = () => {
                   {Array.isArray(food.best_time) && food.best_time.length > 0 ? (
                     <div className="flex flex-wrap gap-2">
                       {food.best_time.map((t, i) => (
-                        <span key={i} className="px-3 py-1 bg-gray-100 rounded-full text-sm">{t}</span>
+                        <span key={i} className="px-3 py-1 bg-gray-200 hover:bg-gray-100 rounded-full text-sm">{t}</span>
                       ))}
                     </div>
                   ) : (

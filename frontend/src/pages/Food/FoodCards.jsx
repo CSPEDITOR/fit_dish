@@ -117,7 +117,7 @@ const FoodCards = ({ id, image, name, description, type }) => {
 
         <div className="absolute bottom-3 right-4">
           <img
-            src={type === "veg" ? vegIcon : nonVegIcon}
+            src={type === "Veg" ? vegIcon : nonVegIcon}
             alt={type}
             className="w-6 h-6"
           />
