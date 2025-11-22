@@ -4,6 +4,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AddFood from "./pages/AddFood";
 import ProtectedRoute from "./component/ProtectedRoute";
 import AddDisease from "./pages/AddDisease";
+import AdminUsers from "./pages/AdminUser";
 
 export default function App() {
   return (
@@ -12,7 +13,7 @@ export default function App() {
 
       {/* Protected routes */}
       <Route
-        path="/dashboard"
+        path="/admin/dashboard"
         element={
           <ProtectedRoute>
             <AdminDashboard />
@@ -33,6 +34,14 @@ export default function App() {
         element={
           <ProtectedRoute>
             <AddDisease />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/users"
+        element={
+          <ProtectedRoute>
+            <AdminUsers/>
           </ProtectedRoute>
         }
       />

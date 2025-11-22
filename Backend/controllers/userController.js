@@ -6,19 +6,6 @@ import mongoose from "mongoose";
 import nodemailer from "nodemailer";
 import generateToken from "../utils/generateToken.js";
 
-// Generate Token
-// const generateToken = (id) => {
-//   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
-// };
-// const generateToken = (user) => {
-//   return jwt.sign(
-//     { id: user._id, role: user.role },  // ✅ Add role here
-//     process.env.JWT_SECRET,
-//     { expiresIn: "30d" }
-//   );
-// };
-
-
 // Signup
 export const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
@@ -163,119 +150,30 @@ export const getProfile = async (req, res) => {
   }
 };
 
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find()
+      .select('-password') // Exclude password field
+      .populate('disease', 'name description') // Populate disease details
+      .populate('avoidFood', 'name category') // Populate avoidFood details
+      .sort({ createdAt: -1 }); // Sort by newest first
 
-// export const updateProfile = async (req, res) => {
-//   try {
-//     const userId = req.user.id;
-//     const {
-//       name,
-//       gender,
-//       age,
-//       weight,
-//       height,
-//       foodType,
-//       avoidFood, // can be array of ids or array of names (we'll accept ids)
-//       disease,   // same
-//     } = req.body;
+    res.status(200).json({
+      success: true,
+      count: users.length,
+      data: users
+    });
 
-//     // Validate user exists
-//     const user = await User.findById(userId);
-//     if (!user) return res.status(404).json({ message: "User not found" });
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Server error while fetching users',
+      error: error.message
+    });
+  }
+};
 
-//     // Update simple fields if provided
-//     if (name !== undefined) user.name = name;
-//     if (gender !== undefined) user.gender = gender;
-//     if (age !== undefined) user.age = age;
-//     if (weight !== undefined) user.weight = weight;
-//     if (height !== undefined) user.height = height;
-//     if (foodType !== undefined) user.foodType = foodType;
-
-//     // For avoidFood & disease — expect arrays of ObjectId strings.
-//     // Validate each id before assigning.
-//     if (Array.isArray(avoidFood)) {
-//       const validIds = avoidFood.filter(id => mongoose.Types.ObjectId.isValid(id));
-//       user.avoidFood = validIds;
-//     }
-
-//     if (Array.isArray(disease)) {
-//       const validIds = disease.filter(id => mongoose.Types.ObjectId.isValid(id));
-//       user.disease = validIds;
-//     }
-
-//     const updated = await user.save();
-
-//     // Return populated user (without sensitive fields)
-//     const populated = await User.findById(updated._id)
-//       .select("-password -resetToken -resetTokenExpire")
-//       .populate("avoidFood", "name")
-//       .populate("disease", "name");
-
-//     res.json({ message: "Profile updated", user: populated });
-//   } catch (err) {
-//     res.status(500).json({ message: "Server error", error: err.message });
-//   }
-// };
-
-
-// 
-
-
-// export const updateProfile = async (req, res) => {
-//   // console.log("chandra")
-//   //     console.log("Uploaded file:", req.file);  
-//       console.log("req.body:", req.body);
-// console.log("req.file:", req.file);
-// console.log("User from token:", req.user);
-//   try {
-//     const userId = req.user.id;
-//     const {
-//       name,
-//       gender,
-//       age,
-//       weight,
-//       height,
-//       foodType,
-//       avoidFood,
-//       disease,
-//     } = req.body;
-
-//     const user = await User.findById(userId);
-//     if (!user) return res.status(404).json({ message: "User not found" });
-
-//     if (name !== undefined) user.name = name;
-//     if (gender !== undefined) user.gender = gender;
-//     if (age !== undefined) user.age = age;
-//     if (weight !== undefined) user.weight = weight;
-//     if (height !== undefined) user.height = height;
-//     if (foodType !== undefined) user.foodType = foodType;
-
-//     if (Array.isArray(avoidFood)) {
-//       const validIds = avoidFood.filter(id => mongoose.Types.ObjectId.isValid(id));
-//       user.avoidFood = validIds;
-//     }
-
-//     if (Array.isArray(disease)) {
-//       const validIds = disease.filter(id => mongoose.Types.ObjectId.isValid(id));
-//       user.disease = validIds;
-//     }
-
-//     if (req.file && req.file.path) {
-//       user.profileImage = req.file.path;
-//       console.log(user.profileImage); // Cloudinary URL
-//     }
-
-//     await user.save();
-
-//     const populated = await User.findById(user._id)
-//       .select("-password -resetToken -resetTokenExpire")
-//       .populate("avoidFood", "name")
-//       .populate("disease", "name");
-
-//     res.json({ message: "Profile updated", user: populated });
-//   } catch (err) {
-//     res.status(500).json({ message: "Server error", error: err.message });
-//   }
-// };
 export const updateProfile = async (req, res) => {
   console.log("req.body:", req.body);
   console.log("req.file:", req.file);

@@ -46,6 +46,12 @@ export const getbyidUserAvoidFoods = async (req, res) => {
   }
 };
 
+
+// export const getUserAvoidFoods = async(req,res) =>{
+//   try{
+//     const food = (await AvoidFood.find()).toSorted({name: }1)
+//   }
+// }
 //get all avoid food 
 export const getUserAvoidFoods = async(req,res) =>{
     try{
