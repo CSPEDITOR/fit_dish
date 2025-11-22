@@ -14,14 +14,15 @@
 
 
 import express from "express";
-import { addAvoidFoods, getUserAvoidFoods } from "../controllers/avoidFoodController.js";
+import { addAvoidFoods, getbyidUserAvoidFoods, getUserAvoidFoods } from "../controllers/avoidFoodController.js";
 
 const router = express.Router();
 
 // user adds avoid foods
 router.post("/", addAvoidFoods);
+router.get("/", getUserAvoidFoods);
 
 // get avoid foods for user
-router.get("/:userId", getUserAvoidFoods);
+router.get("/:userId", getbyidUserAvoidFoods);
 
 export default router;

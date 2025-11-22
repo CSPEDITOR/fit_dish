@@ -1,25 +1,4 @@
 import AvoidFood from "../models/avoidFoodModel.js";
-
-// export const getAvoidFoods = async (req, res) => {
-//   try {
-//     const foods = await AvoidFood.find().sort({ name: 1 });
-//     res.status(200).json(foods);
-//   } catch (err) {
-//     res.status(500).json({ message: "Server error", error: err.message });
-//   }
-// };
-
-// export const getAvoidFoods = async(req,res) =>{
-//     try{
-//         const foods = await AvoidFood.find().sort({name:1});
-//         res.status(200).json(foods);
-//     } catch(err){
-//         res.status(500).json({message: "server error",error: err.message });
-//     }
-// }
-
-
-
 //add avoid foods
 
 export const addAvoidFoods = async (req, res) => {
@@ -51,7 +30,7 @@ export const addAvoidFoods = async (req, res) => {
 
 // GET AVOIDED FOOD FOR A SPECIFIC USER
 
-export const getUserAvoidFoods = async (req, res) => {
+export const getbyidUserAvoidFoods = async (req, res) => {
   try {
     const { userId } = req.params;
 
@@ -66,3 +45,13 @@ export const getUserAvoidFoods = async (req, res) => {
     res.status(500).json({ message: "Server error", error: err.message });
   }
 };
+
+
+export const getUserAvoidFoods = async(req,res) =>{
+    try{
+        const foods = await AvoidFood.find().sort({name:1});
+        res.status(200).json(foods);
+    } catch(err){
+        res.status(500).json({message: "server error",error: err.message });
+    }
+}
