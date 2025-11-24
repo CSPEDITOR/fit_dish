@@ -28,7 +28,7 @@ export const adminLogin = async (req, res) => {
     res.json({
       success: true,
       msg: "Admin Logged In Successfully",
-      token: generateToken(user._id),
+      token: generateToken(user),
       user: {
         id: user._id,
         name: user.name,

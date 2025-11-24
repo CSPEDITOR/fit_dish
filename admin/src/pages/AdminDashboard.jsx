@@ -153,6 +153,7 @@
 import { useNavigate } from "react-router-dom";
 import API from "../api/admin";
 import { useEffect, useState } from "react";
+import Navbar from "../component/Navbar";
 
 export default function AdminDashboard() {
   const [foodsCount, setFoodCount] = useState(0);
@@ -161,10 +162,10 @@ export default function AdminDashboard() {
   const [recentActivity, setRecentActivity] = useState([]);
   const navigate = useNavigate();
 
-  const logout = () => {
-    localStorage.removeItem("adminToken");
-    navigate("/");
-  };
+  // const logout = () => {
+  //   localStorage.removeItem("adminToken");
+  //   navigate("/");
+  // };
 
   const fetchFoods = async () => {
     try {
@@ -234,52 +235,10 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-[#FEF1E1]">
-      {/* Navigation Header */}
-      <nav className="bg-[#CC2405] shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            <div className="flex items-center space-x-8">
-              <h1 className="text-2xl font-bold text-white">Admin Dashboard</h1>
-              <div className="hidden md:flex space-x-4">
-                <button
-                  onClick={() => navigate("/admin/dashboard")}
-                  className="text-white bg-[#B02004] px-3 py-2 rounded-md transition duration-200"
-                >
-                  Dashboard
-                </button>
-                <button
-                  onClick={() => navigate("/admin/users")}
-                  className="text-white hover:bg-[#B02004] px-3 py-2 rounded-md transition duration-200"
-                >
-                  Users
-                </button>
-                <button
-                  onClick={() => navigate("/add-food")}
-                  className="text-white hover:bg-[#B02004] px-3 py-2 rounded-md transition duration-200"
-                >
-                  Add Food
-                </button>
-                <button
-                  onClick={() => navigate("/add-disease")}
-                  className="text-white hover:bg-[#B02004] px-3 py-2 rounded-md transition duration-200"
-                >
-                  Add Disease
-                </button>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <span className="text-white text-sm font-medium">Welcome, Admin</span>
-              <button
-                className="px-6 py-2 bg-white text-[#CC2405] font-semibold rounded-lg hover:bg-gray-100 transition duration-200 shadow-md"
-                onClick={logout}
-              >
-                Logout
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <div className="sticky top-0">
 
+      <Navbar/>
+      </div>
       {/* Mobile Navigation */}
       <div className="md:hidden bg-[#CC2405] p-4">
         <div className="grid grid-cols-2 gap-2">
@@ -415,7 +374,7 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid gap-8">
           {/* Recent Activity */}
           <div className="bg-white rounded-xl shadow-lg p-6">
             <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
@@ -437,7 +396,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* System Status */}
-          <div className="bg-white rounded-xl shadow-lg p-6">
+          {/* <div className="bg-white rounded-xl shadow-lg p-6">
             <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
               <div className="w-1 h-6 bg-[#CC2405] rounded-full"></div>
               System Status
@@ -460,7 +419,7 @@ export default function AdminDashboard() {
                 <span className="text-sm text-gray-600">1.2 GB / 10 GB</span>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

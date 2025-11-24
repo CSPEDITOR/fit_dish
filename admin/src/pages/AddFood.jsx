@@ -550,6 +550,7 @@
 import { useState, useEffect } from "react";
 import API from "../api/admin";
 import axios from "axios";
+import Navbar from "../component/Navbar";
 
 export default function AddFood() {
   const [form, setForm] = useState({
@@ -750,7 +751,12 @@ export default function AddFood() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 p-6 md:p-10">
+    <>
+    
+      <div className="sticky top-0">
+        <Navbar/>
+      </div>
+    <div className="min-h-screen bg-[#FEF1E1] p-6 md:p-10">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-8">
@@ -1206,5 +1212,6 @@ export default function AddFood() {
         </form>
       </div>
     </div>
+    </>
   );
 }

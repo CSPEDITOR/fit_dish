@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema(
     height: { type: Number },
     foodType: { type: String, enum: ["veg", "non-veg", "eggetarian"] },
 
-    avoidFood: [{ type: mongoose.Schema.Types.ObjectId, ref: "AvoidFood" }],
+    avoidFood: [{ type: mongoose.Schema.Types.ObjectId, ref: "Food" }],
 
     disease: [{ type: mongoose.Schema.Types.ObjectId, ref: "Disease" }],
 
