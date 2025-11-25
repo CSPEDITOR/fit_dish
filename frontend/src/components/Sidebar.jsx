@@ -37,9 +37,10 @@ const Sidebar = () => {
             <Link
               key={index}
               to={item.path}
-              className=" w-full px-24 py-2 text-lg  text-[#fef1e1] hover:bg-[#fef1e1] hover:text-[#cc2405] rounded-l-md ml-2  transition-all duration-200"
+              className=" w-full px-24 py-2 text-lg  text-[#fef1e1] hover:bg-[#fef1e1] hover:text-[#cc2405] rounded-l-md ml-4  transition-all duration-200"
             >
-              {item.name}
+              <div className="">{item.name}</div>
+              
             </Link>
           ))}
         </nav>
