@@ -5,20 +5,20 @@ import "./HomeHeader.css"; // custom styles
 
 function HomeHeader() {
   return (
-    <div className="home-header mt-8 relative">
-      <div className="flex items-center justify-center">
+    <div className="home-header mt-8 relative w-[80%]">
+      <div className="flex flex-col gap-20 sm:gap-10 sm:flex-row  items-center justify-center">
         {/* Text Section */}
-        <div className="slogan w-full">
-          <h1 className="text-8xl text-nowrap t-2 w-fit">
+        <div className="slogan w-[95vw] flex flex-col justify-center items-center sm:items-start">
+          <h1 className="text-5xl md:text-5xl lg:text-8xl  text-nowrap t-2 w-fit">
             Healthy <span className="t-red">Eating is</span>
           </h1>
-          <h1 className="text-8xl text-nowrap t-2 w-fit">
+          <h1 className="text-5xl  md:text-5xl lg:text-8xl text-nowrap t-2 w-fit">
             <span className="t-red">an</span>{" "}
             <span className="t-orange">Important </span>Part
           </h1>
-          <h1 className="text-8xl text-nowrap t-2 w-fit">of Lifestyle</h1>
+          <h1 className="text-5xl  md:text-6xl lg:text-8xl text-nowrap t-2 w-fit">of Lifestyle</h1>
 
-          <h3 className="t-2 t-gray text-2xl my-8">
+          <h3 className="t-2 t-gray text-2xl my-8 text-center sm:text-start">
             We prepare delicious food for <br /> you we are always
           </h3>
 
@@ -30,7 +30,7 @@ function HomeHeader() {
         </div>
 
         {/* Image + Arrows + Labels */}
-        <div className="relative w-[40%] h-fit scale-150 flex justify-center items-center">
+        <div className="relative left-[20px] sm:left-0 w-[60%] sm:w-[40%] h-fit scale-150 flex justify-center items-center">
           <img
             src={dishImg}
             alt="Dish"
@@ -70,28 +70,28 @@ function HomeHeader() {
 
           {/* Fade-Up Labels */}
           <div
-            className="absolute top-[7px] left-[-60px] text-sm fade-up"
+            className="absolute  top-[-10px] sm:top-[7px] left-[-40px] sm:left-[-60px] text-[12px] sm:text-sm fade-up"
             style={{ animationDelay: "0.2s" }}
           >
             Vitamin C
           </div>
 
           <div
-            className="absolute top-[10px] right-[0px] text-sm fade-up"
+            className="absolute top-[-10px] right-[-10px] sm:top-[10px] sm:right-[0px]  text-[12px] sm:text-sm  fade-up"
             style={{ animationDelay: "0.6s" }}
           >
             Antioxidants
           </div>
 
           <div
-            className="absolute bottom-[50px] left-[-40px] text-sm fade-up"
+            className="absolute bottom-[20px] left-[-40px] sm:bottom-[50px] sm:left-[-40px] text-[12px] sm:text-sm fade-up"
             style={{ animationDelay: "1s" }}
           >
             Protein
           </div>
 
           <div
-            className="absolute bottom-[45px] right-[10px] text-sm fade-up"
+            className="absolute bottom-[15px] right-[-10px] sm:bottom-[45px] sm:right-[10px] text-[12px] sm:text-sm fade-up"
             style={{ animationDelay: "1.4s" }}
           >
             Fiber

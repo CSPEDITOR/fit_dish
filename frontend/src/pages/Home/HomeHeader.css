@@ -7,6 +7,9 @@
   stroke-dashoffset: 200;
   animation: drawLine 2s ease forwards;
 }
+*{
+  /* border: 1px solid black; */
+}
 
 @keyframes drawLine {
   to {

@@ -133,7 +133,7 @@ const foodItems = [
       { name: "Magnesium", value: 21, unit: "mg" },
     ],
     best_time: ["Morning"],
-    avoid_for: ["Pregnancy (raw form)"],
+    avoid_for: ["Pregnancy"],
     image:
       Papaya,
     location: "Bhubaneswar, Odisha, India",
