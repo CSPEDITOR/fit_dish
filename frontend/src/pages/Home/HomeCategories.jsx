@@ -72,7 +72,6 @@
 //     }
 //   )
 
-  
 //   return (
 //     <div className='main-page  relative top-20 sm:top-0'>
 //       <div className="container-categories w-full bg-amvvber-400 bg-center aspect-[26/9] bg-contain bg-no-repeat mb-8 flex items-center justify-center categorybg">
@@ -85,7 +84,6 @@
 // };
 
 // export default HomeCategories;
-
 
 // import React, { useState, useEffect, useRef } from "react";
 // import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -147,7 +145,7 @@
 //   ];
 
 //   const [cardsToShow, setCardsToShow] = useState(4);
-  
+
 //   useEffect(() => {
 //     const handleResize = () => {
 //       if (window.innerWidth <= 480) {
@@ -205,7 +203,7 @@
 
 //   const handleTouchEnd = () => {
 //     if (!touchStart || !touchEnd) return;
-    
+
 //     const distance = touchStart - touchEnd;
 //     const isLeftSwipe = distance > 50;
 //     const isRightSwipe = distance < -50;
@@ -351,7 +349,7 @@
 //                     className="category-card-img absolute"
 //                     alt={item.title}
 //                   />
-                  
+
 //                   <div className="absolute bottom-0 w-full px-4 pb-4">
 //                     <h1 className="text-white text-center text-lg md:text-2xl font-bold mb-1">
 //                       {item.title}
@@ -379,7 +377,7 @@
 //                           </svg>
 //                         </div>
 //                       </button>
-                      
+
 //                       <div
 //                         className={`w-6 h-6 md:w-8 md:h-8 rounded border-2 flex items-center justify-center ${
 //                           item.veg ? 'border-green-600' : 'border-red-600'
@@ -490,7 +488,7 @@
 //     const checkMobile = () => {
 //       const mobile = window.innerWidth <= 768;
 //       setIsMobile(mobile);
-      
+
 //       if (window.innerWidth <= 480) {
 //         setCardsToShow(2);
 //       } else if (window.innerWidth <= 768) {
@@ -532,7 +530,7 @@
 
 //       const cardWidth = container.scrollWidth / categories.length;
 //       const maxScroll = container.scrollWidth - container.clientWidth;
-      
+
 //       if (container.scrollLeft >= maxScroll - 10) {
 //         container.scrollTo({ left: 0, behavior: 'smooth' });
 //       } else {
@@ -630,7 +628,7 @@
 //         .mobile-scroll::-webkit-scrollbar {
 //           display: none;
 //         }
-        
+
 //         .mobile-scroll {
 //           -ms-overflow-style: none;
 //           scrollbar-width: none;
@@ -713,7 +711,7 @@
 //                       className="category-card-img absolute"
 //                       alt={item.title}
 //                     />
-                    
+
 //                     <div className="absolute bottom-0 w-full px-2 sm:px-3 pb-3 sm:pb-4">
 //                       <h1 className="text-white text-center text-sm sm:text-base font-bold mb-0.5 sm:mb-1">
 //                         {item.title}
@@ -741,7 +739,7 @@
 //                             </svg>
 //                           </div>
 //                         </button>
-                        
+
 //                         <div
 //                           className={`w-5 h-5 sm:w-6 sm:h-6 rounded border-2 flex items-center justify-center ${
 //                             item.veg ? 'border-green-600' : 'border-red-600'
@@ -781,7 +779,7 @@
 //                       className="category-card-img absolute"
 //                       alt={item.title}
 //                     />
-                    
+
 //                     <div className="absolute bottom-0 w-full px-4 pb-4">
 //                       <h1 className="text-white text-center text-2xl font-bold mb-1">
 //                         {item.title}
@@ -809,7 +807,7 @@
 //                             </svg>
 //                           </div>
 //                         </button>
-                        
+
 //                         <div
 //                           className={`w-8 h-8 rounded border-2 flex items-center justify-center ${
 //                             item.veg ? 'border-green-600' : 'border-red-600'
@@ -842,8 +840,8 @@
 //                   setTimeout(() => setIsAutoPlay(true), 5000);
 //                 }}
 //                 className={`h-2.5 rounded-full transition-all ${
-//                   currentIndex === idx 
-//                     ? 'bg-gray-800 w-8' 
+//                   currentIndex === idx
+//                     ? 'bg-gray-800 w-8'
 //                     : 'bg-gray-400 w-2.5'
 //                 }`}
 //                 aria-label={`Go to slide ${idx + 1}`}
@@ -943,7 +941,7 @@
 //     const checkMobile = () => {
 //       const mobile = window.innerWidth <= 768;
 //       setIsMobile(mobile);
-      
+
 //       if (window.innerWidth <= 480) {
 //         setCardsToShow(2);
 //       } else if (window.innerWidth <= 768) {
@@ -990,7 +988,7 @@
 //       const gap = 12;
 //       const scrollAmount = cardWidth + gap;
 //       const maxScroll = container.scrollWidth - container.clientWidth;
-      
+
 //       if (container.scrollLeft >= maxScroll - 10) {
 //         container.scrollTo({ left: 0, behavior: 'smooth' });
 //       } else {
@@ -1026,10 +1024,10 @@
 //     const containerWidth = 1090; // Your fixed container width
 //     const totalGapWidth = (cardsToShow - 1) * gapInPx; // Total gap for visible cards
 //     const cardWidth = (containerWidth - totalGapWidth) / cardsToShow; // Actual card width in px
-    
+
 //     // Calculate translation: move by (card width + gap) for each index
 //     const translatePx = currentIndex * (cardWidth + gapInPx);
-    
+
 //     return `translateX(-${translatePx}px)`;
 //   };
 
@@ -1046,7 +1044,7 @@
 //           border-radius: 50%;
 //           box-shadow: 5px 7px 10px rgba(0,0,0,0.3);
 //         }
-        
+
 //         @keyframes slideIn {
 //           from {
 //             opacity: 0;
@@ -1100,7 +1098,7 @@
 //         .mobile-scroll::-webkit-scrollbar {
 //           display: none;
 //         }
-        
+
 //         .mobile-scroll {
 //           -ms-overflow-style: none;
 //           scrollbar-width: none;
@@ -1118,7 +1116,7 @@
 //           height: 400px;
 //           margin: 0 auto;
 //         }
-        
+
 //         @media (max-width: 480px) {
 //           .carousel-wrapper {
 //             width: 380px;
@@ -1132,10 +1130,10 @@
 //           align-items: center;
 //           height: 550px;
 //         }
-        
+
 //         @media (max-width: 480px) {
 //           .categorybg {
-      
+
 //             height: 330px;
 //           }
 //         }
@@ -1183,7 +1181,7 @@
 //                       className="category-card-img absolute"
 //                       alt={item.title}
 //                     />
-                    
+
 //                     <div className="absolute bottom-0 w-full px-2 sm:px-3 pb-3 sm:pb-4">
 //                       <h1 className="text-white text-center text-sm sm:text-base font-bold mb-0.5 sm:mb-1">
 //                         {item.title}
@@ -1205,7 +1203,7 @@
 //                            <FaArrowRight color="white" />
 //                           </div>
 //                         </button>
-                        
+
 //                         <div
 //                           className={`w-5 h-5 sm:w-6 sm:h-6 rounded border-2 flex items-center justify-center ${
 //                             item.veg ? 'border-green-600' : 'border-red-600'
@@ -1235,7 +1233,7 @@
 //                 const containerWidth = 980;
 //                 const totalGapWidth = (cardsToShow - 1) * gapInPx;
 //                 const cardWidth = (containerWidth - totalGapWidth) / cardsToShow;
-                
+
 //                 return (
 //                   <div
 //                     key={index}
@@ -1251,7 +1249,7 @@
 //                         className="category-card-img absolute"
 //                         alt={item.title}
 //                       />
-                      
+
 //                       <div className="absolute bottom-0 w-full px-4 pb-4">
 //                         <h1 className="text-white text-center text-2xl font-bold mb-1">
 //                           {item.title}
@@ -1273,7 +1271,7 @@
 //                              <FaArrowRight color="white" />
 //                             </div>
 //                           </button>
-                          
+
 //                           <div
 //                             className={`w-8 h-8 rounded border-2 flex items-center justify-center ${
 //                               item.veg ? 'border-green-600' : 'border-red-600'
@@ -1306,8 +1304,8 @@
 //                   setTimeout(() => setIsAutoPlay(true), 5000);
 //                 }}
 //                 className={`h-2.5 rounded-full transition-all ${
-//                   currentIndex === idx 
-//                     ? 'bg-gray-800 w-8' 
+//                   currentIndex === idx
+//                     ? 'bg-gray-800 w-8'
 //                     : 'bg-gray-400 w-2.5'
 //                 }`}
 //                 aria-label={`Go to slide ${idx + 1}`}
@@ -1322,11 +1320,16 @@
 
 // export default HomeCategories;
 
-
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FaArrowRight } from "react-icons/fa";
-import "./homeCategories.css"
+import "./homeCategories.css";
+import img1 from "../../images/1.png";
+import img2 from "../../images/2.png";
+import img3 from "../../images/3.png";
+import img4 from "../../images/4.png";
+import veg from "../../images/veg.png";
+import nveg from "../../images/nveg.png";
 const HomeCategories = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
@@ -1334,79 +1337,110 @@ const HomeCategories = () => {
   const [isMobile, setIsMobile] = useState(false);
   const autoPlayRef = useRef();
   const scrollContainerRef = useRef(null);
+  const sectionRef = useRef(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   const categories = [
     {
       title: "Healthy Salad",
       time: "Breakfast",
-      img_link: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400",
+      img_link: img1,
       veg: true,
       color: "#ED7B7E",
-      link: ""
+      link: "",
     },
     {
       title: "Oatsmeal",
       time: "Lunch",
-      img_link: "https://images.unsplash.com/photo-1517673400267-0251440c45dc?w=400",
+      img_link: img2,
       veg: true,
       color: "#F98B3D",
-      link: ""
+      link: "",
     },
     {
       title: "Sprout Salad",
       time: "Breakfast",
-      img_link: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400",
+      img_link: img3,
       veg: true,
       color: "#6EDA49",
-      link: ""
+      link: "",
     },
     {
       title: "Grilled Chicken",
       time: "Lunch",
-      img_link: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400",
+      img_link: img4,
       veg: false,
       color: "#7B79F5",
-      link: ""
+      link: "",
     },
     {
       title: "Fruit Bowl",
       time: "Breakfast",
-      img_link: "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=400",
+      img_link:
+        "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=400",
       veg: true,
       color: "#FF6B9D",
-      link: ""
+      link: "",
     },
     {
       title: "Pasta Delight",
       time: "Dinner",
-      img_link: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400",
+      img_link:
+        "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400",
       veg: true,
       color: "#FFA726",
-      link: ""
+      link: "",
     },
     {
       title: "Greek Salad",
       time: "Lunch",
-      img_link: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400",
+      img_link:
+        "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400",
       veg: true,
       color: "#4CAF50",
-      link: ""
+      link: "",
     },
     {
       title: "Smoothie Bowl",
       time: "Breakfast",
-      img_link: "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=400",
+      img_link:
+        "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=400",
       veg: true,
       color: "#9C27B0",
-      link: ""
-    }
+      link: "",
+    },
   ];
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setHasAnimated(true);
+          }
+        });
+      },
+      {
+        threshold: 0.25, // Trigger when 20% of section is visible
+        rootMargin: "-100px",
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [hasAnimated]);
 
   useEffect(() => {
     const checkMobile = () => {
       const mobile = window.innerWidth <= 768;
       setIsMobile(mobile);
-      
+
       if (window.innerWidth <= 480) {
         setCardsToShow(2);
       } else if (window.innerWidth <= 768) {
@@ -1417,8 +1451,8 @@ const HomeCategories = () => {
     };
 
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   const maxIndex = categories.length - cardsToShow;
@@ -1453,11 +1487,11 @@ const HomeCategories = () => {
       const gap = 12;
       const scrollAmount = cardWidth + gap;
       const maxScroll = container.scrollWidth - container.clientWidth;
-      
+
       if (container.scrollLeft >= maxScroll - 10) {
-        container.scrollTo({ left: 0, behavior: 'smooth' });
+        container.scrollTo({ left: 0, behavior: "smooth" });
       } else {
-        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        container.scrollBy({ left: scrollAmount, behavior: "smooth" });
       }
     }, 3000);
 
@@ -1489,15 +1523,18 @@ const HomeCategories = () => {
     const containerWidth = 980; // Your fixed container width
     const totalGapWidth = (cardsToShow - 1) * gapInPx; // Total gap for visible cards
     const cardWidth = (containerWidth - totalGapWidth) / cardsToShow; // Actual card width in px
-    
+
     // Calculate translation: move by (card width + gap) for each index
     const translatePx = currentIndex * (cardWidth + gapInPx);
-    
+
     return `translateX(-${translatePx}px)`;
   };
 
   return (
-    <div className="w-full py-4 sm:py-8 md:py-16 flex justify-center items-center h-[85vh]">
+    <div
+      ref={sectionRef}
+      className="w-full py-4 sm:py-8 md:py-16 flex justify-center items-center  parent"
+    >
       <style>{`
         .category-card-img {
           top: -30%;
@@ -1510,20 +1547,30 @@ const HomeCategories = () => {
           box-shadow: 5px 7px 10px rgba(0,0,0,0.3);
         }
         
-        @keyframes slideIn {
-          from {
-            opacity: 0;
-            transform: translateX(100px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
+        @keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-        .category-card {
-          animation: slideIn 0.5s ease-out;
-        }
+.fade-up-card {
+  opacity: 0;
+  animation: fadeUp 1s ease-out forwards;
+}
+
+.fade-up-card:nth-child(1) { animation-delay: 0.1s; }
+.fade-up-card:nth-child(2) { animation-delay: 0.2s; }
+.fade-up-card:nth-child(3) { animation-delay: 0.3s; }
+.fade-up-card:nth-child(4) { animation-delay: 0.4s; }
+.fade-up-card:nth-child(5) { animation-delay: 0.5s; }
+.fade-up-card:nth-child(6) { animation-delay: 0.6s; }
+.fade-up-card:nth-child(7) { animation-delay: 0.7s; }
+.fade-up-card:nth-child(8) { animation-delay: 0.8s; }
 
         @media (max-width: 640px) {
           .category-card-img {
@@ -1588,7 +1635,8 @@ const HomeCategories = () => {
         
         @media (max-width: 480px) {
           .carousel-wrapper {
-            width: 380px;
+             width: 304px;
+    height: 280px;
           }
         }
 
@@ -1628,92 +1676,120 @@ const HomeCategories = () => {
           {isMobile ? (
             <div
               ref={scrollContainerRef}
-              className="mobile-scroll flex overflow-x-auto w-80 gap-3 px-2"
+              className="mobile-scroll flex overflow-x-auto gap-3 px-4 w-full "
               onScroll={handleScroll}
             >
-              {categories.map((item, index) => (
-                <div
-                  key={index}
-                  className="mobile-scroll-item flex-shrink-0 w-[45%] sm:w-[32%]"
-                >
-                  <div
-                    className="relative rounded-xl shadow-xl pt-12 sm:pt-14 pb-4 sm:pb-5"
-                    style={{ backgroundColor: item.color, aspectRatio: '28/32' }}
-                  >
-                    <img
-                      src={item.img_link}
-                      className="category-card-img absolute"
-                      alt={item.title}
-                    />
-                    
-                    <div className="absolute bottom-0 w-full px-2 sm:px-3 pb-3 sm:pb-4">
-                      <h1 className="text-white text-center text-sm sm:text-base font-bold mb-0.5 sm:mb-1">
-                        {item.title}
-                      </h1>
-                      <h2 className="text-white text-center text-xs sm:text-sm opacity-90 mb-2 sm:mb-3">
-                        {item.time}
-                      </h2>
-
-                      <div className="flex items-center justify-center gap-1.5 sm:gap-2">
-                        <button
-                          className="view-btn px-2 sm:px-3 py-1.5 sm:py-2 rounded-full bg-white flex items-center justify-center gap-1 flex-1 max-w-[80px] sm:max-w-[90px]"
-                          onClick={() => console.log(`View ${item.title}`)}
-                        >
-                          <span className="text-[10px] sm:text-xs font-medium">View</span>
-                          <div
-                            className="rounded-full p-1"
-                            style={{ backgroundColor: item.color }}
-                          >
-                            <FaArrowRight color="white" />
-                          </div>
-                        </button>
-                        
-                        <div
-                          className={`w-5 h-5 sm:w-6 sm:h-6 rounded border-2 flex items-center justify-center ${
-                            item.veg ? 'border-green-600' : 'border-red-600'
-                          }`}
-                        >
-                          <div
-                            className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${
-                              item.veg ? 'bg-green-600' : 'bg-red-600'
-                            }`}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div
-              className="flex transition-transform duration-500 ease-in-out gap-6"
-              style={{
-                transform: getTransform()
-              }}
-            >
               {categories.map((item, index) => {
-                const gapInPx = 24;
-                const containerWidth = 980;
-                const totalGapWidth = (cardsToShow - 1) * gapInPx;
-                const cardWidth = (containerWidth - totalGapWidth) / cardsToShow;
-                
+                // Same logic as desktop for mobile
+                const gapInPx = 12; // gap-3 = 12px
+                const containerWidth = 304; // Mobile container width
+                const mobileCardsToShow = 2; // Show 2 cards on mobile
+                const totalGapWidth = (mobileCardsToShow - 1) * gapInPx; // 1 gap = 12px
+                const cardWidth =
+                  (containerWidth - totalGapWidth) / mobileCardsToShow; // (304 - 12) / 2 = 146px
+
                 return (
                   <div
                     key={index}
-                    className="category-card flex-shrink-0"
+                    className={`mobile-scroll-item flex-shrink-0 ${
+                      hasAnimated ? "fade-up-card" : ""
+                    }`}
                     style={{ width: `${cardWidth}px` }}
                   >
                     <div
-                      className="relative rounded-2xl shadow-xl overflow-visible pt-20 pb-8"
-                      style={{ backgroundColor: item.color, aspectRatio: '19/20', boxShadow:" 12px 12px 10px 1px rgb(0 0 0 / 0.2)", marginBottom:"20px", marginRight:"0px", marginLeft:"16px" }}
+                      className="relative rounded-xl shadow-xl pt-12 sm:pt-14 pb-4 sm:pb-5"
+                      style={{
+                        backgroundColor: item.color,
+                        aspectRatio: "22/32",
+                      }}
                     >
                       <img
                         src={item.img_link}
                         className="category-card-img absolute"
                         alt={item.title}
                       />
-                      
+
+                      <div className="absolute bottom-0 w-full px-2 sm:px-3 pb-3 sm:pb-4">
+                        <h1 className="text-white text-center text-md sm:text-base font-bold mb-0.5 sm:mb-1">
+                          {item.title}
+                        </h1>
+                        <h2 className="text-white text-center text-sm sm:text-sm opacity-90 mb-2 sm:mb-3">
+                          {item.time}
+                        </h2>
+
+                        <div className="flex items-center justify-center gap-1.5 sm:gap-2">
+                          <button
+                            className="view-btn px-2 sm:px-3 py-1.5 sm:py-2 rounded-full bg-white flex items-center justify-center gap-1 flex-1 max-w-[80px] sm:max-w-[90px]"
+                            onClick={() => console.log(`View ${item.title}`)}
+                          >
+                            <span className="text-[10px] sm:text-xs font-medium">
+                              View
+                            </span>
+                            <div
+                              className="rounded-full p-1"
+                              style={{ backgroundColor: item.color }}
+                            >
+                              <FaArrowRight color="white" />
+                            </div>
+                          </button>
+
+                          <div
+                            className={`w-5 h-5 sm:w-6 sm:h-6 rounded border-2 flex items-center justify-center ${
+                              item.veg ? "border-green-600" : "border-red-600"
+                            }`}
+                          >
+                            <div
+                              className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${
+                                item.veg ? "bg-green-600" : "bg-red-600"
+                              }`}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div
+              className="flex transition-transform duration-500 ease-in-out gap-6"
+              style={{
+                transform: getTransform(),
+              }}
+            >
+              {categories.map((item, index) => {
+                const gapInPx = 24;
+                const containerWidth = 980;
+                const totalGapWidth = (cardsToShow - 1) * gapInPx;
+                const cardWidth =
+                  (containerWidth - totalGapWidth) / cardsToShow;
+
+                return (
+                  <div
+                    key={index}
+                    className={`flex-shrink-0 ${
+                      hasAnimated ? "fade-up-card" : ""
+                    }`} // ✅ Added animation class
+                    style={{ width: `${cardWidth}px` }}
+                  >
+                    <div
+                      className="relative rounded-2xl shadow-xl overflow-visible pt-20 pb-8"
+                      style={{
+                        backgroundColor: item.color,
+                        aspectRatio: "19/20",
+                        boxShadow: " 12px 12px 10px 1px rgb(0 0 0 / 0.2)",
+                        marginBottom: "20px",
+                        marginRight: "0px",
+                        marginLeft: "16px",
+                      }}
+                    >
+                      <img
+                        src={item.img_link}
+                        className="category-card-img absolute"
+                        alt={item.title}
+                      />
+
                       <div className="absolute bottom-0 w-full px-4 pb-4">
                         <h1 className="text-white text-center text-2xl font-bold mb-1">
                           {item.title}
@@ -1735,15 +1811,15 @@ const HomeCategories = () => {
                               <FaArrowRight color="white" />
                             </div>
                           </button>
-                          
+
                           <div
                             className={`w-8 h-8 rounded border-2 flex items-center justify-center ${
-                              item.veg ? 'border-green-600' : 'border-red-600'
+                              item.veg ? "border-green-600" : "border-red-600"
                             }`}
                           >
                             <div
                               className={`w-4 h-4 rounded-full ${
-                                item.veg ? 'bg-green-600' : 'bg-red-600'
+                                item.veg ? "bg-green-600" : "bg-red-600"
                               }`}
                             />
                           </div>
@@ -1768,9 +1844,7 @@ const HomeCategories = () => {
                   setTimeout(() => setIsAutoPlay(true), 5000);
                 }}
                 className={`h-2.5 rounded-full transition-all ${
-                  currentIndex === idx 
-                    ? 'bg-gray-800 w-8' 
-                    : 'bg-gray-400 w-2.5'
+                  currentIndex === idx ? "bg-gray-800 w-8" : "bg-gray-400 w-2.5"
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
