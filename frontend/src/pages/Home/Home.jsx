@@ -15,7 +15,7 @@ function Home() {
             {/* <Navbar/> */}
             <HomeHeader />
             <HomeCategories/>
-            {/* <ChoseDiet/> */}
+            <ChoseDiet/>
             {/* <CarouselSize/> */}
         </div>
     )

@@ -1397,7 +1397,7 @@ const HomeCategories = () => {
       img_link:
         "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400",
       veg: true,
-      color: "#4CAF50",
+      color: "#4CAF50", 
       link: "",
     },
     {

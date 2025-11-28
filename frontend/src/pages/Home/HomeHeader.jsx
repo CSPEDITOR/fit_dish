@@ -30,7 +30,7 @@ function HomeHeader() {
         </div>
 
         {/* Image + Arrows + Labels */}
-        <div className="relative left-[20px] sm:left-0 w-[60%] sm:w-[40%] h-fit scale-150 flex justify-center items-center">
+        <div className="relative left-[20px] sm:left-0 w-[60%] sm:w-[45%] h-fit scale-150 flex justify-center items-center">
           <img
             src={dishImg}
             alt="Dish"
