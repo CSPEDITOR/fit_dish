@@ -80,7 +80,7 @@ const FoodDetail = () => {
               <div className="mt-2 text-gray-600">{food.category}</div>
 
               <div className="mt-4 text-xl font-bold text-red-600">
-                ₹ {food.price}
+                ₹ {food.price}<span className=" text-gray-600 text-sm">/Kg</span>
               </div>
             </div>
 

@@ -14,7 +14,7 @@ const FoodCards = ({ id, image, name, description, type }) => {
       className="bg-[#FBEBEB] rounded-2xl overflow-hidden shadow-lg hover:shadow-1xl transition duration-300 relative"
       whileHover={{ scale: 1.03 }}
     >
-      <div className="relative transition duration-300 group hover:bg-[#CB3432]">
+      <div className="relative transition duration-300 group hover:bg-[#CB3432] cursor-pointer"  onClick={() => navigate(`/food/${id}`)}>
         <img
           src={image}
           alt={name}
@@ -22,7 +22,7 @@ const FoodCards = ({ id, image, name, description, type }) => {
         />
 
         <div className="p-5 pb-14 h-52">
-          <h2 className="text-1xl font-bold text-gray-800 mb-1 group-hover:text-white">
+          <h2 className="text-2xl font-bold text-gray-800 mb-1 group-hover:text-white">
             {name}
           </h2>
 
@@ -32,17 +32,23 @@ const FoodCards = ({ id, image, name, description, type }) => {
         </div>
 
         {/* VIEW BUTTON */}
+        <motion.div
+         whileHover={{ scale: 1.03 }}
+        >
+
         <div className="absolute bottom-3 left-4">
           <button
             onClick={() => navigate(`/food/${id}`)}
-            className="px-3 py-1 bg-white text-black rounded-full transition flex items-center space-x-3"
-          >
+            className="px-3 py-1 bg-white text-black rounded-full transition flex items-center space-x-3 cursor-pointer hover:shadow-lg"
+            whileHover={{ scale: 1.03 }}
+            >
             <span>View</span>
             <div className="rounded-full h-8 w-8 ps-2 pt-2 pb-1 bg-red-600">
               <FaArrowRight color="white" />
             </div>
           </button>
         </div>
+            </motion.div>
 
         <div className="absolute bottom-3 right-4">
           <img

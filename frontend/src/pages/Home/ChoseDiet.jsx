@@ -57,7 +57,7 @@ function ChoseDiet() {
                     transition={{ type: "tween", duration: 0.2 }}
                 >
                     <div className='font-extrabold text-5xl t-4'>{index + 1}.</div>
-                    <div className='w-[70%] '>
+                    <div className='w-[90%]'>
                         <div className={`t-4 text-3xl font-semibold transition-colors duration-200  ${
                             activeCategory === index ? 'text-[#CC2405]' : 'text-gray-800'
                         }`}>{item.title}</div>
@@ -67,7 +67,6 @@ function ChoseDiet() {
             )
         }
     )
-
     const fadeVariants = {
         initial: { opacity: 0 },
         animate: { opacity: 1 },
@@ -80,7 +79,7 @@ function ChoseDiet() {
     }
 
     return (
-        <div className='w-full'>
+        <div className='w-[90%]'>
             <div className='relative w-full flex flex-row mb-12'>
                 <div className='w-1/2'></div>
                 <div className='w-1/2 relative'>
