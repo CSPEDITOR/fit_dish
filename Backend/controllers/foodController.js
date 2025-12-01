@@ -3,7 +3,7 @@ import Disease from "../models/diseaseModel.js";
 import AvoidFood from "../models/avoidFoodModel.js";
 
 // ➤ CREATE FOOD
-// import Food from "../models/foodModel.js";
+
 
 export const createFood = async (req, res) => {
   try {
@@ -18,7 +18,7 @@ export const createFood = async (req, res) => {
       vitamins: rawVitamins,
       minerals: rawMinerals,
       best_time: rawBestTime,
-      // diseases may come as req.body.diseases (array) or req.body['diseases[]'] depending on client
+      
       location,
     } = req.body;
 
@@ -96,6 +96,109 @@ export const createFood = async (req, res) => {
     return res.status(500).json({ success: false, msg: error.message });
   }
 };
+
+
+
+// ➤ UPDATE FOOD
+export const updateFood = async (req, res) => {
+  try {
+    const foodId = req.params.id;
+
+    // Extract fields from request body
+    const {
+      name,
+      type,
+      category,
+      price,
+      description,
+      nutrients: rawNutrients,
+      vitamins: rawVitamins,
+      minerals: rawMinerals,
+      best_time: rawBestTime,
+      location,
+    } = req.body;
+
+    // Parse nutrients
+    let nutrients = {};
+    if (rawNutrients) {
+      try {
+        nutrients = typeof rawNutrients === "string" ? JSON.parse(rawNutrients) : rawNutrients;
+      } catch (err) {
+        return res.status(400).json({ success: false, msg: "Invalid nutrients format" });
+      }
+    }
+
+    // Parse vitamins
+    let vitamins = [];
+    if (rawVitamins) {
+      try {
+        vitamins = typeof rawVitamins === "string" ? JSON.parse(rawVitamins) : rawVitamins;
+      } catch (err) {
+        return res.status(400).json({ success: false, msg: "Invalid vitamins format" });
+      }
+    }
+
+    // Parse minerals
+    let minerals = [];
+    if (rawMinerals) {
+      try {
+        minerals = typeof rawMinerals === "string" ? JSON.parse(rawMinerals) : rawMinerals;
+      } catch (err) {
+        return res.status(400).json({ success: false, msg: "Invalid minerals format" });
+      }
+    }
+
+    // Parse best_time
+    let best_time = [];
+    if (rawBestTime) {
+      try {
+        best_time = typeof rawBestTime === "string" ? JSON.parse(rawBestTime) : rawBestTime;
+      } catch (err) {
+        return res.status(400).json({ success: false, msg: "Invalid best_time format" });
+      }
+    }
+
+    // Parse diseases (array)
+    let diseases = [];
+    if (req.body.diseases) {
+      diseases = Array.isArray(req.body.diseases) ? req.body.diseases : [req.body.diseases];
+    } else if (req.body["diseases[]"]) {
+      diseases = Array.isArray(req.body["diseases[]"]) ? req.body["diseases[]"] : [req.body["diseases[]"]];
+    }
+
+    // Image handling: use new uploaded image if present, else keep old
+    const image = req.file ? req.file.path : undefined;
+
+    // Prepare update object, only include fields if they are defined to avoid overwriting unintentionally
+    const updateData = {
+      ...(name !== undefined && { name }),
+      ...(type !== undefined && { type }),
+      ...(category !== undefined && { category }),
+      ...(price !== undefined && { price }),
+      ...(description !== undefined && { description }),
+      ...(rawNutrients !== undefined && { nutrients }),
+      ...(rawVitamins !== undefined && { vitamins }),
+      ...(rawMinerals !== undefined && { minerals }),
+      ...(rawBestTime !== undefined && { best_time }),
+      ...(diseases.length > 0 && { diseases }),
+      ...(location !== undefined && { location }),
+      ...(image !== undefined && { image }),
+    };
+
+    // Find and update the food document
+    const updatedFood = await Food.findByIdAndUpdate(foodId, updateData, { new: true });
+
+    if (!updatedFood) {
+      return res.status(404).json({ success: false, msg: "Food not found" });
+    }
+
+    res.status(200).json({ success: true, data: updatedFood });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, msg: error.message });
+  }
+};
+
 
 // ➤ GET ALL FOODS (with populated diseases + avoidFood + image access)
 export const getFoods = async (req, res) => {
