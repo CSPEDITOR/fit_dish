@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { Outlet } from "react-router-dom";
+import Footer from "@/components/Footer";
 
 const MainLayout = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,7 +30,9 @@ const MainLayout = () => {
           {/* Space for navbar height */}
           <Outlet />
         </div>
-        <div></div>
+        <div className="w-full">
+          <Footer/>
+        </div>
       </div>
     </>
   );

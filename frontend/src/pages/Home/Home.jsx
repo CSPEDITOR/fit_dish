@@ -19,6 +19,7 @@ function Home() {
             <HomeCategories/>
             <ChoseDiet/>
             <CustomerReviews/>
+            {/* <CustomerReviews/> */}
             {/* <CarouselSize/> */}
         </div>
     )
