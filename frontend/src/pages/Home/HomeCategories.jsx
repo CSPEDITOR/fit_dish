@@ -1376,8 +1376,7 @@ const HomeCategories = () => {
     {
       title: "Fruit Bowl",
       time: "Breakfast",
-      img_link:
-        "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=400",
+      img_link:img1,
       veg: true,
       color: "#FF6B9D",
       link: "",
@@ -1385,8 +1384,7 @@ const HomeCategories = () => {
     {
       title: "Pasta Delight",
       time: "Dinner",
-      img_link:
-        "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400",
+      img_link:img2,
       veg: true,
       color: "#FFA726",
       link: "",
@@ -1394,8 +1392,7 @@ const HomeCategories = () => {
     {
       title: "Greek Salad",
       time: "Lunch",
-      img_link:
-        "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400",
+      img_link:img3,
       veg: true,
       color: "#4CAF50", 
       link: "",
@@ -1403,8 +1400,7 @@ const HomeCategories = () => {
     {
       title: "Smoothie Bowl",
       time: "Breakfast",
-      img_link:
-        "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=400",
+      img_link:img4,
       veg: true,
       color: "#9C27B0",
       link: "",
