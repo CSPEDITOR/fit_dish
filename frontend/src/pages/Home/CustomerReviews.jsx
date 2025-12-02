@@ -441,7 +441,9 @@
 
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
-
+import user1 from '../../images/user1.jpg'
+import user2 from '../../images/user2.jpg'
+import user3 from '../../images/user3.jpg'
 const CustomerReviews = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -451,19 +453,19 @@ const CustomerReviews = () => {
   const allCustomers = [
     {
       name: "Chandra",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop",
+      image: user1,
       rating: 5,
       review: "Amazing food and service!"
     },
     {
-      name: "Suhana",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop",
+      name: "sofia",
+      image: user2,
       rating: 5,
       review: "Best dining experience ever!"
     },
     {
       name: "Aditya",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop",
+      image: user3,
       rating: 4,
       review: "Delicious food, great ambiance!"
     },
