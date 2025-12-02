@@ -49,7 +49,6 @@ const FoodCards = ({ id, image, name, description, type }) => {
           </button>
         </div>
             </motion.div>
-
         <div className="absolute bottom-3 right-4">
           <img
             src={type === "Veg" ? vegIcon : nonVegIcon}
