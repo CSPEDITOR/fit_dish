@@ -39,6 +39,8 @@ function App() {
         {/* <Route path = */}
         <Route path="/userprofile" element={<UserProfile/>} />
         <Route path="/plans" element={<Plans/>} />
+        <Route path="/foods" element={<Food />} />
+        <Route path="/foods/:id" element={<FoodDetail />} />
         <Route path="/bmi" element={<BMI/>} />
         </Route>
 
