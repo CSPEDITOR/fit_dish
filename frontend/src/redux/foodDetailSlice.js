@@ -12,11 +12,18 @@ export const fetchFoodById = createAsyncThunk(
   "foods/fetchById",
   async (id, { rejectWithValue }) => {
     try {
-      const res = await axios.get(`${API_URL}/${id}`);
+      const token = JSON.parse(localStorage.getItem("userInfo"))?.token;
+      const res = await axios.get(`${API_URL}/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       return res.data.data;
     } catch (err) {
       return rejectWithValue(
-        err.response?.data?.msg || err.response?.data?.message || "Failed to fetch food"
+        err.response?.data?.msg ||
+          err.response?.data?.message ||
+          "Failed to fetch food"
       );
     }
   }

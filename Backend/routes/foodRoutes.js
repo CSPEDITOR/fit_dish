@@ -13,6 +13,6 @@ router.put("/:id", protect, adminOnly, upload.single("image"), updateFood);
 router.get("/", getFoods);
 
 // ⭐ Single food
-router.get("/:id", getFoodById);
+router.get("/:id",protect, getFoodById);
 
 export default router;

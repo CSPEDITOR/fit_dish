@@ -17,6 +17,7 @@ import BMI from "./pages/UserDashbord/BMI";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import ResetPassword from "./pages/Auth/ResetPassword";
 import UserDashbordLayout from "./Layout/UserDashbordLayout";
+import ProtectedRoute from "./pages/Auth/ProtectedRoute";
 
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/food" element={<Food />} />
-          <Route path="/food/:id" element={<FoodDetail />} />
+          {/* <Route path="/food/:id" element={<FoodDetail />} /> */}
           <Route path="/about" element={<AboutUs />} />
         </Route>
 
@@ -35,12 +36,28 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         {/* user dash bord */}
 
-        <Route element={<UserDashbordLayout/>}>
-        {/* <Route path = */}
+        {/* <Route element={<UserDashbordLayout/>}>
+        
         <Route path="/userprofile" element={<UserProfile/>} />
         <Route path="/plans" element={<Plans/>} />
+        <Route path="/foods" element={<Food />} />
+        <Route path="/food/:id" element={<FoodDetail />} />
         <Route path="/bmi" element={<BMI/>} />
-        </Route>
+        </Route> */}
+        <Route
+  element={
+    <ProtectedRoute>
+      <UserDashbordLayout />
+    </ProtectedRoute>
+  }
+>
+  <Route path="/userprofile" element={<UserProfile />} />
+  <Route path="/plans" element={<Plans />} />
+  <Route path="/foods" element={<Food />} />
+  <Route path="/food/:id" element={<FoodDetail />} />
+  <Route path="/bmi" element={<BMI />} />
+</Route>
+
 
 
 

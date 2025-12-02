@@ -18,6 +18,7 @@ const Sidebar = () => {
   const menuItems = [
     { name: "Profile", path: "/userprofile" },
     { name: "Plans", path: "/plans" },
+    { name: "Foods", path: "/foods" },
     { name: "BMI", path: "/bmi" },
   ];
 

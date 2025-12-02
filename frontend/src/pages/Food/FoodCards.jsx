@@ -8,6 +8,15 @@ import { FaArrowRight } from "react-icons/fa";
 
 const FoodCards = ({ id, image, name, description, type }) => {
   const navigate = useNavigate();
+  const isLoggedIn = !!localStorage.getItem("userToken");  // change key if needed
+
+  const handleNavigate = () => {
+    if (!isLoggedIn) {
+      navigate("/signin");
+    } else {
+      navigate(`/food/${id}`);
+    }
+  };
 
   return (
     <motion.div
@@ -49,7 +58,6 @@ const FoodCards = ({ id, image, name, description, type }) => {
           </button>
         </div>
             </motion.div>
-
         <div className="absolute bottom-3 right-4">
           <img
             src={type === "Veg" ? vegIcon : nonVegIcon}
