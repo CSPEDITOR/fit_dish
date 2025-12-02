@@ -456,7 +456,7 @@ const CustomerReviews = () => {
       review: "Amazing food and service!"
     },
     {
-      name: "Sofia",
+      name: "Suhana",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop",
       rating: 5,
       review: "Best dining experience ever!"

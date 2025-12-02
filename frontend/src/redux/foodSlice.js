@@ -4,9 +4,6 @@ import axios from "axios";
 
 const API_URL = `${import.meta.env.VITE_BASE_URL}/api/foods`;
 
-/* ---------------------------------------------
-   FETCH ALL FOODS
----------------------------------------------- */
 export const fetchFoods = createAsyncThunk(
   "foods/fetchAll",
   async (_, { rejectWithValue }) => {
@@ -21,19 +18,12 @@ export const fetchFoods = createAsyncThunk(
   }
 );
 
-
-/* ---------------------------------------------
-   INITIAL STATE
----------------------------------------------- */
 const initialState = {
   list: [],
   loading: false,
   error: null,
 };
 
-/* ---------------------------------------------
-   SLICE
----------------------------------------------- */
 const foodSlice = createSlice({
   name: "foods",
   initialState,
@@ -59,7 +49,7 @@ const foodSlice = createSlice({
       .addCase(fetchFoods.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
-      })
+      });
   },
 });
 

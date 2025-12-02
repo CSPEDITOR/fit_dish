@@ -9,6 +9,8 @@ import {
   updateUserProfile,
 } from "../../redux/userProfileSlice";
 import { fetchAvoidFoodList } from "../../redux/avoidFoodSlice";
+import { fetchFoods } from "../../redux/foodSlice";
+
 import { fetchDiseaseList } from "../../redux/diseaseSlice";
 
 Modal.setAppElement("#root");
@@ -20,6 +22,7 @@ const UserProfile = () => {
     error,
   } = useSelector((state) => state.profile);
 
+  const { list: foods } = useSelector((state) => state.foods);
   const { list: avoidFoodList } = useSelector((state) => state.avoidFood);
   const { list: diseaseList } = useSelector((state) => state.disease);
 
@@ -50,6 +53,7 @@ const UserProfile = () => {
 
   useEffect(() => {
     dispatch(fetchUserProfile());
+    dispatch(fetchFoods());
     dispatch(fetchDiseaseList());
     dispatch(fetchAvoidFoodList());
   }, [dispatch]);
@@ -64,14 +68,23 @@ const UserProfile = () => {
     }
   }, [userInfo]);
 
+  // useEffect(() => {
+  //   if (!foodSearch.trim()) return setFilteredFoods([]);
+  //   setFilteredFoods(
+  //     avoidFoodList.filter((food) =>
+  //       food.name.toLowerCase().includes(foodSearch.toLowerCase())
+  //     )
+  //   );
+  // }, [foodSearch, avoidFoodList]);
+
   useEffect(() => {
     if (!foodSearch.trim()) return setFilteredFoods([]);
     setFilteredFoods(
-      avoidFoodList.filter((food) =>
+      foods.filter((food) =>
         food.name.toLowerCase().includes(foodSearch.toLowerCase())
       )
     );
-  }, [foodSearch, avoidFoodList]);
+  }, [foodSearch, foods]);
 
   useEffect(() => {
     if (!diseaseSearch.trim()) return setFilteredDiseases([]);
@@ -196,8 +209,6 @@ const UserProfile = () => {
 
   return (
     <>
-      
-
       <div className="flex flex-col items-center justify-center min-h-screen p-6 ">
         {loading && (
           <div className="fixed top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded">
@@ -416,49 +427,6 @@ const UserProfile = () => {
             />
           </div>
 
-          {/* <div className="flex flex-col">
-            <label className="font-semibold text-gray-700 mb-1">
-              Food Type:
-            </label>
-            <input
-              type="text"
-              name="foodType"
-              value={formData.foodType}
-              onChange={handleChange}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2"
-            />
-          </div> */}
-
-          <div className="flex flex-col">
-            <label className="font-semibold text-gray-700 mb-1">
-              Food Type:
-            </label>
-
-            <div className="flex items-center gap-6">
-              <label className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="foodType"
-                  value="veg"
-                  checked={formData.foodType === "veg"}
-                  onChange={handleChange}
-                />
-                <span>Veg</span>
-              </label>
-
-              <label className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="foodType"
-                  value="non-veg"
-                  checked={formData.foodType === "non-veg"}
-                  onChange={handleChange}
-                />
-                <span>Non-Veg</span>
-              </label>
-            </div>
-          </div>
-
           <div className="flex flex-col">
             <label className="font-semibold text-gray-700 mb-1">
               Avoid Food:
@@ -474,7 +442,7 @@ const UserProfile = () => {
 
             <div className="flex flex-wrap gap-2 mt-2">
               {formData.avoidFood.map((id) => {
-                const item = avoidFoodList.find((f) => f._id === id);
+                const item = foods.find((f) => f._id === id);
                 const displayName = item?.name || "Unknown";
 
                 return (
@@ -506,7 +474,7 @@ const UserProfile = () => {
                   <div
                     key={f._id}
                     onClick={() => {
-                      if (!formData.avoidFood.includes(f.name)) {
+                      if (!formData.avoidFood.includes(f._id)) {
                         setFormData((p) => ({
                           ...p,
                           avoidFood: [...p.avoidFood, f._id],
@@ -524,7 +492,7 @@ const UserProfile = () => {
             )}
           </div>
 
-          <div className="flex flex-col sm:col-span-2">
+          <div className="flex flex-col ">
             <label className="font-semibold text-gray-700 mb-2">
               Disease (if any):
             </label>
@@ -589,7 +557,37 @@ const UserProfile = () => {
             )}
           </div>
 
-          <div className="flex flex-col sm:col-span-2 mt-3">
+          <div className="flex flex-col">
+            <label className="font-semibold text-gray-700 mb-1">
+              Food Type:
+            </label>
+
+            <div className="flex items-center gap-6">
+              <label className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="foodType"
+                  value="veg"
+                  checked={formData.foodType === "veg"}
+                  onChange={handleChange}
+                />
+                <span>Veg</span>
+              </label>
+
+              <label className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="foodType"
+                  value="non-veg"
+                  checked={formData.foodType === "non-veg"}
+                  onChange={handleChange}
+                />
+                <span>Non-Veg</span>
+              </label>
+            </div>
+          </div>
+
+          <div className="flex flex-col 3">
             <label className="font-semibold text-gray-700 mb-1">
               Profile Image:
             </label>
