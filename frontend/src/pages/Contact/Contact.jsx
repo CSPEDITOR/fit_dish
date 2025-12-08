@@ -56,7 +56,7 @@ const Contact = () => {
             }}
             className="bg-white p-8 rounded-3xl shadow-lg border"
           >
-            <h2 className="text-2xl font-bold mb-6 text-[#CC2405]">
+            <h2 className=" text-center text-2xl font-bold mb-6 text-[#CC2405]">
               Send Us a Message
             </h2>
 
