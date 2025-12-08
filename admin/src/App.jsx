@@ -5,6 +5,7 @@ import AddFood from "./pages/AddFood";
 import ProtectedRoute from "./component/ProtectedRoute";
 import AddDisease from "./pages/AddDisease";
 import AdminUsers from "./pages/AdminUser";
+import ManageFoods from "./pages/ManageFoods";
 
 export default function App() {
   return (
@@ -25,10 +26,11 @@ export default function App() {
         path="/add-food"
         element={
           <ProtectedRoute>
-            <AddFood/>
+            <AddFood />
           </ProtectedRoute>
         }
       />
+
       <Route
         path="/add-disease"
         element={
@@ -37,15 +39,25 @@ export default function App() {
           </ProtectedRoute>
         }
       />
+
       <Route
         path="/admin/users"
         element={
           <ProtectedRoute>
-            <AdminUsers/>
+            <AdminUsers />
           </ProtectedRoute>
         }
       />
 
+      {/* ✅ FIXED ROUTE */}
+      <Route
+        path="/manage-foods"
+        element={
+          <ProtectedRoute>
+            <ManageFoods />
+          </ProtectedRoute>
+        }
+      />
     </Routes>
   );
 }
