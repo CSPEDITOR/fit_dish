@@ -38,14 +38,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         {/* user dash bord */}
 
-        {/* <Route element={<UserDashbordLayout/>}>
-        
-        <Route path="/userprofile" element={<UserProfile/>} />
-        <Route path="/plans" element={<Plans/>} />
-        <Route path="/foods" element={<Food />} />
-        <Route path="/food/:id" element={<FoodDetail />} />
-        <Route path="/bmi" element={<BMI/>} />
-        </Route> */}
+        {/* */}
         <Route
   element={
     <ProtectedRoute>
