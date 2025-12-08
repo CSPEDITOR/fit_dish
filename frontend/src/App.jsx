@@ -12,6 +12,7 @@ import UserProfile from "./pages/UserDashbord/UserProfile";
 import FoodDetail from "./pages/Food/FoodDetail";
 import Plans from "./pages/UserDashbord/Plans";
 import BMI from "./pages/UserDashbord/BMI";
+import Contact from "./pages/Contact/Contact";
 
 
 import ForgotPassword from "./pages/Auth/ForgotPassword";
@@ -30,6 +31,7 @@ function App() {
           <Route path="/food" element={<Food />} />
           {/* <Route path="/food/:id" element={<FoodDetail />} /> */}
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<Contact />} />
         </Route>
 
         <Route path="/login" element={<Login />} />

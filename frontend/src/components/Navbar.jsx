@@ -390,6 +390,8 @@ function Navbar() {
     { name: "Categories", path: "/categories" },
     { name: "Food", path: "/food" },
     { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
+
   ];
 
   return (
