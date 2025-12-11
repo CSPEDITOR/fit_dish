@@ -120,7 +120,7 @@ const [showFilterMenu, setShowFilterMenu] = useState(false);
 
 
   return (
-    <div className="min-h-screen  py-8 px-4">
+    <div className="min-h-screen py-8 px-4">
       {/* Header Section with Animations */}
       <motion.div 
         initial="hidden"
