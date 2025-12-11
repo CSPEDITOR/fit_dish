@@ -56,14 +56,14 @@ const FoodDetail = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h">
             {/* Left: Image */}
             <div className="col-span-1 flex flex-col items-center ">
-              <div className="w-full max-w-md ">
+              <div className="w-[300px] h-[300px] max-w-md ">
                 <img
                   src={
                     resolveImage(food.image) ||
                     "/images/default_food_image.png"
                   }
                   alt={food.name}
-                  className="w-full h-72 object-cover rounded-2xl shadow-md bg-[#FBEBEB] hover:bg-[#CB3432]"
+                  className="w-full h-full p-5 object-contain  rounded-2xl shadow-md bg-[#FBEBEB] hover:bg-[#CB3432]"
                 />
               </div>
 
