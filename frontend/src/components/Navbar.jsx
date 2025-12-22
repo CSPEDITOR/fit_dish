@@ -350,12 +350,13 @@
 
 // export default Navbar;
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import logo from "../../src/images/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import profileImg from "../images/default_profile_image.png";
 import { fetchUserProfile } from "../redux/userProfileSlice";
 import { clearProfile } from "../redux/userProfileSlice";
+
 
 
 import { Menu, X } from "lucide-react"; // 🧭 for icons (built into shadcn/lucide)
@@ -368,6 +369,8 @@ function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false); // 🍔 mobile menu state
   const userInfo = useSelector((state) => state.profile.data);
+  const dropdownRef = useRef(null);
+
 
   useEffect(() => {
   if (!userInfo) {
@@ -377,6 +380,26 @@ function Navbar() {
     }
   }
 }, [dispatch]);
+
+useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target)
+    ) {
+      setDropdownOpen(false);
+    }
+  };
+
+  if (dropdownOpen) {
+    document.addEventListener("mousedown", handleClickOutside);
+  }
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, [dropdownOpen]);
+
 
   
 
@@ -444,7 +467,10 @@ const handleLogout = () => {
               
 
               {dropdownOpen && (
-                <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg w-40 flex flex-col z-50 transition-all duration-300">
+                <div 
+                ref={dropdownRef}
+                className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg w-40 flex flex-col z-50 transition-all duration-300">
+                   
                   <Link
                     to="/userprofile"
                     className="px-4 py-2 text-gray-700 hover:bg-[#cc2405] hover:text-white transition-all duration-200"
