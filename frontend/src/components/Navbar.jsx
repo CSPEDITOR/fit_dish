@@ -354,36 +354,39 @@ import React, { useState, useEffect } from "react";
 import logo from "../../src/images/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import profileImg from "../images/default_profile_image.png";
+import { fetchUserProfile } from "../redux/userProfileSlice";
+import { clearProfile } from "../redux/userProfileSlice";
+
+
 import { Menu, X } from "lucide-react"; // 🧭 for icons (built into shadcn/lucide)
 import { logout } from "../redux/userSlice"; 
-import { useDispatch } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 function Navbar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [userInfo, setUserInfo] = useState(null);
+  // const [userInfo, setUserInfo] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false); // 🍔 mobile menu state
+  const userInfo = useSelector((state) => state.profile.data);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("userInfo");
-    if (storedUser) {
-      setUserInfo(JSON.parse(storedUser));
+  if (!userInfo) {
+    const token = JSON.parse(localStorage.getItem("userInfo"))?.token;
+    if (token) {
+      dispatch(fetchUserProfile());
     }
-  }, []);
+  }
+}, [dispatch]);
 
-  // const handleLogout = () => {
-  //   localStorage.removeItem("userInfo");
-  //   setUserInfo(null);
-  //   setDropdownOpen(false);
-  //   setTimeout(() => navigate("/login", { replace: true }), 100);
-  // };
-  const handleLogout = () => {
-  dispatch(logout());
-   // ✅ clears Redux + localStorage both
-  setUserInfo(null);
+  
+
+const handleLogout = () => {
+  dispatch(logout());        // clears auth + localStorage
+  dispatch(clearProfile());  // clears profile Redux state
   setDropdownOpen(false);
-  setTimeout(() => navigate("/", { replace: true }), 100);
+  navigate("/", { replace: true });
 };
+
 
   const links = [
     { name: "Home", path: "/" },
@@ -393,10 +396,13 @@ function Navbar() {
     { name: "Contact", path: "/contact" },
 
   ];
+  console.log("Navbar profile:", userInfo);
 
   return (
+    
     <nav className="sticky top-0 z-50 bg-[#fef1e1] md:shadow-none shadow sm:px-20">
       <div className="flex justify-between items-center w-full px-6 py-3">
+        
         {/* --- Logo --- */}
         <Link to={"/"}>
           <div className="flex items-center gap-2">
@@ -430,11 +436,12 @@ function Navbar() {
           ) : (
             <div className="relative">
               <img
-                src={userInfo.image || profileImg}
+                src={userInfo?.profileImage || profileImg}
                 alt="profile"
                 className="w-[45px] h-[45px] rounded-full cursor-pointer border-2 border-blue-500 hover:border-[#cc2405] transition-all duration-300"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               />
+              
 
               {dropdownOpen && (
                 <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg w-40 flex flex-col z-50 transition-all duration-300">
