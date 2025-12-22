@@ -6,6 +6,7 @@ import ProtectedRoute from "./component/ProtectedRoute";
 import AddDisease from "./pages/AddDisease";
 import AdminUsers from "./pages/AdminUser";
 import ManageFoods from "./pages/ManageFoods";
+import EditFood from "./pages/EditFood"; // Import the EditFood component
 
 export default function App() {
   return (
@@ -49,12 +50,21 @@ export default function App() {
         }
       />
 
-      {/* ✅ FIXED ROUTE */}
       <Route
         path="/manage-foods"
         element={
           <ProtectedRoute>
             <ManageFoods />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* ✅ ADD THIS NEW ROUTE FOR EDITING FOOD */}
+      <Route
+        path="/edit-food/:id"
+        element={
+          <ProtectedRoute>
+            <EditFood />
           </ProtectedRoute>
         }
       />
