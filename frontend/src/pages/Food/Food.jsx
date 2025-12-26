@@ -101,19 +101,24 @@ const Food = () => {
 
   const applyFilters = (search, type) => {
     let filtered = foods;
-
+    
     if (type !== "all") {
-      filtered = filtered.filter((item) => item.type.toLowerCase() === type);
+      filtered = filtered.filter((item) => item.type.toLowerCase() === type.toLowerCase() );
     }
+    
 
     if (search.trim() !== "") {
       filtered = filtered.filter((item) =>
         item.name.toLowerCase().includes(search.toLowerCase())
       );
     }
+    console.log(filtered);
 
     setFilteredFoods(filtered);
   };
+
+ 
+
 
   return (
     <div className="min-h-screen py-8 px-4">
@@ -223,11 +228,11 @@ const Food = () => {
 
               <button
                 className={`w-full text-left px-3 py-2 rounded ${
-                  filterType === "nonveg" ? "bg-yellow-100" : ""
+                  filterType === "Non-Veg" ? "bg-yellow-100" : ""
                 }`}
                 onClick={() => {
-                  setFilterType("nonveg");
-                  applyFilters(searchTerm, "nonveg");
+                  setFilterType("Non-Veg");
+                  applyFilters(searchTerm, "Non-Veg");
                 }}
               >
                 Non-Veg

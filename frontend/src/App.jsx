@@ -10,7 +10,7 @@ import Food from "./pages/Food/Food";
 import AboutUs from "./pages/Aboutus/AboutUs";
 import UserProfile from "./pages/UserDashbord/UserProfile";
 import FoodDetail from "./pages/Food/FoodDetail";
-import Plans from "./pages/UserDashbord/Plans";
+// import Plans from "./pages/UserDashbord/Plans";
 import BMI from "./pages/UserDashbord/BMI";
 import Contact from "./pages/Contact/Contact";
 
@@ -19,6 +19,7 @@ import ForgotPassword from "./pages/Auth/ForgotPassword";
 import ResetPassword from "./pages/Auth/ResetPassword";
 import UserDashbordLayout from "./Layout/UserDashbordLayout";
 import ProtectedRoute from "./pages/Auth/ProtectedRoute";
+import PlanCalendar from "./pages/UserDashbord/PlanCalendar";
 
 
 function App() {
@@ -47,7 +48,7 @@ function App() {
   }
 >
   <Route path="/userprofile" element={<UserProfile />} />
-  <Route path="/plans" element={<Plans />} />
+  <Route path="/plans" element={<PlanCalendar />} />
   <Route path="/foods" element={<Food />} />
   <Route path="/food/:id" element={<FoodDetail />} />
   <Route path="/bmi" element={<BMI />} />

@@ -9,7 +9,7 @@ export default function EditFood() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
-  
+
   const [form, setForm] = useState({
     name: "",
     type: "",
@@ -45,17 +45,19 @@ export default function EditFood() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        
+
         // Fetch food details
         const foodRes = await API.get(`/api/foods/${id}`);
-        console.log(foodRes)
+        console.log(foodRes);
         const foodData = foodRes.data.data;
-        
+
         // Fetch diseases
-        const diseasesRes = await axios.get("http://localhost:5000/api/diseases");
+        const diseasesRes = await axios.get(
+          "http://localhost:5000/api/diseases"
+        );
         setDiseases(diseasesRes.data);
         setFilteredDiseases(diseasesRes.data);
-        
+
         // Populate form with food data
         setForm({
           name: foodData.name || "",
@@ -72,37 +74,38 @@ export default function EditFood() {
           sugar: foodData.nutrients?.sugar || "",
           vitamins_total: foodData.nutrients?.vitamins_total || "",
           minerals_total: foodData.nutrients?.minerals_total || "",
-          best_time: Array.isArray(foodData.best_time) 
-            ? foodData.best_time.join(", ") 
+          best_time: Array.isArray(foodData.best_time)
+            ? foodData.best_time.join(", ")
             : foodData.best_time || "",
         });
-        
+
         // Set existing image if available
         if (foodData.image) {
           setExistingImage(foodData.image);
         }
-        
+
         // Set vitamins
         if (foodData.vitamins && Array.isArray(foodData.vitamins)) {
-          setVitamins(foodData.vitamins.length > 0 
-            ? foodData.vitamins 
-            : [{ name: "", value: "", unit: "" }]
+          setVitamins(
+            foodData.vitamins.length > 0
+              ? foodData.vitamins
+              : [{ name: "", value: "", unit: "" }]
           );
         }
-        
+
         // Set minerals
         if (foodData.minerals && Array.isArray(foodData.minerals)) {
-          setMinerals(foodData.minerals.length > 0 
-            ? foodData.minerals 
-            : [{ name: "", value: "", unit: "" }]
+          setMinerals(
+            foodData.minerals.length > 0
+              ? foodData.minerals
+              : [{ name: "", value: "", unit: "" }]
           );
         }
-        
+
         // Set selected diseases
         if (foodData.diseases && Array.isArray(foodData.diseases)) {
-          setSelectedDiseases(foodData.diseases.map(d => d._id || d));
+          setSelectedDiseases(foodData.diseases.map((d) => d._id || d));
         }
-        
       } catch (error) {
         console.error("Error fetching data:", error);
         alert("Failed to load food details. Please try again.");
@@ -111,7 +114,7 @@ export default function EditFood() {
         setLoading(false);
       }
     };
-    
+
     fetchData();
   }, [id, navigate]);
 
@@ -217,7 +220,12 @@ export default function EditFood() {
     // Best time → array
     fd.append(
       "best_time",
-      JSON.stringify(form.best_time.split(",").map((t) => t.trim()).filter(t => t !== ""))
+      JSON.stringify(
+        form.best_time
+          .split(",")
+          .map((t) => t.trim())
+          .filter((t) => t !== "")
+      )
     );
 
     // Diseases → array
@@ -226,8 +234,14 @@ export default function EditFood() {
     });
 
     // Vitamins & Minerals
-    fd.append("vitamins", JSON.stringify(vitamins.filter(v => v.name.trim() !== "")));
-    fd.append("minerals", JSON.stringify(minerals.filter(m => m.name.trim() !== "")));
+    fd.append(
+      "vitamins",
+      JSON.stringify(vitamins.filter((v) => v.name.trim() !== ""))
+    );
+    fd.append(
+      "minerals",
+      JSON.stringify(minerals.filter((m) => m.name.trim() !== ""))
+    );
 
     // Image - only append if new image is uploaded
     if (image) {
@@ -241,7 +255,6 @@ export default function EditFood() {
 
       alert("Food Updated Successfully!");
       navigate("/manage-foods");
-      
     } catch (err) {
       console.log(err);
       alert(err.response?.data?.msg || "Error updating food");
@@ -273,7 +286,7 @@ export default function EditFood() {
   return (
     <>
       <div className="sticky top-0">
-        <Navbar/>
+        <Navbar />
       </div>
       <div className="min-h-screen bg-[#FEF1E1] p-6 md:p-10">
         <div className="max-w-6xl mx-auto">
@@ -283,9 +296,12 @@ export default function EditFood() {
               <span className="text-4xl">✏️</span>
               Edit Food Item
             </h1>
-            <p className="text-gray-600">Update the details of your food item</p>
+            <p className="text-gray-600">
+              Update the details of your food item
+            </p>
             <div className="mt-2 text-sm text-gray-500">
-              Editing: <span className="font-semibold text-green-600">{form.name}</span>
+              Editing:{" "}
+              <span className="font-semibold text-green-600">{form.name}</span>
             </div>
           </div>
 
@@ -296,10 +312,12 @@ export default function EditFood() {
                 <div className="w-1 h-6 bg-green-600 rounded-full"></div>
                 Basic Information
               </h2>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Food Name *</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Food Name *
+                  </label>
                   <input
                     name="name"
                     value={form.name}
@@ -311,7 +329,9 @@ export default function EditFood() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Type *</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Type *
+                  </label>
                   <select
                     name="type"
                     value={form.type}
@@ -327,7 +347,9 @@ export default function EditFood() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Category *</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Category *
+                  </label>
                   <input
                     name="category"
                     value={form.category}
@@ -339,7 +361,9 @@ export default function EditFood() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Price ($) *</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Price ($) *
+                  </label>
                   <input
                     name="price"
                     value={form.price}
@@ -353,7 +377,9 @@ export default function EditFood() {
                 </div>
 
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Location
+                  </label>
                   <input
                     name="location"
                     value={form.location}
@@ -364,7 +390,9 @@ export default function EditFood() {
                 </div>
 
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Description *</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Description *
+                  </label>
                   <textarea
                     name="description"
                     value={form.description}
@@ -384,10 +412,12 @@ export default function EditFood() {
                 <div className="w-1 h-6 bg-blue-600 rounded-full"></div>
                 Nutritional Information
               </h2>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Calories (kcal)</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Calories (kcal)
+                  </label>
                   <input
                     name="calories"
                     value={form.calories}
@@ -400,7 +430,9 @@ export default function EditFood() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Protein (g)</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Protein (g)
+                  </label>
                   <input
                     name="protein"
                     value={form.protein}
@@ -413,7 +445,9 @@ export default function EditFood() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Carbohydrates (g)</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Carbohydrates (g)
+                  </label>
                   <input
                     name="carbohydrates"
                     value={form.carbohydrates}
@@ -426,7 +460,9 @@ export default function EditFood() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Fats (g)</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Fats (g)
+                  </label>
                   <input
                     name="fats"
                     value={form.fats}
@@ -439,7 +475,9 @@ export default function EditFood() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Fiber (g)</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Fiber (g)
+                  </label>
                   <input
                     name="fiber"
                     value={form.fiber}
@@ -452,7 +490,9 @@ export default function EditFood() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Sugar (g)</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Sugar (g)
+                  </label>
                   <input
                     name="sugar"
                     value={form.sugar}
@@ -465,7 +505,9 @@ export default function EditFood() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Total Vitamins (mg)</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Total Vitamins (mg)
+                  </label>
                   <input
                     name="vitamins_total"
                     value={form.vitamins_total}
@@ -478,7 +520,9 @@ export default function EditFood() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Total Minerals (mg)</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Total Minerals (mg)
+                  </label>
                   <input
                     name="minerals_total"
                     value={form.minerals_total}
@@ -511,12 +555,17 @@ export default function EditFood() {
 
               <div className="space-y-4">
                 {vitamins.map((vit, index) => (
-                  <div key={index} className="flex gap-3 items-center bg-orange-50 p-4 rounded-lg">
+                  <div
+                    key={index}
+                    className="flex gap-3 items-center bg-orange-50 p-4 rounded-lg"
+                  >
                     <input
                       type="text"
                       placeholder="Vitamin Name (e.g., Vitamin C)"
                       value={vit.name}
-                      onChange={(e) => handleVitaminChange(index, "name", e.target.value)}
+                      onChange={(e) =>
+                        handleVitaminChange(index, "name", e.target.value)
+                      }
                       className="flex-1 p-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition"
                     />
 
@@ -525,7 +574,9 @@ export default function EditFood() {
                       placeholder="Value"
                       step="any"
                       value={vit.value}
-                      onChange={(e) => handleVitaminChange(index, "value", e.target.value)}
+                      onChange={(e) =>
+                        handleVitaminChange(index, "value", e.target.value)
+                      }
                       className="w-28 p-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition"
                     />
 
@@ -533,7 +584,9 @@ export default function EditFood() {
                       type="text"
                       placeholder="Unit"
                       value={vit.unit}
-                      onChange={(e) => handleVitaminChange(index, "unit", e.target.value)}
+                      onChange={(e) =>
+                        handleVitaminChange(index, "unit", e.target.value)
+                      }
                       className="w-24 p-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition"
                     />
 
@@ -568,12 +621,17 @@ export default function EditFood() {
 
               <div className="space-y-4">
                 {minerals.map((min, index) => (
-                  <div key={index} className="flex gap-3 items-center bg-purple-50 p-4 rounded-lg">
+                  <div
+                    key={index}
+                    className="flex gap-3 items-center bg-purple-50 p-4 rounded-lg"
+                  >
                     <input
                       type="text"
                       placeholder="Mineral Name (e.g., Iron)"
                       value={min.name}
-                      onChange={(e) => handleMineralChange(index, "name", e.target.value)}
+                      onChange={(e) =>
+                        handleMineralChange(index, "name", e.target.value)
+                      }
                       className="flex-1 p-3 border border-purple-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
                     />
 
@@ -582,7 +640,9 @@ export default function EditFood() {
                       placeholder="Value"
                       step="any"
                       value={min.value}
-                      onChange={(e) => handleMineralChange(index, "value", e.target.value)}
+                      onChange={(e) =>
+                        handleMineralChange(index, "value", e.target.value)
+                      }
                       className="w-28 p-3 border border-purple-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
                     />
 
@@ -590,7 +650,9 @@ export default function EditFood() {
                       type="text"
                       placeholder="Unit"
                       value={min.unit}
-                      onChange={(e) => handleMineralChange(index, "unit", e.target.value)}
+                      onChange={(e) =>
+                        handleMineralChange(index, "unit", e.target.value)
+                      }
                       className="w-24 p-3 border border-purple-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
                     />
 
@@ -612,10 +674,12 @@ export default function EditFood() {
                 <div className="w-1 h-6 bg-pink-600 rounded-full"></div>
                 Health Information & Image
               </h2>
-              
+
               <div className="grid grid-cols-1 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Best Time to Consume</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Best Time to Consume
+                  </label>
                   <input
                     name="best_time"
                     value={form.best_time}
@@ -626,7 +690,9 @@ export default function EditFood() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Related Diseases (Searchable)</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Related Diseases (Searchable)
+                  </label>
                   <div className="relative">
                     <input
                       type="text"
@@ -634,40 +700,52 @@ export default function EditFood() {
                       value={diseaseSearch}
                       onChange={(e) => setDiseaseSearch(e.target.value)}
                       onFocus={() => setShowDiseaseDropdown(true)}
-                      onBlur={() => setTimeout(() => setShowDiseaseDropdown(false), 200)}
+                      onBlur={() =>
+                        setTimeout(() => setShowDiseaseDropdown(false), 500)
+                      }
                       className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent transition"
                     />
-                    
+
                     {showDiseaseDropdown && (
                       <div className="absolute z-10 w-full mt-2 bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-y-auto">
                         {filteredDiseases.length > 0 ? (
                           filteredDiseases.map((disease) => (
                             <div
                               key={disease._id}
-                              onClick={() => toggleDiseaseSelection(disease._id)}
+                              onClick={() =>
+                                toggleDiseaseSelection(disease._id)
+                              }
                               className={`p-3 cursor-pointer hover:bg-pink-50 transition ${
-                                selectedDiseases.includes(disease._id) ? "bg-pink-100" : ""
+                                selectedDiseases.includes(disease._id)
+                                  ? "bg-pink-100"
+                                  : ""
                               }`}
                             >
                               <div className="flex items-center justify-between">
                                 <span>{disease.name}</span>
                                 {selectedDiseases.includes(disease._id) && (
-                                  <span className="text-pink-600 font-bold">✓</span>
+                                  <span className="text-pink-600 font-bold">
+                                    ✓
+                                  </span>
                                 )}
                               </div>
                             </div>
                           ))
                         ) : (
-                          <div className="p-3 text-gray-500 text-center">No diseases found</div>
+                          <div className="p-3 text-gray-500 text-center">
+                            No diseases found
+                          </div>
                         )}
                       </div>
                     )}
                   </div>
-                  
+
                   {selectedDiseases.length > 0 && (
                     <div className="mt-3 flex flex-wrap gap-2">
                       {selectedDiseases.map((diseaseId) => {
-                        const disease = diseases.find((d) => d._id === diseaseId);
+                        const disease = diseases.find(
+                          (d) => d._id === diseaseId
+                        );
                         return disease ? (
                           <span
                             key={diseaseId}
@@ -687,58 +765,70 @@ export default function EditFood() {
                     </div>
                   )}
                   <p className="text-xs text-gray-500 mt-2">
-                    {diseases.length} diseases available • Click to select multiple
+                    {diseases.length} diseases available • Click to select
+                    multiple
                   </p>
                 </div>
 
                 <div>
-  <label className="block text-sm font-medium text-gray-700 mb-2">Food Image</label>
-  <div className="flex items-start gap-4">
-    <label className="flex-1 flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg p-6 cursor-pointer hover:border-pink-500 transition min-h-[200px]">
-      <span className="text-4xl mb-2">📤</span>
-      <span className="text-sm text-gray-600">
-        {existingImage ? "Click to change image" : "Click to upload image"}
-      </span>
-      {image && <span className="text-xs text-green-600 mt-1">✓ {image.name}</span>}
-      {existingImage && !image && (
-        <span className="text-xs text-blue-600 mt-1">✓ Current image exists</span>
-      )}
-      <input
-        type="file"
-        className="hidden"
-        accept="image/*"
-        onChange={handleImageChange}
-      />
-    </label>
-    
-    {imagePreview ? (
-      <div className="w-32 h-32 rounded-lg overflow-hidden border-2 border-pink-200 shadow-md flex-shrink-0">
-        <img 
-          src={imagePreview} 
-          alt="Preview" 
-          className="w-full h-full object-contain bg-gray-100 p-1" 
-        />
-      </div>
-    ) : existingImage ? (
-      <div className="relative flex-shrink-0">
-        <div className="w-32 h-32 rounded-lg overflow-hidden border-2 border-blue-200 shadow-md">
-          <img 
-            src={existingImage} 
-            alt="Current" 
-            className="w-full h-full object-contain bg-gray-100 p-1"
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src = "https://via.placeholder.com/128x128?text=No+Image";
-            }}
-          />
-        </div>
-        <div className="absolute -top-2 -right-2 bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
-          Current
-        </div>
-      </div>
-    ) : null}
-  </div>
-</div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Food Image
+                  </label>
+                  <div className="flex items-start gap-4">
+                    <label className="flex-1 flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg p-6 cursor-pointer hover:border-pink-500 transition min-h-[200px]">
+                      <span className="text-4xl mb-2">📤</span>
+                      <span className="text-sm text-gray-600">
+                        {existingImage
+                          ? "Click to change image"
+                          : "Click to upload image"}
+                      </span>
+                      {image && (
+                        <span className="text-xs text-green-600 mt-1">
+                          ✓ {image.name}
+                        </span>
+                      )}
+                      {existingImage && !image && (
+                        <span className="text-xs text-blue-600 mt-1">
+                          ✓ Current image exists
+                        </span>
+                      )}
+                      <input
+                        type="file"
+                        className="hidden"
+                        accept="image/*"
+                        onChange={handleImageChange}
+                      />
+                    </label>
+
+                    {imagePreview ? (
+                      <div className="w-32 h-32 rounded-lg overflow-hidden border-2 border-pink-200 shadow-md flex-shrink-0">
+                        <img
+                          src={imagePreview}
+                          alt="Preview"
+                          className="w-full h-full object-contain bg-gray-100 p-1"
+                        />
+                      </div>
+                    ) : existingImage ? (
+                      <div className="relative flex-shrink-0">
+                        <div className="w-32 h-32 rounded-lg overflow-hidden border-2 border-blue-200 shadow-md">
+                          <img
+                            src={existingImage}
+                            alt="Current"
+                            className="w-full h-full object-contain bg-gray-100 p-1"
+                            onError={(e) => {
+                              e.target.onerror = null;
+                              e.target.src =
+                                "https://via.placeholder.com/128x128?text=No+Image";
+                            }}
+                          />
+                        </div>
+                        <div className="absolute -top-2 -right-2 bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
+                          Current
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
               </div>
             </div>
 

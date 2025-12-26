@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odisha Society of Oncology (OSO) - Together We Fight Cancer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-purple: #6A4EC4;
+            --primary-pink: #E91E63;
+            --light-grey: #F5F5F5;
+            --white: #FFFFFF;
+            --dark-grey: #333333;
+            --medium-grey: #666666;
+            --light-pink: #FFF5F8;
+            --light-purple: #F5F2FF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-grey);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-pink);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #d81b60;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(233, 30, 99, 0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-purple);
+            border: 2px solid var(--primary-purple);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-purple);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .btn-small {
+            padding: 8px 20px;
+            font-size: 14px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Header / Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-purple);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary-pink);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-grey);
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-purple);
+        }
+
+        .donate-btn {
+            background-color: var(--primary-pink);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 50px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: var(--primary-purple);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(rgba(106, 78, 196, 0.85), rgba(106, 78, 196, 0.75)), url('https://images.unsplash.com/photo-1516549655669-df6654e435de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Key Highlights */
+        .highlights {
+            background-color: var(--light-grey);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary-purple);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--medium-grey);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .highlight-cards {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .highlight-card {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight-icon {
+            font-size: 48px;
+            color: var(--primary-purple);
+            margin-bottom: 20px;
+        }
+
+        .highlight-card h3 {
+            font-size: 32px;
+            color: var(--primary-pink);
+            margin-bottom: 10px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 36px;
+            color: var(--primary-purple);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 30px;
+            color: var(--medium-grey);
+            font-size: 17px;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--light-grey);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--light-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--primary-purple);
+            font-size: 28px;
+        }
+
+        .service-card h3 {
+            color: var(--primary-purple);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        /* Awareness Programs */
+        .programs-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 30px;
+            padding: 20px 0 40px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-purple) var(--light-grey);
+        }
+
+        .programs-slider::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .programs-slider::-webkit-scrollbar-track {
+            background: var(--light-grey);
+            border-radius: 10px;
+        }
+
+        .programs-slider::-webkit-scrollbar-thumb {
+            background-color: var(--primary-purple);
+            border-radius: 10px;
+        }
+
+        .program-card {
+            min-width: 300px;
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .program-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .program-content {
+            padding: 25px;
+        }
+
+        .program-content h3 {
+            color: var(--primary-purple);
+            margin-bottom: 10px;
+        }
+
+        /* Specialists Section */
+        .specialists {
+            background-color: var(--light-grey);
+        }
+
+        .specialists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .doctor-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .doctor-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .doctor-info {
+            padding: 25px;
+        }
+
+        .doctor-info h3 {
+            color: var(--primary-purple);
+            margin-bottom: 5px;
+        }
+
+        .doctor-specialty {
+            color: var(--primary-pink);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .doctor-exp {
+            color: var(--medium-grey);
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        /* Patient Support CTA */
+        .support-cta {
+            background-color: var(--light-pink);
+            text-align: center;
+        }
+
+        .support-cta h2 {
+            font-size: 36px;
+            color: var(--primary-purple);
+            margin-bottom: 20px;
+        }
+
+        /* Testimonials */
+        .testimonial-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 30px;
+            padding: 20px 0 40px;
+        }
+
+        .testimonial-card {
+            min-width: 350px;
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            margin-right: 20px;
+        }
+
+        .testimonial-info h4 {
+            color: var(--primary-purple);
+            margin-bottom: 5px;
+        }
+
+        .testimonial-text {
+            color: var(--medium-grey);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        /* Donation Section */
+        .donation {
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-pink));
+            color: var(--white);
+            text-align: center;
+        }
+
+        .donation h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .donation p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+            font-size: 18px;
+        }
+
+        .donation-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .donation-icon {
+            text-align: center;
+        }
+
+        .donation-icon i {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222222;
+            color: var(--white);
+            padding: 70px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: var(--white);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--white);
+        }
+
+        .contact-info p {
+            color: #cccccc;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--primary-pink);
+            margin-top: 4px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333333;
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-pink);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444444;
+            color: #aaaaaa;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image, .about-text {
+                width: 100%;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .highlight-cards {
+                flex-direction: column;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Navbar -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">O<span>S</span>O</a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Doctors</a></li>
+                    <li><a href="#">Programs</a></li>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="#" class="donate-btn">Donate</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Together, We Fight Cancer</h1>
+            <p>Odisha Society of Oncology supports cancer patients through awareness, prevention, and care.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">Get Support</a>
+                <a href="#" class="btn btn-outline">Find a Doctor</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Highlights -->
+    <section class="highlights">
+        <div class="container">
+            <div class="highlight-cards">
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>20+</h3>
+                    <p>Years of Service</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>5000+</h3>
+                    <p>Patients Supported</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3>100+</h3>
+                    <p>Awareness & Free Screening Programs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2067&q=80" alt="OSO Team">
+                </div>
+                <div class="about-text">
+                    <h2>Our Mission & Vision</h2>
+                    <p>For over two decades, the Odisha Society of Oncology has been at the forefront of cancer care in Eastern India. Our mission is to reduce the burden of cancer through awareness, prevention, early detection, and compassionate support for patients and their families.</p>
+                    <p>We believe that every individual deserves access to quality cancer care regardless of their socio-economic status. Through our various programs and initiatives, we aim to create a cancer-free Odisha.</p>
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>We provide comprehensive cancer care services to support patients at every stage of their journey.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Cancer Screening</h3>
+                    <p>Early detection through regular screening programs for various types of cancers.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-comments-medical"></i>
+                    </div>
+                    <h3>Treatment Guidance</h3>
+                    <p>Expert guidance on treatment options, hospitals, and specialists.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Patient Counseling</h3>
+                    <p>Psychological support for patients and families dealing with cancer diagnosis.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-prescription-bottle-alt"></i>
+                    </div>
+                    <h3>Radiation & Chemo Support</h3>
+                    <p>Assistance and care coordination for radiation and chemotherapy treatments.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-smoking-ban"></i>
+                    </div>
+                    <h3>Tobacco Awareness</h3>
+                    <p>Community programs to raise awareness about tobacco-related cancer risks.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <h3>Financial Help</h3>
+                    <p>Financial assistance for underprivileged patients for treatment and medication.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awareness Programs -->
+    <section class="programs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Awareness Programs</h2>
+                <p>Our community outreach initiatives to educate and empower people about cancer prevention.</p>
+            </div>
+            <div class="programs-slider">
+                <div class="program-card">
+                    <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')"></div>
+                    <div class="program-content">
+                        <h3>Breast Cancer Awareness</h3>
+                        <p>Monthly workshops and screening camps for early detection of breast cancer.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="program-content">
+                        <h3>Tobacco-Free Odisha</h3>
+                        <p>Campaigns in schools and workplaces to reduce tobacco consumption.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1516549655669-df6654e435de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="program-content">
+                        <h3>Free Screening Camps</h3>
+                        <p>Regular free screening camps in rural and underserved areas.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1598256989800-fe5f95da9787?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="program-content">
+                        <h3>Survivor Meetups</h3>
+                        <p>Monthly support group meetings for cancer survivors to share experiences.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialists Section -->
+    <section class="specialists">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Specialists</h2>
+                <p>Our team of dedicated oncologists and healthcare professionals.</p>
+            </div>
+            <div class="specialists-grid">
+                <div class="doctor-card">
+                    <div class="doctor-img" style="background-image: url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="doctor-info">
+                        <h3>Dr. Priya Sharma</h3>
+                        <div class="doctor-specialty">Medical Oncologist</div>
+                        <div class="doctor-exp">15+ Years Experience</div>
+                        <a href="#" class="btn btn-outline btn-small">View Profile</a>
+                    </div>
+                </div>
+                <div class="doctor-card">
+                    <div class="doctor-img" style="background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="doctor-info">
+                        <h3>Dr. Amit Kumar</h3>
+                        <div class="doctor-specialty">Radiation Oncologist</div>
+                        <div class="doctor-exp">12+ Years Experience</div>
+                        <a href="#" class="btn btn-outline btn-small">View Profile</a>
+                    </div>
+                </div>
+                <div class="doctor-card">
+                    <div class="doctor-img" style="background-image: url('https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="doctor-info">
+                        <h3>Dr. Sanjay Patnaik</h3>
+                        <div class="doctor-specialty">Surgical Oncologist</div>
+                        <div class="doctor-exp">18+ Years Experience</div>
+                        <a href="#" class="btn btn-outline btn-small">View Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Support CTA -->
+    <section class="support-cta">
+        <div class="container">
+            <h2>Need Cancer Support? We're Here for You</h2>
+            <p>Our patient support team is available 24/7 to assist with guidance, resources, and emotional support.</p>
+            <a href="#" class="btn btn-primary">Request Support</a>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Survivor Stories</h2>
+                <p>Inspiring stories of hope and recovery from cancer survivors we've supported.</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-img" style="background-image: url('https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80')"></div>
+                        <div class="testimonial-info">
+                            <h4>Anita Rout</h4>
+                            <p>Breast Cancer Survivor</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "The support from OSO during my chemotherapy was incredible. They not only helped with medical guidance but also provided emotional support that helped me stay positive throughout my journey."
+                    </div>
+                    <a href="#">Read Full Story →</a>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-img" style="background-image: url('https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                        <div class="testimonial-info">
+                            <h4>Rajesh Mohanty</h4>
+                            <p>Oral Cancer Survivor</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "When I was diagnosed with oral cancer, I thought it was the end. But OSO's financial assistance program made treatment possible for me. Today, I'm cancer-free and grateful for their support."
+                    </div>
+                    <a href="#">Read Full Story →</a>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-img" style="background-image: url('https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2067&q=80')"></div>
+                        <div class="testimonial-info">
+                            <h4>Meera Das</h4>
+                            <p>Thyroid Cancer Survivor</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "The counseling sessions provided by OSO helped my family and me cope with the diagnosis. Their holistic approach to cancer care makes them truly special."
+                    </div>
+                    <a href="#">Read Full Story →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section class="donation">
+        <div class="container">
+            <h2>Your Donation Can Save a Life</h2>
+            <p>Every contribution helps us provide free screening, treatment support, and awareness programs to those in need. Join us in the fight against cancer.</p>
+            <a href="#" class="btn btn-primary">Donate Now</a>
+            <div class="donation-icons">
+                <div class="donation-icon">
+                    <i class="fas fa-prescription-bottle-alt"></i>
+                    <p>Treatment</p>
+                </div>
+                <div class="donation-icon">
+                    <i class="fas fa-bullhorn"></i>
+                    <p>Awareness</p>
+                </div>
+                <div class="donation-icon">
+                    <i class="fas fa-search"></i>
+                    <p>Screening</p>
+                </div>
+                <div class="donation-icon">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <p>Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About OSO</h3>
+                    <p style="color: #cccccc; margin-bottom: 20px;">Odisha Society of Oncology is a non-profit organization dedicated to cancer awareness, prevention, treatment support, and patient care in Odisha.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Services</a></li>
+                        <li><a href="#">Our Doctors</a></li>
+                        <li><a href="#">Programs</a></li>
+                        <li><a href="#">Get Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Cancer Screening</a></li>
+                        <li><a href="#">Treatment Guidance</a></li>
+                        <li><a href="#">Patient Counseling</a></li>
+                        <li><a href="#">Financial Assistance</a></li>
+                        <li><a href="#">Tobacco Awareness</a></li>
+                        <li><a href="#">Survivor Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Medical Campus, Bhubaneswar, Odisha 751024</p>
+                        <p><i class="fas fa-phone"></i> +91 674 123 4567</p>
+                        <p><i class="fas fa-envelope"></i> info@oso.org.in</p>
+                        <p><i class="fas fa-clock"></i> Mon-Sat: 9AM-6PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Odisha Society of Oncology. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            const nav = document.querySelector('nav ul');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if(window.innerWidth <= 768) {
+                        document.querySelector('nav ul').style.display = 'none';
+                    }
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if(window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.05)';
+            }
+        });
+
+        // Handle window resize for menu
+        window.addEventListener('resize', function() {
+            const nav = document.querySelector('nav ul');
+            if(window.innerWidth > 768) {
+                nav.style.display = 'flex';
+            } else {
+                nav.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

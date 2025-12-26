@@ -563,7 +563,7 @@ export default function AddFood() {
                     value={diseaseSearch}
                     onChange={(e) => setDiseaseSearch(e.target.value)}
                     onFocus={() => setShowDiseaseDropdown(true)}
-                    onBlur={() => setTimeout(() => setShowDiseaseDropdown(false), 200)}
+                    onBlur={() => setTimeout(() => setShowDiseaseDropdown(false), 600)}
                     className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent transition"
                   />
                   

@@ -329,11 +329,11 @@ const ManageFoods = () => {
                     >
                       <td className="p-4">
                         <div className="flex items-center gap-3">
-                          <div className="relative">
+                          <div className="relative h-[100px] w-[100px]">
                             <img
                               src={getFoodImage(food)}
                               alt={food.name}
-                              className="w-12 h-12 object-cover rounded-lg"
+                              className="w-full h-full object-contain rounded-lg"
                               onError={(e) => handleImageError(e, food.type)}
                             />
                           </div>

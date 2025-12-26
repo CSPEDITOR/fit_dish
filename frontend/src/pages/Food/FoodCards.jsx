@@ -20,14 +20,14 @@ const FoodCards = ({ id, image, name, description, type }) => {
 
   return (
     <motion.div
-      className="bg-[#FBEBEB] rounded-2xl overflow-hidden shadow-lg hover:shadow-1xl transition duration-300 relative"
+      className="bg-[#FBEBEB] rounded-2xl overflow-hidden hover:bg-[#CB3432] shadow-lg hover:shadow-1xl transition duration-300 relative"
       whileHover={{ scale: 1.03 }}
     >
-      <div className="relative transition duration-300 group hover:bg-[#CB3432] cursor-pointer"  onClick={() => navigate(`/food/${id}`)}>
+      <div className="relative transition duration-300 group cursor-pointer"  onClick={() => navigate(`/food/${id}`)}>
         <img
           src={image}
           alt={name}
-          className="w-auto h-40 mx-auto object-cover"
+          className="w-auto h-40 mt-5 mx-auto object-cover"
         />
 
         <div className="p-5 pb-14 h-52">
