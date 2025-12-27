@@ -11,7 +11,8 @@ import {
   CheckCircle,
   Clock,
   Users,
-  Target
+  Target,
+  ArrowLeft
 } from 'lucide-react';
 
 const PlanCalendar = () => {
@@ -93,14 +94,17 @@ const PlanCalendar = () => {
     if (category.title === "Weight Loss") {
       navigate('/plan/weight-loss');
     } else if (category.title === "Weight Gain") {
-      // Add navigation for weight gain
       navigate('/plan/weight-gain');
     } else if (category.title === "Normal Diet") {
-      // Add navigation for normal diet
       navigate('/plan/normal-diet');
     } else if (category.title === "Create Your Plan") {
       navigate('/plan/create');
     }
+  };
+
+  // Add back button to return to My Plans
+  const handleBack = () => {
+    navigate('/plans');
   };
 
   const containerVariants = {
@@ -161,6 +165,15 @@ const PlanCalendar = () => {
       >
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
+          <div className="mb-4">
+            <button
+              onClick={handleBack}
+              className="text-gray-600 hover:text-[#CB3432] transition-colors flex items-center gap-2 mx-auto w-fit"
+            >
+              <ArrowLeft className="w-5 h-5" />
+              Back to My Plans
+            </button>
+          </div>
           <motion.div
             initial={{ scale: 0.5 }}
             animate={{ scale: 1 }}

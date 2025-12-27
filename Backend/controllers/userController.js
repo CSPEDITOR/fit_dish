@@ -17,10 +17,15 @@ export const registerUser = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Set default profile image - use a placeholder or default path
+    const defaultProfileImage = "https://via.placeholder.com/150/cccccc/ffffff?text=User";
+
     const user = await User.create({
       name,
       email,
       password: hashedPassword,
+      profileImage: defaultProfileImage,
+      profileSetupComplete: false,
     });
 
     res.status(201).json({
@@ -182,7 +187,7 @@ export const updateProfile = async (req, res) => {
 
   try {
     const userId = req.user.id;
-    const { name, gender, age, weight, height, foodType, avoidFood, disease } =
+    const { name, gender, age, weight, height, foodType, avoidFood, disease, dailyBudget, profileSetupComplete } =
       req.body;
 
     const user = await User.findById(userId);
@@ -194,6 +199,10 @@ export const updateProfile = async (req, res) => {
     if (weight !== undefined) user.weight = Number(weight);
     if (height !== undefined) user.height = Number(height);
     if (foodType !== undefined) user.foodType = foodType;
+    if (dailyBudget !== undefined) user.dailyBudget = Number(dailyBudget);
+    if (profileSetupComplete !== undefined) {
+      user.profileSetupComplete = profileSetupComplete === "true" || profileSetupComplete === true;
+    }
 
     // Parse arrays if they come as strings
     if (avoidFood) {

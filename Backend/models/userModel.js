@@ -15,6 +15,8 @@ const userSchema = new mongoose.Schema(
     foodType: { type: String, enum: ["veg", "non-veg", "eggetarian"] },
     avoidFood: [{ type: mongoose.Schema.Types.ObjectId, ref: "Food" }],
     disease: [{ type: mongoose.Schema.Types.ObjectId, ref: "Disease" }],
+    dailyBudget: { type: Number }, // Budget per day for 4 meals
+    profileSetupComplete: { type: Boolean, default: false },
     resetToken: { type: String },
     resetTokenExpire: { type: Date },
     role: {

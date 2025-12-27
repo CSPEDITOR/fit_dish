@@ -20,6 +20,10 @@ import ResetPassword from "./pages/Auth/ResetPassword";
 import UserDashbordLayout from "./Layout/UserDashbordLayout";
 import ProtectedRoute from "./pages/Auth/ProtectedRoute";
 import PlanCalendar from "./pages/UserDashbord/PlanCalendar";
+import MealPlanCalendar from "./pages/UserDashbord/MealPlanCalendar";
+import DayMealPlan from "./pages/UserDashbord/DayMealPlan";
+import NutritionDashboard from "./pages/UserDashbord/NutritionDashboard";
+import MyPlans from "./pages/UserDashbord/MyPlans";
 
 
 function App() {
@@ -48,7 +52,11 @@ function App() {
   }
 >
   <Route path="/userprofile" element={<UserProfile />} />
-  <Route path="/plans" element={<PlanCalendar />} />
+  <Route path="/plans" element={<MyPlans />} />
+  <Route path="/plans/select" element={<PlanCalendar />} />
+  <Route path="/plan/:planType" element={<MealPlanCalendar />} />
+  <Route path="/plan/:planType/day/:day" element={<DayMealPlan />} />
+  <Route path="/dashboard" element={<NutritionDashboard />} />
   <Route path="/foods" element={<Food />} />
   <Route path="/food/:id" element={<FoodDetail />} />
   <Route path="/bmi" element={<BMI />} />

@@ -72,8 +72,8 @@ const Signup = () => {
 
   useEffect(() => {
     if (userInfo) {
-      // redirect after successful signup (to dashboard or home)
-      navigate("/");
+      // redirect after successful signup to profile page for setup
+      navigate("/userprofile");
     }
   }, [userInfo, navigate]);
 
