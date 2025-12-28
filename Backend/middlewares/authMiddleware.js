@@ -24,10 +24,15 @@ export const protect = async (req, res, next) => {
 
       next();
     } catch (err) {
-      console.error(err.message);
+      console.error("JWT Error:", err.message);
+      if (err.name === "JsonWebTokenError") {
+        return res.status(401).json({ message: "Invalid token" });
+      } else if (err.name === "TokenExpiredError") {
+        return res.status(401).json({ message: "Token expired" });
+      }
       return res.status(401).json({ message: "Token failed or expired" });
     }
   } else {
-    return res.status(401).json({ message: "No token provided" });
+    return res.status(401).json({ message: "No token provided. Please login." });
   }
 };

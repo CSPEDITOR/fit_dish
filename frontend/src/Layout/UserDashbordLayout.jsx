@@ -28,7 +28,7 @@ const UserDashbordLayout = () => {
   return (
     <>
       <Sidebar />
-      <div className="ml-64 p-6"> 
+      <div className="sm:ml-64 p-6"> 
         <Outlet />   
       </div>
     </>
