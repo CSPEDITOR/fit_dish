@@ -16,7 +16,9 @@ export const fetchFoodById = createAsyncThunk(
       const res = await axios.get(`${API_URL}/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
+          
         },
+        withCredentials: true,
       });
       return res.data.data;
     } catch (err) {
