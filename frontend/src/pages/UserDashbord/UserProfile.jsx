@@ -293,10 +293,10 @@ const UserProfile = () => {
           transition={{ duration: 0.5 }}
           className="max-w-6xl mx-auto"
         >
-          <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+          <div className="bg-white rounded-3xl shadow-xl ">
             {/* Header Section */}
-            <div className="bg-[#cc2405] p-8 md:p-12 relative">
-              <div className="absolute top-6 right-6">
+            <div className="bg-[#cc2405] p-8 md:p-12 relative rounded-3xl ">
+              <div className="absolute top-100 right-22 sm:top-6 sm:right-6">
                 <div className="flex gap-3">
                   {isProfileFilled() ? (
                     <motion.button
@@ -316,7 +316,7 @@ const UserProfile = () => {
                       className="bg-white text-[#cc2405] font-medium py-3 px-6 rounded-xl transition-all duration-300 hover:bg-gray-50 flex items-center gap-2 shadow-lg"
                     >
                       <Settings className="w-4 h-4" />
-                      Setup Profile
+                      Profile Setup 
                     </motion.button>
                   )}
                 </div>
@@ -407,8 +407,7 @@ const UserProfile = () => {
               </div>
             </div>
 
-            {/* Profile Details Grid */}
-            <div className="p-8 md:p-12">
+            {isProfileFilled() ? ( <div className="p-8 md:p-12 ">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
                 {userInfo?.gender && (
                   <ProfileInfoCard
@@ -554,7 +553,10 @@ const UserProfile = () => {
                   </motion.div>
                 )}
               </div>
-            </div>
+            </div>) : (<div></div> )}
+
+            {/* Profile Details Grid */}
+           
           </div>
         </motion.div>
       </div>
