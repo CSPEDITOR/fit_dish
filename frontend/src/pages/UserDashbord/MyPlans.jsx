@@ -34,9 +34,40 @@ const MyPlans = () => {
     return null;
   };
 
+  // ADD these states at top
+  const [profileChecked, setProfileChecked] = useState(false);
+  const [profileComplete, setProfileComplete] = useState(false);
+  
+  const USER_API = `${import.meta.env.VITE_BASE_URL}/api/users/profile`;
+  
+  // UPDATE useEffect
   useEffect(() => {
-    fetchAllPlans();
-  }, []);
+  checkUserProfile();
+}, []);
+
+
+const checkUserProfile = async () => {
+  try {
+    const token = getToken();
+    if (!token) {
+      navigate("/login");
+      return;
+    }
+
+    const res = await axios.get(USER_API, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    setProfileComplete(res.data.profileSetupComplete === true);
+  } catch (err) {
+    console.error("Profile check failed", err);
+  } finally {
+    setProfileChecked(true);
+  }
+};
+
 
   const fetchAllPlans = async () => {
     try {
@@ -153,13 +184,43 @@ const MyPlans = () => {
     });
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-[#FBEBEB] to-[#F5D0D0] flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-[#CB3432]" />
+  // if (loading) {
+  //   return (
+  //     <div className="min-h-screen bg-gradient-to-br from-[#FBEBEB] to-[#F5D0D0] flex items-center justify-center">
+  //       <Loader2 className="w-8 h-8 animate-spin text-[#CB3432]" />
+  //     </div>
+  //   );
+  // }
+  // ADD before loading return
+if (!profileChecked) {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#FBEBEB] to-[#F5D0D0]">
+      <Loader2 className="w-8 h-8 animate-spin text-[#CB3432]" />
+    </div>
+  );
+}
+// ADD this return BEFORE main page return
+if (!profileComplete) {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#FBEBEB] to-[#F5D0D0] p-4">
+      <div className="bg-white rounded-xl shadow-lg p-10 text-center max-w-md">
+        <h2 className="text-2xl font-bold mb-3 text-gray-900">
+          Complete Your Profile
+        </h2>
+        <p className="text-gray-600 mb-6">
+          Please set up your profile to access meal plans.
+        </p>
+        <button
+          onClick={() => navigate("/userprofile")}
+          className="px-6 py-3 bg-gradient-to-r from-[#CB3432] to-[#E74C3C] text-white rounded-lg font-semibold hover:shadow-lg transition-all"
+        >
+          Set Your Profile
+        </button>
       </div>
-    );
-  }
+    </div>
+  );
+}
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#FBEBEB] to-[#F5D0D0] p-4 md:p-6">
