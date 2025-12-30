@@ -88,5 +88,5 @@ if (process.env.NODE_ENV === "production" && KEEP_ALIVE_URL) {
     } catch (error) {
       console.error("❌ Keep-alive failed", error.message);
     }
-  }, 14 * 60 * 1000); // every 14 minutes
+  }, 2 * 60 * 1000); // every 14 minutes
 }
