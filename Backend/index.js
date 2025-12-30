@@ -80,7 +80,7 @@ app.listen(port, () => console.log(`App running on port ${port}`));
 
 const KEEP_ALIVE_URL = process.env.BACKEND_URL; // your render backend URL
 
-if (process.env.NODE_ENV === "production" && KEEP_ALIVE_URL) {
+
   setInterval(async () => {
     try {
       await fetch(KEEP_ALIVE_URL);
@@ -88,5 +88,4 @@ if (process.env.NODE_ENV === "production" && KEEP_ALIVE_URL) {
     } catch (error) {
       console.error("❌ Keep-alive failed", error.message);
     }
-  }, 2 * 60 * 1000); // every 14 minutes
-}
+  }, 1 * 60 * 1000); // every 14 minutes
