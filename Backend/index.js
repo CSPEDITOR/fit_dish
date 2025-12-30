@@ -88,4 +88,4 @@ const KEEP_ALIVE_URL = process.env.BACKEND_URL; // your render backend URL
     } catch (error) {
       console.error("❌ Keep-alive failed", error.message);
     }
-  }, 1 * 60 * 1000); // every 14 minutes
+  }, 14 * 60 * 1000); // every 14 minutes
