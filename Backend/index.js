@@ -10,6 +10,7 @@ import foodRoutes from "./routes/foodRoutes.js";
 import adminRoutes from "./routes/adminRoute.js";
 import mealPlanRoutes from "./routes/mealPlanRoutes.js";
 import intakeRoutes from "./routes/intakeRoutes.js";
+import fetch from "node-fetch";
 dotenv.config();
 connectDB();
 
@@ -74,3 +75,18 @@ app.use("/api/intake", intakeRoutes);
 
 
 app.listen(port, () => console.log(`App running on port ${port}`));
+
+
+
+const KEEP_ALIVE_URL = process.env.BACKEND_URL; // your render backend URL
+
+if (process.env.NODE_ENV === "production" && KEEP_ALIVE_URL) {
+  setInterval(async () => {
+    try {
+      await fetch(KEEP_ALIVE_URL);
+      console.log("🔄 Keep-alive ping sent");
+    } catch (error) {
+      console.error("❌ Keep-alive failed", error.message);
+    }
+  }, 14 * 60 * 1000); // every 14 minutes
+}

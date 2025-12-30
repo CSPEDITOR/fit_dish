@@ -296,7 +296,7 @@ const UserProfile = () => {
           <div className="bg-white rounded-3xl shadow-xl ">
             {/* Header Section */}
             <div className="bg-[#cc2405] p-8 md:p-12 relative rounded-b-3xl sm:rounded-3xl ">
-              <div className="absolute top-100 right-22 sm:top-6 sm:right-6">
+              <div className="absolute top-100 right-29 sm:top-6 sm:right-6">
                 <div className="flex gap-3">
                   {isProfileFilled() ? (
                     <motion.button
