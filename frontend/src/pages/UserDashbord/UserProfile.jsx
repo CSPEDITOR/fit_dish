@@ -258,7 +258,7 @@ const UserProfile = () => {
 
   return (
     <>
-      <div className="min-h-screen p-4 md:p-8">
+      <div className="min-h-screen p-0 md:p-8">
         <AnimatePresence>
           {loading && (
             <motion.div
@@ -295,7 +295,7 @@ const UserProfile = () => {
         >
           <div className="bg-white rounded-3xl shadow-xl ">
             {/* Header Section */}
-            <div className="bg-[#cc2405] p-8 md:p-12 relative rounded-3xl ">
+            <div className="bg-[#cc2405] p-8 md:p-12 relative rounded-b-3xl sm:rounded-3xl ">
               <div className="absolute top-100 right-22 sm:top-6 sm:right-6">
                 <div className="flex gap-3">
                   {isProfileFilled() ? (
@@ -303,10 +303,10 @@ const UserProfile = () => {
                       whileHover={{ scale: 1.05, rotate: 5 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={openEditModal}
-                      className="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white font-medium py-3 px-6 rounded-xl transition-all duration-300 border border-white/30 flex items-center gap-2"
+                      className="bg-white/20 top-[-390px] sm:top-0 right-[-75px] sm:right-0 relative hover:bg-white/30 backdrop-blur-sm text-white font-medium py-2 sm:py-3 px-2 sm:px-6 rounded-xl transition-all duration-300 border border-white/30 flex items-center gap-2"
                     >
-                      <Edit3 className="w-4 h-4" />
-                      Edit Profile
+                      <Edit3 className="w-4 h-4 " />
+                      Edit 
                     </motion.button>
                   ) : (
                     <motion.button
@@ -373,7 +373,7 @@ const UserProfile = () => {
                       <span className="text-lg">{userInfo?.email}</span>
                     </div>
                     {userInfo?.dailyBudget && (
-                      <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2">
+                      <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 max-w-sm">
                         <DollarSign className="w-5 h-5" />
                         <span className="text-base">Daily Budget: ₹{userInfo.dailyBudget}</span>
                       </div>
