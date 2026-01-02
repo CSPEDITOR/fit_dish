@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/userSlice";
 import { useNavigate, Link } from "react-router-dom";
 import loginbgimg from "../../images/loginbg.jpg";
-
+import { Eye, EyeOff } from "lucide-react";
 const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -56,11 +57,18 @@ const Login = () => {
               name="password"
               value={form.password}
               onChange={handleChange}
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="••••••••"
               className="w-full px-3 py-2 rounded-md bg-white/80 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#cc2405]"
               required
             />
+            <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute bottom-43 right-10 sm:bottom-47 sm:right-15 flex items-center text-gray-600 cursor-pointer"
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
           </div>
 
           <div className="flex justify-end text-sm">
