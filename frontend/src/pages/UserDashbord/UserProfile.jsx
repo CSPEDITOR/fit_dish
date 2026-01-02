@@ -680,6 +680,65 @@ const UserProfile = () => {
 
             {/* Basic Info Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-3 md:col-span-2 flex justify-center">
+                <div className="relative w-fit">
+                  <motion.label
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="cursor-pointer"
+                  >
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageUpload}
+                      className="hidden"
+                    />
+
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-2xl bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center relative group cursor-pointer transition-all hover:shadow-2xl hover:border-[#cc2405]"
+                    >
+                      {previewImage ? (
+                        <img
+                          src={previewImage}
+                          alt="Profile"
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <User className="w-20 h-20 text-gray-400" />
+                      )}
+                      {/* {console.log(userInfo.profileImage)} */}
+
+                      {/* Overlay on hover */}
+                      <div className="absolute inset-0 bg-black/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <Camera className="w-8 h-8 text-white" />
+                      </div>
+                    </motion.div>
+                  </motion.label>
+
+                  {/* Edit Button - Optional floating button */}
+                  <motion.label
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="absolute bottom-2 right-2 cursor-pointer"
+                  >
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageUpload}
+                      className="hidden"
+                    />
+                    <div className="bg-gradient-to-r from-[#cc2405] to-[#e6392b] rounded-full p-3 shadow-lg hover:shadow-xl transition-shadow">
+                      {imageUploading ? (
+                        <Loader2 className="w-5 h-5 text-white animate-spin" />
+                      ) : (
+                        <Camera className="w-5 h-5 text-white" />
+                      )}
+                    </div>
+                  </motion.label>
+                </div>
+              </div>
               {/* Name */}
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700">
@@ -695,6 +754,9 @@ const UserProfile = () => {
                   />
                 </div>
               </div>
+              {
+                console.log(formData)
+              }
               {/* Email */}
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700">
@@ -1024,7 +1086,7 @@ const UserProfile = () => {
             </div>
 
             {/* Profile Image Upload */}
-            <div className="space-y-3">
+            {/* <div className="space-y-3">
               <label className="text-sm font-medium text-gray-700">
                 Profile Image
               </label>
@@ -1073,7 +1135,7 @@ const UserProfile = () => {
                   </motion.div>
                 )}
               </div>
-            </div>
+            </div> */}
 
             {/* Modal Footer */}
             <div className="flex items-center justify-between pt-6 border-t border-gray-100">
