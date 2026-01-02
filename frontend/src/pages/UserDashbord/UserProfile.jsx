@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "react-modal";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  X, 
-  User, 
-  Mail, 
-  Scale, 
-  Ruler, 
-  Heart, 
-  Utensils, 
+import {
+  X,
+  User,
+  Mail,
+  Scale,
+  Ruler,
+  Heart,
+  Utensils,
   Calendar,
   AlertCircle,
   Edit3,
@@ -17,7 +17,8 @@ import {
   Camera,
   ChevronRight,
   Loader2,
-  DollarSign
+  DollarSign,
+  CheckCircle,
 } from "lucide-react";
 import {
   fetchUserProfile,
@@ -137,7 +138,7 @@ const UserProfile = () => {
     if (!file) return;
 
     setImageUploading(true);
-    
+
     // Simulate upload delay
     setTimeout(() => {
       setFormData((prev) => ({
@@ -224,7 +225,9 @@ const UserProfile = () => {
   const calculateBMI = () => {
     if (!userInfo?.weight || !userInfo?.height) return null;
     const heightInMeters = userInfo.height / 100;
-    const bmi = (userInfo.weight / (heightInMeters * heightInMeters)).toFixed(1);
+    const bmi = (userInfo.weight / (heightInMeters * heightInMeters)).toFixed(
+      1
+    );
     return bmi;
   };
 
@@ -237,8 +240,25 @@ const UserProfile = () => {
   };
 
   const bmiCategory = bmi ? getBMICategory(bmi) : null;
+  const budgetOptions = [
+    { label: "₹250", value: 250 },
+    { label: "₹300", value: 300 },
+    { label: "₹400", value: 400 },
+    { label: "₹500", value: 500 },
+    { label: "₹600", value: 600 },
+    { label: "₹700", value: 700 },
+    { label: "₹800", value: 800 },
+    { label: "₹900", value: 900 },
+    { label: "₹1000", value: 1000 },
+    { label: "₹1000+", value: 1500 },
+  ];
 
-  const ProfileInfoCard = ({ icon: Icon, title, value, color = "text-gray-700" }) => (
+  const ProfileInfoCard = ({
+    icon: Icon,
+    title,
+    value,
+    color = "text-gray-700",
+  }) => (
     <motion.div
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
@@ -306,7 +326,7 @@ const UserProfile = () => {
                       className="bg-white/20 top-[-390px] sm:top-0 right-[-75px] sm:right-0 relative hover:bg-white/30 backdrop-blur-sm text-white font-medium py-2 sm:py-3 px-2 sm:px-6 rounded-xl transition-all duration-300 border border-white/30 flex items-center gap-2"
                     >
                       <Edit3 className="w-4 h-4 " />
-                      Edit 
+                      Edit
                     </motion.button>
                   ) : (
                     <motion.button
@@ -316,7 +336,7 @@ const UserProfile = () => {
                       className="bg-white text-[#cc2405] font-medium py-3 px-6 rounded-xl transition-all duration-300 hover:bg-gray-50 flex items-center gap-2 shadow-lg"
                     >
                       <Settings className="w-4 h-4" />
-                      Profile Setup 
+                      Profile Setup
                     </motion.button>
                   )}
                 </div>
@@ -361,7 +381,7 @@ const UserProfile = () => {
                   >
                     {userInfo?.name || "Guest User"}
                   </motion.h1>
-                  
+
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -375,7 +395,9 @@ const UserProfile = () => {
                     {userInfo?.dailyBudget && (
                       <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 max-w-sm">
                         <DollarSign className="w-5 h-5" />
-                        <span className="text-base">Daily Budget: ₹{userInfo.dailyBudget}</span>
+                        <span className="text-base">
+                          Daily Budget: ₹{userInfo.dailyBudget}
+                        </span>
                       </div>
                     )}
                   </motion.div>
@@ -397,7 +419,9 @@ const UserProfile = () => {
                       </div>
                       <div className="h-12 w-px bg-white/30"></div>
                       <div>
-                        <div className="text-sm text-white/80">Health Score</div>
+                        <div className="text-sm text-white/80">
+                          Health Score
+                        </div>
                         <div className="text-2xl font-bold">85%</div>
                         <div className="text-sm text-green-300">Excellent</div>
                       </div>
@@ -407,156 +431,177 @@ const UserProfile = () => {
               </div>
             </div>
 
-            {isProfileFilled() ? ( <div className="p-8 md:p-12 ">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                {userInfo?.gender && (
-                  <ProfileInfoCard
-                    icon={User}
-                    title="Gender"
-                    value={userInfo.gender.charAt(0).toUpperCase() + userInfo.gender.slice(1)}
-                    color="text-blue-600"
-                  />
-                )}
-                
-                {userInfo?.age && (
-                  <ProfileInfoCard
-                    icon={Calendar}
-                    title="Age"
-                    value={`${userInfo.age} years`}
-                    color="text-purple-600"
-                  />
-                )}
-                
-                {userInfo?.weight && (
-                  <ProfileInfoCard
-                    icon={Scale}
-                    title="Weight"
-                    value={`${userInfo.weight} kg`}
-                    color="text-green-600"
-                  />
-                )}
-                
-                {userInfo?.height && (
-                  <ProfileInfoCard
-                    icon={Ruler}
-                    title="Height"
-                    value={`${userInfo.height} cm`}
-                    color="text-yellow-600"
-                  />
-                )}
-                
-                {userInfo?.foodType && (
-                  <ProfileInfoCard
-                    icon={Utensils}
-                    title="Food Type"
-                    value={userInfo.foodType.charAt(0).toUpperCase() + userInfo.foodType.slice(1).replace('-', ' ')}
-                    color="text-red-600"
-                  />
-                )}
-                
-                {userInfo?.dailyBudget && (
-                  <ProfileInfoCard
-                    icon={DollarSign}
-                    title="Daily Budget"
-                    value={`₹${userInfo.dailyBudget}`}
-                    color="text-emerald-600"
-                  />
-                )}
-                
-                {bmi && (
-                  <ProfileInfoCard
-                    icon={Heart}
-                    title="BMI"
-                    value={`${bmi} (${bmiCategory?.label})`}
-                    color={bmiCategory?.color.replace('text-', 'text-').replace('-500', '-600') || "text-red-600"}
-                  />
-                )}
-              </div>
+            {isProfileFilled() ? (
+              <div className="p-8 md:p-12 ">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                  {userInfo?.gender && (
+                    <ProfileInfoCard
+                      icon={User}
+                      title="Gender"
+                      value={
+                        userInfo.gender.charAt(0).toUpperCase() +
+                        userInfo.gender.slice(1)
+                      }
+                      color="text-blue-600"
+                    />
+                  )}
 
-              {/* Lists Section */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Avoid Food List */}
-                {userInfo?.avoidFood?.length > 0 && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="bg-gradient-to-br from-red-50 to-white rounded-2xl p-6 border border-red-100"
-                  >
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="flex items-center gap-3">
-                        <div className="p-2 bg-red-100 rounded-lg">
-                          <AlertCircle className="w-6 h-6 text-red-500" />
+                  {userInfo?.age && (
+                    <ProfileInfoCard
+                      icon={Calendar}
+                      title="Age"
+                      value={`${userInfo.age} years`}
+                      color="text-purple-600"
+                    />
+                  )}
+
+                  {userInfo?.weight && (
+                    <ProfileInfoCard
+                      icon={Scale}
+                      title="Weight"
+                      value={`${userInfo.weight} kg`}
+                      color="text-green-600"
+                    />
+                  )}
+
+                  {userInfo?.height && (
+                    <ProfileInfoCard
+                      icon={Ruler}
+                      title="Height"
+                      value={`${userInfo.height} cm`}
+                      color="text-yellow-600"
+                    />
+                  )}
+
+                  {userInfo?.foodType && (
+                    <ProfileInfoCard
+                      icon={Utensils}
+                      title="Food Type"
+                      value={
+                        userInfo.foodType.charAt(0).toUpperCase() +
+                        userInfo.foodType.slice(1).replace("-", " ")
+                      }
+                      color="text-red-600"
+                    />
+                  )}
+
+                  {userInfo?.dailyBudget && (
+                    <ProfileInfoCard
+                      icon={DollarSign}
+                      title="Daily Budget"
+                      value={`₹${userInfo.dailyBudget}`}
+                      color="text-emerald-600"
+                    />
+                  )}
+
+                  {bmi && (
+                    <ProfileInfoCard
+                      icon={Heart}
+                      title="BMI"
+                      value={`${bmi} (${bmiCategory?.label})`}
+                      color={
+                        bmiCategory?.color
+                          .replace("text-", "text-")
+                          .replace("-500", "-600") || "text-red-600"
+                      }
+                    />
+                  )}
+                </div>
+
+                {/* Lists Section */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  {/* Avoid Food List */}
+                  {userInfo?.avoidFood?.length > 0 && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 }}
+                      className="bg-gradient-to-br from-red-50 to-white rounded-2xl p-6 border border-red-100"
+                    >
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 bg-red-100 rounded-lg">
+                            <AlertCircle className="w-6 h-6 text-red-500" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold text-gray-800">
+                              Avoid Foods
+                            </h3>
+                            <p className="text-gray-500 text-sm mt-1">
+                              Foods to avoid for better health
+                            </p>
+                          </div>
                         </div>
+                        <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium">
+                          {userInfo.avoidFood.length} items
+                        </span>
+                      </div>
+                      <div className="space-y-3">
+                        {userInfo.avoidFood.map((item, index) => (
+                          <motion.div
+                            key={item._id}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.1 }}
+                            className="flex items-center justify-between p-3 bg-white rounded-xl border border-red-50 hover:border-red-200 transition-all duration-300"
+                          >
+                            <span className="font-medium text-gray-700">
+                              {item.name}
+                            </span>
+                            <ChevronRight className="w-4 h-4 text-red-300" />
+                          </motion.div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {/* Disease List */}
+                  {userInfo?.disease?.length > 0 && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                      className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-6 border border-blue-100"
+                    >
+                      <div className="flex items-center justify-between mb-6">
                         <div>
-                          <h3 className="text-xl font-bold text-gray-800">
-                            Avoid Foods
+                          <h3 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+                            <Heart className="w-5 h-5 text-blue-500" />
+                            Health Conditions
                           </h3>
-                          <p className="text-gray-500 text-sm mt-1">Foods to avoid for better health</p>
+                          <p className="text-gray-500 text-sm mt-1">
+                            Manage your health conditions
+                          </p>
                         </div>
+                        <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">
+                          {userInfo.disease.length} conditions
+                        </span>
                       </div>
-                      <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium">
-                        {userInfo.avoidFood.length} items
-                      </span>
-                    </div>
-                    <div className="space-y-3">
-                      {userInfo.avoidFood.map((item, index) => (
-                        <motion.div
-                          key={item._id}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                          className="flex items-center justify-between p-3 bg-white rounded-xl border border-red-50 hover:border-red-200 transition-all duration-300"
-                        >
-                          <span className="font-medium text-gray-700">{item.name}</span>
-                          <ChevronRight className="w-4 h-4 text-red-300" />
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Disease List */}
-                {userInfo?.disease?.length > 0 && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-6 border border-blue-100"
-                  >
-                    <div className="flex items-center justify-between mb-6">
-                      <div>
-                        <h3 className="text-xl font-bold text-gray-800 flex items-center gap-2">
-                          <Heart className="w-5 h-5 text-blue-500" />
-                          Health Conditions
-                        </h3>
-                        <p className="text-gray-500 text-sm mt-1">Manage your health conditions</p>
+                      <div className="space-y-3">
+                        {userInfo.disease.map((item, index) => (
+                          <motion.div
+                            key={item._id}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.1 }}
+                            className="flex items-center justify-between p-3 bg-white rounded-xl border border-blue-50 hover:border-blue-200 transition-all duration-300"
+                          >
+                            <span className="font-medium text-gray-700">
+                              {item.name}
+                            </span>
+                            <ChevronRight className="w-4 h-4 text-blue-300" />
+                          </motion.div>
+                        ))}
                       </div>
-                      <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">
-                        {userInfo.disease.length} conditions
-                      </span>
-                    </div>
-                    <div className="space-y-3">
-                      {userInfo.disease.map((item, index) => (
-                        <motion.div
-                          key={item._id}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                          className="flex items-center justify-between p-3 bg-white rounded-xl border border-blue-50 hover:border-blue-200 transition-all duration-300"
-                        >
-                          <span className="font-medium text-gray-700">{item.name}</span>
-                          <ChevronRight className="w-4 h-4 text-blue-300" />
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
+                    </motion.div>
+                  )}
+                </div>
               </div>
-            </div>) : (<div></div> )}
+            ) : (
+              <div></div>
+            )}
 
             {/* Profile Details Grid */}
-           
           </div>
         </motion.div>
       </div>
@@ -604,7 +649,7 @@ const UserProfile = () => {
                   Update your profile information
                 </p>
               </div>
-              
+
               <motion.button
                 whileHover={{ scale: 1.1, rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
@@ -621,10 +666,7 @@ const UserProfile = () => {
           </div>
 
           {/* Modal Content */}
-          <form
-            onSubmit={handleEditSubmit}
-            className="p-8 space-y-6"
-          >
+          <form onSubmit={handleEditSubmit} className="p-8 space-y-6">
             {localError && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
@@ -640,7 +682,9 @@ const UserProfile = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Name */}
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700">Name</label>
+                <label className="text-sm font-medium text-gray-700">
+                  Name
+                </label>
                 <div className="relative">
                   <input
                     type="text"
@@ -651,10 +695,11 @@ const UserProfile = () => {
                   />
                 </div>
               </div>
-
               {/* Email */}
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700">Email</label>
+                <label className="text-sm font-medium text-gray-700">
+                  Email
+                </label>
                 <div className="relative">
                   <input
                     type="email"
@@ -668,7 +713,9 @@ const UserProfile = () => {
 
               {/* Gender */}
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700">Gender</label>
+                <label className="text-sm font-medium text-gray-700">
+                  Gender
+                </label>
                 <select
                   name="gender"
                   value={formData.gender}
@@ -697,7 +744,9 @@ const UserProfile = () => {
 
               {/* Weight */}
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700">Weight (kg)</label>
+                <label className="text-sm font-medium text-gray-700">
+                  Weight (kg)
+                </label>
                 <input
                   type="number"
                   name="weight"
@@ -710,7 +759,9 @@ const UserProfile = () => {
 
               {/* Height */}
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700">Height (cm)</label>
+                <label className="text-sm font-medium text-gray-700">
+                  Height (cm)
+                </label>
                 <input
                   type="number"
                   name="height"
@@ -720,21 +771,71 @@ const UserProfile = () => {
                   placeholder="Enter height in cm"
                 />
               </div>
+              {/* Daily Budge */}
+              {/* Daily Budget */}
+              <div className="space-y-4 md:col-span-2">
+                <label className="text-sm font-medium text-gray-700">
+                  Daily Budget (₹)
+                </label>
+
+                {/* Input (same edit modal design) */}
+                <input
+                  type="number"
+                  name="dailyBudget"
+                  value={formData.dailyBudget}
+                  onChange={handleChange}
+                  min={250}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#cc2405] focus:border-transparent transition-all"
+                  placeholder="Enter Daily Budget"
+                />
+
+                {/* Preset budget buttons */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+                  {budgetOptions.map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() =>
+                        setFormData((p) => ({
+                          ...p,
+                          dailyBudget: option.value,
+                        }))
+                      }
+                      className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+                        formData.dailyBudget == option.value
+                          ? "bg-gradient-to-r from-[#CB3432] to-[#E74C3C] text-white shadow-md"
+                          : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                      }`}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+
+                {formData.dailyBudget && (
+                  <p className="text-xs text-green-600 flex items-center gap-1">
+                    <CheckCircle className="w-4 h-4" />
+                    Selected: ₹{formData.dailyBudget} per day
+                  </p>
+                )}
+              </div>
             </div>
 
             {/* Food Type */}
             <div className="space-y-3">
-              <label className="text-sm font-medium text-gray-700">Food Type</label>
+              <label className="text-sm font-medium text-gray-700">
+                Food Type
+              </label>
               <div className="flex gap-4">
-                {['veg', 'non-veg'].map((type) => (
+                {["veg", "non-veg"].map((type) => (
                   <motion.label
                     key={type}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className={`flex-1 cursor-pointer p-4 rounded-xl border-2 transition-all ${
                       formData.foodType === type
-                        ? 'border-[#cc2405] bg-red-50'
-                        : 'border-gray-200 hover:border-gray-300'
+                        ? "border-[#cc2405] bg-red-50"
+                        : "border-gray-200 hover:border-gray-300"
                     }`}
                   >
                     <input
@@ -746,9 +847,13 @@ const UserProfile = () => {
                       className="hidden"
                     />
                     <div className="flex items-center justify-center gap-2">
-                      <div className={`w-3 h-3 rounded-full ${
-                        formData.foodType === type ? 'bg-[#cc2405]' : 'bg-gray-300'
-                      }`}></div>
+                      <div
+                        className={`w-3 h-3 rounded-full ${
+                          formData.foodType === type
+                            ? "bg-[#cc2405]"
+                            : "bg-gray-300"
+                        }`}
+                      ></div>
                       <span className="font-medium capitalize">{type}</span>
                     </div>
                   </motion.label>
@@ -758,7 +863,9 @@ const UserProfile = () => {
 
             {/* Avoid Food Search */}
             <div className="space-y-3">
-              <label className="text-sm font-medium text-gray-700">Avoid Food</label>
+              <label className="text-sm font-medium text-gray-700">
+                Avoid Food
+              </label>
               <div className="relative">
                 <input
                   type="text"
@@ -806,14 +913,14 @@ const UserProfile = () => {
                 {filteredFoods.length > 0 && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
+                    animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     className="border border-gray-200 rounded-xl bg-white shadow-lg overflow-hidden"
                   >
                     {filteredFoods.map((f) => (
                       <motion.div
                         key={f._id}
-                        whileHover={{ backgroundColor: '#fef2f2' }}
+                        whileHover={{ backgroundColor: "#fef2f2" }}
                         onClick={() => {
                           if (!formData.avoidFood.includes(f._id)) {
                             setFormData((p) => ({
@@ -837,7 +944,9 @@ const UserProfile = () => {
 
             {/* Disease Search */}
             <div className="space-y-3">
-              <label className="text-sm font-medium text-gray-700">Health Conditions</label>
+              <label className="text-sm font-medium text-gray-700">
+                Health Conditions
+              </label>
               <div className="relative">
                 <input
                   type="text"
@@ -885,14 +994,14 @@ const UserProfile = () => {
                 {filteredDiseases.length > 0 && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
+                    animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     className="border border-gray-200 rounded-xl bg-white shadow-lg overflow-hidden"
                   >
                     {filteredDiseases.map((d) => (
                       <motion.div
                         key={d._id}
-                        whileHover={{ backgroundColor: '#f0f9ff' }}
+                        whileHover={{ backgroundColor: "#f0f9ff" }}
                         onClick={() => {
                           if (!formData.disease.includes(d.name)) {
                             setFormData((p) => ({
@@ -916,7 +1025,9 @@ const UserProfile = () => {
 
             {/* Profile Image Upload */}
             <div className="space-y-3">
-              <label className="text-sm font-medium text-gray-700">Profile Image</label>
+              <label className="text-sm font-medium text-gray-700">
+                Profile Image
+              </label>
               <div className="flex items-center gap-6">
                 <motion.label
                   whileHover={{ scale: 1.02 }}
@@ -938,7 +1049,7 @@ const UserProfile = () => {
                       )}
                       <div>
                         <p className="font-medium text-gray-700">
-                          {imageUploading ? 'Uploading...' : 'Upload Image'}
+                          {imageUploading ? "Uploading..." : "Upload Image"}
                         </p>
                         <p className="text-sm text-gray-500 mt-1">
                           PNG, JPG, WEBP up to 5MB
@@ -976,7 +1087,7 @@ const UserProfile = () => {
               >
                 Cancel
               </button>
-              
+
               <motion.button
                 type="submit"
                 disabled={loading}
@@ -990,7 +1101,7 @@ const UserProfile = () => {
                     Saving...
                   </div>
                 ) : (
-                  'Update Profile'
+                  "Update Profile"
                 )}
               </motion.button>
             </div>
@@ -1007,12 +1118,12 @@ const UserProfile = () => {
             opacity: 1;
           }
         }
-        
+
         .scrollbar-hide {
           -ms-overflow-style: none;
           scrollbar-width: none;
         }
-        
+
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
         }
