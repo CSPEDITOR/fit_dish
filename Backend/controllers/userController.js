@@ -18,7 +18,7 @@ export const registerUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Set default profile image - use a placeholder or default path
-    const defaultProfileImage = "https://via.placeholder.com/150/cccccc/ffffff?text=User";
+    const defaultProfileImage = "https://res.cloudinary.com/dpqdmftlo/image/upload/v1767343371/default_img_xqx3ds.png";
 
     const user = await User.create({
       name,
