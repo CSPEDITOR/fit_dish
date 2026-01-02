@@ -43,6 +43,7 @@ const MyPlans = () => {
   // UPDATE useEffect
   useEffect(() => {
   checkUserProfile();
+  fetchAllPlans();
 }, []);
 
 
