@@ -98,7 +98,7 @@ function Navbar() {
               <img
                 src={userInfo?.profileImage || profileImg}
                 alt="profile"
-                className="w-[45px] h-[45px] rounded-full cursor-pointer border-2 border-blue-500 hover:border-[#cc2405] transition-all duration-300"
+                className="w-[45px] h-[45px] rounded-full object-cover cursor-pointer border-2 border-blue-500 hover:border-[#cc2405] transition-all duration-300"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               />
 
@@ -107,6 +107,13 @@ function Navbar() {
                   ref={dropdownRef}
                   className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg w-40 flex flex-col z-50 transition-all duration-300"
                 >
+                  <Link
+                    to="/dashboard"
+                    className="px-4 py-2 text-gray-700 hover:bg-[#cc2405] hover:text-white transition-all duration-200"
+                    onClick={() => setDropdownOpen(false)}
+                  >
+                    Dashboard
+                  </Link>
                   <Link
                     to="/userprofile"
                     className="px-4 py-2 text-gray-700 hover:bg-[#cc2405] hover:text-white transition-all duration-200"
@@ -165,6 +172,13 @@ function Navbar() {
                 onClick={() => setDropdownOpen(false)}
               >
                 Profile
+              </Link>
+              <Link
+                to="/dashboard"
+                className=" px-4 py-1 text-2xl border border-[#cc2405] bg-white rounded-full"
+                onClick={() => setDropdownOpen(false)}
+              >
+                Dashboard
               </Link>
               <button
                 onClick={() => {
